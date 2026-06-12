@@ -671,8 +671,14 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
     # 목 — 머리·몸 레이어보다 '뒤'에 그리고, 턱 안쪽까지 올려 얼굴과 끊김 없이 연결.
     #      (머리/몸이 위·아래를 덮어 가운데 목만 보이게 됨)
     if body != "none":
-        g.append(f'<path d="M{hcx-neck_w:.1f},{chin-r*0.30:.1f} L{hcx-neck_w:.1f},{sho_y+r*0.28:.1f} '
-                 f'L{hcx+neck_w:.1f},{sho_y+r*0.28:.1f} L{hcx+neck_w:.1f},{chin-r*0.30:.1f} Z" {skinf}/>')
+        nyt, nyb = chin-r*0.30, sho_y+r*0.28          # 목 위/아래 y
+        # 면은 닫아 채우고(테두리 없음), 위·아래(턱·어깨 연결부)는 외곽선을 비워 열어둔다(러프)
+        g.append(f'<path d="M{hcx-neck_w:.1f},{nyt:.1f} L{hcx-neck_w:.1f},{nyb:.1f} '
+                 f'L{hcx+neck_w:.1f},{nyb:.1f} L{hcx+neck_w:.1f},{nyt:.1f} Z" fill="{SKIN}" stroke="none"/>')
+        g.append(f'<path d="M{hcx-neck_w:.1f},{nyt:.1f} L{hcx-neck_w:.1f},{nyb:.1f}" fill="none" '
+                 f'stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>')
+        g.append(f'<path d="M{hcx+neck_w:.1f},{nyt:.1f} L{hcx+neck_w:.1f},{nyb:.1f}" fill="none" '
+                 f'stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>')
 
     show_legs = body in ("full", "chibi")
     show_arms = body in ("waist", "full", "chibi")

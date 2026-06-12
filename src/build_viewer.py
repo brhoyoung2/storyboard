@@ -182,7 +182,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gstat{font-size:14px;color:var(--mut);min-width:120px;text-align:left}
 .gresult{overflow:visible;min-height:calc(100vh - 320px)}
 .gresult > svg{display:block;width:100%;height:auto}
-.gph{color:#667;text-align:center;padding:90px 24px;font-size:16px;line-height:1.7;background:#fff;border-radius:14px}
+.gph{display:flex;align-items:center;justify-content:center;text-align:center;min-height:calc(100vh - 320px);
+  padding:40px 24px;font-size:16px;line-height:1.7;color:var(--mut);background:var(--card2);
+  border:1px solid var(--line);border-radius:14px}
 .gph code{background:#eef;padding:2px 7px;border-radius:6px;color:#5b3fd6}
 .spin{width:42px;height:42px;margin:0 auto 16px;border:5px solid #e6e2ff;
   border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
@@ -200,11 +202,12 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 /* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감. 첫 컷 위·아래 여백을 컷 간격과 동일하게 */
 .pstack{display:flex;flex-direction:column;gap:160px;background:#fff;border-radius:14px;
   padding:160px 16px;box-shadow:0 10px 36px rgba(0,0,0,.4)}
-.gcard{display:flex;flex-direction:column;background:#fff;position:relative;border-radius:6px;overflow:hidden}
+.gcard{display:flex;flex-direction:column;background:#fff;position:relative;z-index:0}
+.gcard:hover{z-index:6}                       /* hover 시 옵션 패널이 옆 컷 위로 */
 .gcard.busy{opacity:.5}
 .gcard svg{display:block;width:100%;height:auto}
-/* 컨트롤: 평소 숨김 → 컷에 마우스 올리면 우측에 화이트 UI 패널로 떠오름 */
-.gcard-bar{position:absolute;top:50%;right:14px;transform:translate(12px,-50%);
+/* 컨트롤: 평소 숨김 → 컷에 마우스 올리면 컷 '바깥 오른쪽'에 화이트 UI 패널로 떠오름(그림 안 가림) */
+.gcard-bar{position:absolute;top:50%;left:100%;margin-left:16px;transform:translate(8px,-50%);
   display:flex;flex-direction:column;gap:8px;align-items:stretch;width:178px;
   padding:13px;background:#fff;border:1px solid #e4e7ef;border-radius:13px;
   box-shadow:0 12px 30px rgba(0,0,0,.22);opacity:0;transition:.16s;pointer-events:none;z-index:5}
