@@ -140,12 +140,12 @@ def head_shape(cx, cy, r, sw, view="front", facing=0.0, male=False):
                 f'C{cx-rwL:.1f},{top:.1f} {cx+rwR:.1f},{top:.1f} {cx+rwR:.1f},{cy:.1f} '
                 f'C{cx+rwR:.1f},{cy+r*jdrop:.1f} {cx+rwR*jw:.1f},{chin-r*0.04:.1f} {cx+rwR*jw*0.55+sx:.1f},{chin:.1f} '
                 f'L{cx-rwL*jw*0.55+sx:.1f},{chin:.1f} '
-                f'C{cx-rwR*jw:.1f},{chin-r*0.04:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy:.1f} Z" {st}/>')
+                f'C{cx-rwR*jw:.1f},{chin-r*0.04:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy-r*0.16:.1f}" {st}/>')  # 살짝 열림(좌측 틈)
     else:
         head = (f'<path d="M{cx-rwL:.1f},{cy:.1f} '
                 f'C{cx-rwL:.1f},{top:.1f} {cx+rwR:.1f},{top:.1f} {cx+rwR:.1f},{cy:.1f} '
                 f'C{cx+rwR:.1f},{cy+r*jdrop:.1f} {cx+rwR*jw:.1f},{chin-r*0.08:.1f} {cx+sx:.1f},{chin:.1f} '
-                f'C{cx-rwL*jw:.1f},{chin-r*0.08:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy:.1f} Z" {st}/>')
+                f'C{cx-rwL*jw:.1f},{chin-r*0.08:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy-r*0.16:.1f}" {st}/>')  # 살짝 열림
     return ears + head
 
 
@@ -518,22 +518,24 @@ def _limb(x1, y1, x2, y2, w, fillc, sw):
             f'stroke="{fillc}" stroke-width="{w:.1f}" stroke-linecap="round"/>')
 
 
-def _taper(x1, y1, w1, x2, y2, w2, fillc, sw):
-    """테이퍼 세그먼트: 뿌리(w1) 두껍고 끝(w2) 가는 사다리꼴 — 자연스런 팔/다리."""
+def _taper(x1, y1, w1, x2, y2, w2, fillc, sw, ext=0.0):
+    """테이퍼 세그먼트: 뿌리(w1) 두껍고 끝(w2) 가는 사다리꼴. ext=양끝 살짝 연장(겹쳐 러프)."""
     dx, dy = x2-x1, y2-y1
     L = math.hypot(dx, dy) or 0.001
-    nx, ny = -dy/L*0.5, dx/L*0.5
+    ux, uy = dx/L, dy/L
+    x1 -= ux*ext; y1 -= uy*ext; x2 += ux*ext; y2 += uy*ext
+    nx, ny = -uy*0.5, ux*0.5
     return (f'<path d="M{x1+nx*w1:.1f},{y1+ny*w1:.1f} L{x2+nx*w2:.1f},{y2+ny*w2:.1f} '
             f'L{x2-nx*w2:.1f},{y2-ny*w2:.1f} L{x1-nx*w1:.1f},{y1-ny*w1:.1f} Z" '
             f'fill="{fillc}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"/>')
 
 
 def _arm_seg(rx, ry, ex, ey, hx, hy, r, sleeve, sw):
-    """상박(어깨 두껍게→팔꿈치) + 전박(팔꿈치→손목 가늘게) + 팔꿈치 라운드 + 손."""
-    return (_taper(rx, ry, r*0.33, ex, ey, r*0.21, sleeve, sw)
-            + _taper(ex, ey, r*0.21, hx, hy, r*0.16, sleeve, sw)
-            + f'<circle cx="{ex:.1f}" cy="{ey:.1f}" r="{r*0.105:.1f}" fill="{sleeve}" stroke="{INK}" stroke-width="{sw:.1f}"/>'
-            + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.15:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+    """상박(어깨 두껍게→팔꿈치) + 전박(팔꿈치→손목 가늘게). 관절은 겹쳐서 자연스럽게(원 없음)."""
+    e = r*0.06
+    return (_taper(rx, ry, r*0.33, ex, ey, r*0.21, sleeve, sw, ext=e)
+            + _taper(ex, ey, r*0.23, hx, hy, r*0.16, sleeve, sw, ext=e)
+            + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.14:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
 
 
 def prop_at(kind, hx, hy, r):
@@ -585,12 +587,12 @@ def _leg(root, ta, ca, r, foot_dir, sw, dress=False):
     ax, ay = _pt(kx, ky, P_CALF*r, ca)
     fx, fy = _pt(ax, ay, P_HAND*r*1.4, 90*foot_dir)   # 발: 옆으로
     pants = PAINT(PANTS) if not dress else SKIN
+    e = r*0.06
     s = ""
-    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게)
-        s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw)
-        s += f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="{r*0.16:.1f}" fill="{pants}" stroke="{INK}" stroke-width="{sw:.1f}"/>'  # 무릎
+    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게). 관절은 겹쳐서(원 없음)
+        s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw, ext=e)
     # 종아리: 무릎→발목(더 가늘게)
-    s += _taper(kx, ky, r*0.30, ax, ay, r*0.20, pants, sw)
+    s += _taper(kx, ky, r*0.34, ax, ay, r*0.20, pants, sw, ext=e)
     s += f'<path d="M{ax:.1f},{ay:.1f} Q{fx:.1f},{ay+r*0.2:.1f} {fx:.1f},{ay+r*0.04:.1f}" stroke="{INK}" stroke-width="{r*0.32:.1f}" stroke-linecap="round" fill="none"/>'  # 신발
     return s
 
@@ -698,7 +700,7 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
                  f'C{sLx-r*0.05:.1f},{wy:.1f} {cxb-waist_h:.1f},{wy:.1f} {cxb-waist_h:.1f},{wy:.1f} '
                  f'L{botL:.1f},{boty:.1f} L{botR:.1f},{boty:.1f} '
                  f'C{cxb+waist_h:.1f},{wy:.1f} {sRx+r*0.05:.1f},{wy:.1f} {sRx:.1f},{sho_y:.1f} '
-                 f'C{cxb+r*0.3*wf:.1f},{sho_y-r*0.18:.1f} {cxb-r*0.3*wf:.1f},{sho_y-r*0.18:.1f} {sLx:.1f},{sho_y:.1f} Z" {cloth}/>')
+                 f'C{cxb+r*0.3*wf:.1f},{sho_y-r*0.18:.1f} {cxb-r*0.3*wf:.1f},{sho_y-r*0.18:.1f} {sLx+r*0.1:.1f},{sho_y-r*0.02:.1f}" {cloth}/>')  # 살짝 열림
         if not prof:
             g.append(f'<path d="M{cxb-r*0.28*wf:.1f},{sho_y-r*0.05:.1f} L{cxb:.1f},{sho_y+r*0.3:.1f} L{cxb+r*0.28*wf:.1f},{sho_y-r*0.05:.1f}" fill="none" stroke="{INK}" stroke-width="{sw:.1f}"/>')
 
@@ -1080,9 +1082,9 @@ def svg_header(total_h, width=W):
     h = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{total_h}" '
          f'viewBox="0 0 {width} {total_h}">'
          f'<defs><style>@import url(https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap);</style>'
-         f'<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.012" '
-         f'numOctaves="2" seed="7" result="n"/>'
-         f'<feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter>'
+         f'<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.019 0.022" '
+         f'numOctaves="2" seed="5" result="n"/>'
+         f'<feDisplacementMap in="SourceGraphic" in2="n" scale="4.6"/></filter>'
          f'<filter id="gray" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/></filter>'
          f'</defs>'
          f'<rect width="{width}" height="{total_h}" fill="white"/>')
