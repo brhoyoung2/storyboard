@@ -36,7 +36,7 @@ def _bake_sample():
         sys.path.insert(0, str(Path(__file__).resolve().parent))
         import genapi as _G
         r = _G.gen(SAMPLE_TEXT, gray=True)
-        return "".join(f'<div class="pcard">{p["svg"]}</div>' for p in r["panels"])
+        return "".join(f'<div class="gcard">{p["svg"]}</div>' for p in r["panels"])
     except Exception as e:
         print(f"  (샘플 베이크 생략: {e})")
         return ""
@@ -156,9 +156,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 #v7 .paper svg{width:660px}
 /* 직접 생성 탭 — 좌:입력(고정) / 우:결과(웹툰 스크롤), 1:1 동일폭, 하단 생성바 */
 #v6.view{padding-bottom:96px}            /* 하단 고정바에 가리지 않게 */
-.genwrap{display:flex;gap:22px;align-items:flex-start;max-width:1180px;margin:0 auto}
-.genleft{flex:1 1 0;min-width:0;position:sticky;top:118px;align-self:flex-start;display:flex;flex-direction:column}
-.genright{flex:1 1 0;min-width:0}
+.genwrap{display:flex;gap:22px;align-items:flex-start;max-width:1480px;margin:0 auto}
+.genleft{flex:0.8 1 0;min-width:300px;position:sticky;top:118px;align-self:flex-start;display:flex;flex-direction:column}
+.genright{flex:1.25 1 0;min-width:0}
 .genleft textarea{width:100%;height:calc(100vh - 320px);min-height:300px;resize:none;background:#0e1118;color:var(--tx);
   border:1px solid var(--line);border-radius:14px;padding:16px 18px;
   font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.8;outline:none;transition:.15s}
@@ -178,9 +178,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .genbottom button:disabled{opacity:.45;cursor:default;transform:none}
 .gchk{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--mut)}
 .gstat{font-size:14px;color:var(--mut);min-width:120px;text-align:left}
-.genright .paper{background:#fff;border-radius:14px;overflow:visible;min-height:calc(100vh - 320px)}
-.genright .paper svg{display:block;width:100%;height:auto}
-.gph{color:#667;text-align:center;padding:90px 24px;font-size:16px;line-height:1.7}
+.gresult{overflow:visible;min-height:calc(100vh - 320px)}
+.gresult > svg{display:block;width:100%;height:auto}
+.gph{color:#667;text-align:center;padding:90px 24px;font-size:16px;line-height:1.7;background:#fff;border-radius:14px}
 .gph code{background:#eef;padding:2px 7px;border-radius:6px;color:#5b3fd6}
 .spin{width:42px;height:42px;margin:0 auto 16px;border:5px solid #e6e2ff;
   border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
@@ -195,22 +195,23 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
   border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
 .gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
-/* 패널 카드(웹툰 스크롤·패널별 편집) */
-.pstack{display:flex;flex-direction:column;gap:16px}
-.pcard{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.28);position:relative}
-.pcard.busy{opacity:.5}
-.pcard svg{display:block;width:100%;height:auto}
-.pcard-bar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:9px 11px;
+/* 패널 카드(웹툰 스크롤·패널별 편집) — .pcard는 비교탭에서 이미 쓰므로 .gcard로 분리 */
+.pstack{display:flex;flex-direction:column;gap:18px}
+.gcard{display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.28);position:relative}
+.gcard.busy{opacity:.5}
+.gcard svg{display:block;width:100%;height:auto}
+.gcard-bar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:10px 12px;
   background:#11151d;border-top:1px solid var(--line)}
-.pcard-bar .pn{font-size:12px;font-weight:700;color:#8c93a8;margin-right:2px}
-.pcard-bar select{font-family:inherit;font-size:12.5px;padding:5px 8px;border-radius:8px;
+.gcard-bar .pn{font-size:13px;font-weight:800;color:#8c93a8;margin-right:2px}
+.gcard-bar select{font-family:inherit;font-size:13px;padding:6px 9px;border-radius:8px;
   background:var(--card2);color:var(--tx);border:1px solid var(--line);cursor:pointer;outline:none}
-.pcard-bar select:hover{border-color:#3a415a}
-.pcard-bar .iconbtn{font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:8px;cursor:pointer;
+.gcard-bar select:hover{border-color:#3a415a}
+.gcard-bar .iconbtn{font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;
   border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.12s}
-.pcard-bar .iconbtn:hover{border-color:#7c5cff;color:#fff}
-.pcard-bar .sp{flex:1}
-.pcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+.gcard-bar .iconbtn:hover{border-color:#7c5cff;color:#fff}
+.gcard-bar .sp{flex:1}
+.gcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.55)}
 /* 첫 진입 예시 배너 */
 .gsample-banner{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:11px 14px;border-radius:12px;
@@ -344,7 +345,7 @@ def main():
         '<div class="genhint">형식: <code>번호. [샷] 상황묘사 / 화자: "대사"</code> · '
         '인물 이름(매리·무결·엘리·라이더·정인 등)으로 색/성별 반영 · "둘/서로"=2명, "사람들"=다인물 · Ctrl+Enter로 생성</div>'
         '</div>'
-        '<div class="genright"><div class="paper" id="gout"><div class="gph">생성 결과가 여기에 표시됩니다</div></div></div>'
+        '<div class="genright"><div class="gresult" id="gout"><div class="gph">생성 결과가 여기에 표시됩니다</div></div></div>'
         '</div></div>')
 
     # View 7: 소품 에셋
@@ -468,9 +469,9 @@ function optSel(field, cur, idx){
   return `<select data-idx="${idx}" data-field="${field}">${o}</select>`;
 }
 function cardHTML(p, i){
-  return `<div class="pcard" data-idx="${i}" id="pcard${i}">`
+  return `<div class="gcard" data-idx="${i}" id="gcard${i}">`
     + p.svg
-    + '<div class="pcard-bar">'
+    + '<div class="gcard-bar">'
     + `<span class="pn">#${i+1}</span>`
     + optSel('shot',p.shot,i)+optSel('pose',p.pose,i)+optSel('emotion',p.emotion,i)+optSel('view',p.view,i)
     + `<button class="iconbtn" data-reroll="${i}">🎲 리롤</button>`
@@ -485,8 +486,8 @@ function renderCards(){
 // ── 단일 패널 재요청(편집/리롤) ──
 async function panelReq(i, extra){
   const p = gPanels[i];
-  const card = gq('pcard'+i); card.classList.add('busy');
-  card.insertAdjacentHTML('beforeend','<div class="pcard-mini"><div class="spin"></div></div>');
+  const card = gq('gcard'+i); card.classList.add('busy');
+  card.insertAdjacentHTML('beforeend','<div class="gcard-mini"><div class="spin"></div></div>');
   try{
     const res = await fetch(G_API+'/api/panel', {method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify(Object.assign({panel:p.panel, gray:gq('ggray').checked, seed:p.seed||5}, extra))});
@@ -559,7 +560,7 @@ function svgToCanvas(svgEl, scale){
 function dlBlob(blob, name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),3000); }
 
 async function exportPNG(idx){   // idx 주면 그 패널만, 없으면 전체 세로 합성
-  const svgs = [...gq('gout').querySelectorAll('.pcard svg')];
+  const svgs = [...gq('gout').querySelectorAll('.gcard svg')];
   if(!svgs.length) return;
   if(idx!=null){ const {canvas}=await svgToCanvas(svgs[idx],2); canvas.toBlob(b=>dlBlob(b,`conti_${idx+1}.png`)); return; }
   gq('gstat').textContent='PNG 합성 중...';
@@ -571,7 +572,7 @@ async function exportPNG(idx){   // idx 주면 그 패널만, 없으면 전체 �
   big.toBlob(b=>{ dlBlob(b,'storyboard.png'); gq('gstat').textContent='PNG 저장됨'; });
 }
 async function exportPDF(){
-  const svgs=[...gq('gout').querySelectorAll('.pcard svg')]; if(!svgs.length) return;
+  const svgs=[...gq('gout').querySelectorAll('.gcard svg')]; if(!svgs.length) return;
   if(!(window.jspdf&&window.jspdf.jsPDF)){ alert('PDF 라이브러리를 불러오지 못했습니다(인터넷 필요).'); return; }
   gq('gstat').textContent='PDF 생성 중...';
   const cs=await Promise.all(svgs.map(s=>svgToCanvas(s,2)));
@@ -583,7 +584,7 @@ async function exportPDF(){
   pdf.save('storyboard.pdf'); gq('gstat').textContent='PDF 저장됨';
 }
 async function copyPNG(){
-  const svgs=[...gq('gout').querySelectorAll('.pcard svg')]; if(!svgs.length) return;
+  const svgs=[...gq('gout').querySelectorAll('.gcard svg')]; if(!svgs.length) return;
   try{ const {canvas}=await svgToCanvas(svgs[0],2);
     canvas.toBlob(async b=>{ try{ await navigator.clipboard.write([new ClipboardItem({'image/png':b})]);
       gq('gstat').textContent='첫 컷 클립보드 복사됨'; }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 미지원 브라우저</span>'; } });
