@@ -195,15 +195,18 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
   border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
 .gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
-/* 패널 카드(웹툰 스크롤·패널별 편집) — .pcard는 비교탭에서 이미 쓰므로 .gcard로 분리 */
-.pstack{display:flex;flex-direction:column;gap:18px}
-.gcard{display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;
-  box-shadow:0 4px 18px rgba(0,0,0,.28);position:relative}
+/* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감(여백·그림자·카드테두리 없음) */
+.pstack{display:flex;flex-direction:column;gap:0;background:#fff;border-radius:14px;
+  overflow:hidden;box-shadow:0 10px 36px rgba(0,0,0,.4)}
+.gcard{display:flex;flex-direction:column;background:#fff;position:relative}
 .gcard.busy{opacity:.5}
 .gcard svg{display:block;width:100%;height:auto}
-.gcard-bar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:10px 12px;
-  background:#11151d;border-top:1px solid var(--line)}
-.gcard-bar .pn{font-size:13px;font-weight:800;color:#8c93a8;margin-right:2px}
+/* 컨트롤바: 평소엔 숨김 → 컷에 마우스 올리면 그림 위에 떠오름(캔버스 연속성 유지) */
+.gcard-bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:7px;align-items:center;flex-wrap:wrap;
+  padding:10px 12px;background:rgba(13,16,24,.86);backdrop-filter:blur(8px);
+  opacity:0;transform:translateY(8px);transition:.16s;pointer-events:none}
+.gcard:hover .gcard-bar{opacity:1;transform:none;pointer-events:auto}
+.gcard-bar .pn{font-size:13px;font-weight:800;color:#aeb6cc;margin-right:2px}
 .gcard-bar select{font-family:inherit;font-size:13px;padding:6px 9px;border-radius:8px;
   background:var(--card2);color:var(--tx);border:1px solid var(--line);cursor:pointer;outline:none}
 .gcard-bar select:hover{border-color:#3a415a}
@@ -211,11 +214,15 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.12s}
 .gcard-bar .iconbtn:hover{border-color:#7c5cff;color:#fff}
 .gcard-bar .sp{flex:1}
+/* 컷 번호 배지(좌상단, 항상 표시) */
 .gcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.55)}
 /* 첫 진입 예시 배너 */
-.gsample-banner{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:11px 14px;border-radius:12px;
-  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#d9caff;font-size:13.5px}
+.gsample-banner{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:12px 16px;border-radius:12px;
+  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#d9caff;
+  font-size:13.5px;line-height:1.55;word-break:keep-all}
+.gsample-banner .ic{flex:0 0 auto;font-size:17px}
+.gsample-banner span{flex:1 1 auto}
 .gsample-banner b{color:#fff}
 .exp-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
 </style></head><body>"""
@@ -390,8 +397,8 @@ function checkGen(){     // 생성 탭 진입 시 첫 예시를 보여주고 서
   if(!gq('ginp').value.trim()) gq('ginp').value = G_SAMPLE;   // 첫 진입: 입력칸 미리 채움
   parsePreview();
   if(G_SAMPLE_SVG){        // 베이크된 예시 결과를 즉시 표시(서버 없이도 "이렇게 나와요")
-    gq('gout').innerHTML='<div class="gsample-banner">👀 <b>예시 결과</b>입니다 — '
-      +'<b>[✎ 생성]</b>을 누르면 내가 쓴 글콘티로 바뀝니다. 각 컷은 🎲·드롭다운으로 바로 수정돼요.</div>'
+    gq('gout').innerHTML='<div class="gsample-banner"><span class="ic">👀</span>'
+      +'<span><b>예시 결과</b>입니다 — <b>[✎ 생성]</b>을 누르면 내가 쓴 글콘티로 바뀝니다. 각 컷은 🎲·드롭다운으로 바로 수정돼요.</span></div>'
       +'<div class="pstack">'+G_SAMPLE_SVG+'</div>';
   }
   fetch(G_API+'/', {method:'GET'}).catch(()=>{});

@@ -764,12 +764,12 @@ def wrap(text, n):
     return out or [""]
 
 
-def bubble(x, y, text, kind="dialogue", maxw=240):
-    chars_per = max(6, int(maxw / 22))
+def bubble(x, y, text, kind="dialogue", maxw=260):
+    chars_per = max(6, int(maxw / 24))
     lines = wrap(text, chars_per)
-    lh = 30
-    h = len(lines) * lh + 28
-    w = min(maxw, max(90, max(len(l) for l in lines) * 22 + 30))
+    lh = 33
+    h = len(lines) * lh + 30
+    w = min(maxw, max(96, max(len(l) for l in lines) * 24 + 32))
     s = []
     if kind == "narration":
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" '
@@ -783,12 +783,37 @@ def bubble(x, y, text, kind="dialogue", maxw=240):
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="16" '
                  f'fill="white" stroke="{INK}" stroke-width="1.8"/>')
         s.append(f'<path d="M{x+w*0.3},{y+h} l-6,18 l22,-16 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
-    ty = y + 26
+    ty = y + 28
     for ln in lines:
-        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="22" '
+        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="25" '
                  f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
         ty += lh
     return "".join(s), (w, h)
+
+
+def caption_box(text, h, panel_w=W):
+    """하단 캡션(나레이션·묘사) — 네모 박스, 가운데 정렬, 바닥에서 살짝 띄움, 큰 글씨."""
+    text = (text or "").strip()
+    if not text:
+        return ""
+    fs = 28                                   # 큰 글씨
+    maxw = int(panel_w * 0.82)
+    cps = max(8, int(maxw / (fs * 0.62)))
+    lines = wrap(text, cps)[:3]
+    lh = fs + 11
+    cw = int(fs * 0.62)
+    bw = min(maxw, max(180, max(len(l) for l in lines) * cw + 44))
+    bh = len(lines) * lh + 24
+    bx = (panel_w - bw) / 2                    # 가운데 정렬
+    by = h - bh - 30                           # 하단에서 살짝 띄움
+    s = [f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bw:.1f}" height="{bh:.1f}" rx="9" '
+         f'fill="#fffef2" stroke="{INK}" stroke-width="2"/>']
+    ty = by + fs + 9
+    for ln in lines:
+        s.append(f'<text x="{panel_w/2:.1f}" y="{ty:.1f}" font-family="{FONT}" font-size="{fs}" '
+                 f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
+        ty += lh
+    return "".join(s)
 
 
 def sfx(x, y, text):
@@ -1058,13 +1083,12 @@ def render_panel(panel, y0):
     for d in panel.get("inner", []):
         b, (bw, bh) = bubble(W - 280, by, d["text"], "inner")
         s.append(b); by += bh + 14
-    for d in panel.get("narration", []):
-        b, (bw, bh) = bubble(30, h - 70, d, "narration")
-        s.append(b)
-
-    # 연출 메모(묘사)
-    if panel.get("description"):
-        s.append(note(40, h - 24, panel["description"]))
+    # 하단 캡션: 나레이션이 있으면 나레이션, 없으면 묘사 — 네모박스·가운데·큰 글씨
+    cap = " ".join(panel.get("narration", [])).strip()
+    if not cap:
+        cap = panel.get("description", "")
+    if cap:
+        s.append(caption_box(cap, h))
 
     # 패널 번호
     s.append(panel_number(panel["num"], 6))
