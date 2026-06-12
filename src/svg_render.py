@@ -518,23 +518,38 @@ def _limb(x1, y1, x2, y2, w, fillc, sw):
             f'stroke="{fillc}" stroke-width="{w:.1f}" stroke-linecap="round"/>')
 
 
-def _taper(x1, y1, w1, x2, y2, w2, fillc, sw, ext=0.0):
-    """테이퍼 세그먼트: 뿌리(w1) 두껍고 끝(w2) 가는 사다리꼴. ext=양끝 살짝 연장(겹쳐 러프)."""
+def _taper(x1, y1, w1, x2, y2, w2, fillc, sw, ext=0.0, open_root=False):
+    """테이퍼 세그먼트: 뿌리(w1) 두껍고 끝(w2) 가는 사다리꼴. ext=양끝 살짝 연장(겹쳐 러프).
+    open_root=True면 뿌리(관절쪽) 외곽선을 닫지 않고 살짝 열어 손그림 느낌(채움은 유지)."""
     dx, dy = x2-x1, y2-y1
     L = math.hypot(dx, dy) or 0.001
     ux, uy = dx/L, dy/L
     x1 -= ux*ext; y1 -= uy*ext; x2 += ux*ext; y2 += uy*ext
     nx, ny = -uy*0.5, ux*0.5
-    return (f'<path d="M{x1+nx*w1:.1f},{y1+ny*w1:.1f} L{x2+nx*w2:.1f},{y2+ny*w2:.1f} '
-            f'L{x2-nx*w2:.1f},{y2-ny*w2:.1f} L{x1-nx*w1:.1f},{y1-ny*w1:.1f} Z" '
-            f'fill="{fillc}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"/>')
+    a = (x1+nx*w1, y1+ny*w1)   # 뿌리 좌
+    b = (x2+nx*w2, y2+ny*w2)   # 끝 좌
+    c = (x2-nx*w2, y2-ny*w2)   # 끝 우
+    d = (x1-nx*w1, y1-ny*w1)   # 뿌리 우
+    # 채움: 닫힌 실루엣(테두리 없음) — 열어도 면은 유지
+    fill = (f'<path d="M{a[0]:.1f},{a[1]:.1f} L{b[0]:.1f},{b[1]:.1f} L{c[0]:.1f},{c[1]:.1f} '
+            f'L{d[0]:.1f},{d[1]:.1f} Z" fill="{fillc}" stroke="none"/>')
+    if open_root:
+        # 뿌리 캡(d→a)을 생략 → 관절쪽이 열린 외곽선. 끝쪽으로 살짝 안 닿게 짧게.
+        stroke = (f'<path d="M{a[0]:.1f},{a[1]:.1f} L{b[0]:.1f},{b[1]:.1f} L{c[0]:.1f},{c[1]:.1f} '
+                  f'L{d[0]:.1f},{d[1]:.1f}" fill="none" stroke="{INK}" stroke-width="{sw:.1f}" '
+                  f'stroke-linejoin="round" stroke-linecap="round"/>')
+    else:
+        stroke = (f'<path d="M{a[0]:.1f},{a[1]:.1f} L{b[0]:.1f},{b[1]:.1f} L{c[0]:.1f},{c[1]:.1f} '
+                  f'L{d[0]:.1f},{d[1]:.1f} Z" fill="none" stroke="{INK}" stroke-width="{sw:.1f}" '
+                  f'stroke-linejoin="round"/>')
+    return fill + stroke
 
 
 def _arm_seg(rx, ry, ex, ey, hx, hy, r, sleeve, sw):
     """상박(어깨 두껍게→팔꿈치) + 전박(팔꿈치→손목 가늘게). 관절은 겹쳐서 자연스럽게(원 없음)."""
     e = r*0.06
-    return (_taper(rx, ry, r*0.33, ex, ey, r*0.21, sleeve, sw, ext=e)
-            + _taper(ex, ey, r*0.23, hx, hy, r*0.16, sleeve, sw, ext=e)
+    return (_taper(rx, ry, r*0.33, ex, ey, r*0.21, sleeve, sw, ext=e, open_root=True)
+            + _taper(ex, ey, r*0.23, hx, hy, r*0.16, sleeve, sw, ext=e, open_root=True)
             + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.14:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
 
 
@@ -589,10 +604,10 @@ def _leg(root, ta, ca, r, foot_dir, sw, dress=False):
     pants = PAINT(PANTS) if not dress else SKIN
     e = r*0.06
     s = ""
-    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게). 관절은 겹쳐서(원 없음)
-        s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw, ext=e)
+    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게). 관절쪽 외곽선 열기
+        s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw, ext=e, open_root=True)
     # 종아리: 무릎→발목(더 가늘게)
-    s += _taper(kx, ky, r*0.34, ax, ay, r*0.20, pants, sw, ext=e)
+    s += _taper(kx, ky, r*0.34, ax, ay, r*0.20, pants, sw, ext=e, open_root=True)
     s += f'<path d="M{ax:.1f},{ay:.1f} Q{fx:.1f},{ay+r*0.2:.1f} {fx:.1f},{ay+r*0.04:.1f}" stroke="{INK}" stroke-width="{r*0.32:.1f}" stroke-linecap="round" fill="none"/>'  # 신발
     return s
 
