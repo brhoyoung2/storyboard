@@ -19,6 +19,28 @@ try:
 except Exception:
     pass
 
+# 첫 진입 예시(입력칸 프리필 + 베이크된 결과 미리보기)
+SAMPLE_TEXT = """1. [풀샷] 카페 앞 거리. 매리가 걸어간다.
+2. [미들샷] 매리가 환하게 웃는다. / 매리: "오늘 날씨 좋다!"
+3. [클로즈업] 매리가 생각에 잠긴다. / 매리: (속마음) '뭐 먹지?'
+4. [미들샷] 무결이 손을 흔들며 인사한다. / 무결: "매리야!"
+5. [미들샷] 매리와 무결이 서로 마주본다. / 매리: "어, 무결아!"
+6. [풀샷] 둘이 나란히 걷는다.
+7. [클로즈업] 매리가 깜짝 놀란다. / 매리: "헉, 저게 뭐야?!" / 효과음: '두근'
+8. [롱샷] 거리에 사람들이 모여있다."""
+
+
+def _bake_sample():
+    """SAMPLE_TEXT를 렌더해 첫 진입용 패널 카드 묶음(HTML)을 만든다. 실패해도 빈 문자열."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import genapi as _G
+        r = _G.gen(SAMPLE_TEXT, gray=True)
+        return "".join(f'<div class="pcard">{p["svg"]}</div>' for p in r["panels"])
+    except Exception as e:
+        print(f"  (샘플 베이크 생략: {e})")
+        return ""
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "output"
 CLS_DIR = ROOT / "data" / "classified"
@@ -65,6 +87,7 @@ HEAD = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Storyboard · 뷰어</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 :root{--bg:#0b0d13;--card:#151823;--card2:#1c2030;--line:#262b3b;--tx:#eaecf3;
@@ -162,6 +185,38 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .spin{width:42px;height:42px;margin:0 auto 16px;border:5px solid #e6e2ff;
   border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* 입력 보조: 샷 칩 + 실시간 파싱 프리뷰 */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 9px}
+.chips .chip{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:9px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card2);color:#cdd;transition:.12s;user-select:none}
+.chips .chip:hover{border-color:#7c5cff;color:#fff;background:rgba(124,58,237,.18)}
+.chips .chip.alt{color:#9fb3c8}
+.gpreview{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:11px 0 0;min-height:24px;font-size:12.5px}
+.gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
+  border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
+.gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
+/* 패널 카드(웹툰 스크롤·패널별 편집) */
+.pstack{display:flex;flex-direction:column;gap:16px}
+.pcard{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.28);position:relative}
+.pcard.busy{opacity:.5}
+.pcard svg{display:block;width:100%;height:auto}
+.pcard-bar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:9px 11px;
+  background:#11151d;border-top:1px solid var(--line)}
+.pcard-bar .pn{font-size:12px;font-weight:700;color:#8c93a8;margin-right:2px}
+.pcard-bar select{font-family:inherit;font-size:12.5px;padding:5px 8px;border-radius:8px;
+  background:var(--card2);color:var(--tx);border:1px solid var(--line);cursor:pointer;outline:none}
+.pcard-bar select:hover{border-color:#3a415a}
+.pcard-bar .iconbtn{font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.12s}
+.pcard-bar .iconbtn:hover{border-color:#7c5cff;color:#fff}
+.pcard-bar .sp{flex:1}
+.pcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.55)}
+/* 첫 진입 예시 배너 */
+.gsample-banner{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:11px 14px;border-radius:12px;
+  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#d9caff;font-size:13.5px}
+.gsample-banner b{color:#fff}
+.exp-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
 </style></head><body>"""
 
 
@@ -275,10 +330,19 @@ def main():
     html.append(
         '<div class="genwrap">'
         '<div class="genleft">'
-        '<textarea id="ginp" placeholder="여기에 글콘티 입력...&#10;예) 1. [미들샷] 매리가 웃는다. / 매리: &quot;안녕!&quot;"></textarea>'
+        '<div class="chips" id="gchips">'
+        '<span class="chip" data-ins="[풀샷] ">풀샷</span>'
+        '<span class="chip" data-ins="[미들샷] ">미들샷</span>'
+        '<span class="chip" data-ins="[클로즈업] ">클로즈업</span>'
+        '<span class="chip" data-ins="[롱샷] ">롱샷</span>'
+        '<span class="chip alt" data-ins=" / 매리: &quot;&quot;">대사</span>'
+        '<span class="chip alt" data-ins=" / 효과음: \'\'">효과음</span>'
+        '<span class="chip alt" data-ins=" / 나레이션: ">나레이션</span>'
+        '</div>'
+        '<textarea id="ginp" placeholder="여기에 글콘티 입력 (줄글을 그대로 붙여넣어도 됩니다)...&#10;예) 1. [미들샷] 매리가 웃는다. / 매리: &quot;안녕!&quot;"></textarea>'
+        '<div class="gpreview" id="gpreview"></div>'
         '<div class="genhint">형식: <code>번호. [샷] 상황묘사 / 화자: "대사"</code> · '
-        '샷: 풀샷·미들샷·클로즈업·롱샷 · 인물 이름(매리·무결·엘리·라이더·정인 등)으로 색/성별 반영 · '
-        '"둘/서로"=2명, "사람들"=다인물 · Ctrl+Enter로 생성</div>'
+        '인물 이름(매리·무결·엘리·라이더·정인 등)으로 색/성별 반영 · "둘/서로"=2명, "사람들"=다인물 · Ctrl+Enter로 생성</div>'
         '</div>'
         '<div class="genright"><div class="paper" id="gout"><div class="gph">생성 결과가 여기에 표시됩니다</div></div></div>'
         '</div></div>')
@@ -298,14 +362,20 @@ def main():
         '<div class="genbottom" id="genbottom">'
         '<button class="primary" id="ggen">✎ 생성</button>'
         '<button id="gsample">샘플 불러오기</button>'
-        '<button id="gdl" disabled>SVG 저장</button>'
         '<span class="gchk"><input type="checkbox" id="ggray" checked> 흑백</span>'
+        '<span class="exp-sep"></span>'
+        '<button id="gpng" disabled>⬇ PNG</button>'
+        '<button id="gpdf" disabled>⬇ PDF</button>'
+        '<button id="gcopy" disabled>⧉ 복사</button>'
+        '<button id="gdl" disabled>SVG</button>'
         '<span class="gstat" id="gstat"></span>'
         '</div>')
 
     data_js = json.dumps({m["stem"]: m for m in compare}, ensure_ascii=False)
-    html.append("""<script>
-const CMP = %s;
+    sample_svg_js = json.dumps(_bake_sample(), ensure_ascii=False)
+    sample_txt_js = json.dumps(SAMPLE_TEXT, ensure_ascii=False)
+    html.append(r"""<script>
+const CMP = __CMP__;
 function show(i){
   document.querySelectorAll('.view').forEach((v,j)=>v.classList.toggle('on',i===j));
   document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',i===j));
@@ -313,13 +383,17 @@ function show(i){
   if(i===2 && !document.getElementById('genobj').data) loadEp();
   if(i===6) checkGen();
 }
-function checkGen(){     // 생성 탭 진입 시 서버 연결 미리 확인
-  if(gLast) return;
-  fetch(G_API+'/', {method:'GET'}).catch(()=>{
-    gq('gout').innerHTML='<div class="gph">생성하려면 서버가 필요합니다.<br><br>'
-      +'터미널에서 <code>python src/server.py</code> 를 실행하고,<br>'
-      +'열리는 <code>http://127.0.0.1:8000</code> 에서 이 페이지를 여세요.</div>';
-  });
+function checkGen(){     // 생성 탭 진입 시 첫 예시를 보여주고 서버 연결 확인
+  if(window.__gen_shown) return;
+  window.__gen_shown = true;
+  if(!gq('ginp').value.trim()) gq('ginp').value = G_SAMPLE;   // 첫 진입: 입력칸 미리 채움
+  parsePreview();
+  if(G_SAMPLE_SVG){        // 베이크된 예시 결과를 즉시 표시(서버 없이도 "이렇게 나와요")
+    gq('gout').innerHTML='<div class="gsample-banner">👀 <b>예시 결과</b>입니다 — '
+      +'<b>[✎ 생성]</b>을 누르면 내가 쓴 글콘티로 바뀝니다. 각 컷은 🎲·드롭다운으로 바로 수정돼요.</div>'
+      +'<div class="pstack">'+G_SAMPLE_SVG+'</div>';
+  }
+  fetch(G_API+'/', {method:'GET'}).catch(()=>{});
 }
 function loadEp(){
   const stem = document.getElementById('epsel').value;
@@ -331,24 +405,117 @@ function loadEp(){
 }
 // ── 직접 생성 탭 ──
 const G_API = location.protocol==='file:' ? 'http://127.0.0.1:8000' : '';
-const G_SAMPLE = `1. [풀샷] 카페 앞 거리. 매리가 걸어간다.
-2. [미들샷] 매리가 환하게 웃는다. / 매리: "오늘 날씨 좋다!"
-3. [클로즈업] 매리가 생각에 잠긴다. / 매리: (속마음) '뭐 먹지?'
-4. [미들샷] 무결이 손을 흔들며 인사한다. / 무결: "매리야!"
-5. [미들샷] 매리와 무결이 서로 마주본다. / 매리: "어, 무결아!"
-6. [풀샷] 둘이 나란히 걷는다.
-7. [클로즈업] 매리가 깜짝 놀란다. / 매리: "헉, 저게 뭐야?!" / 효과음: '두근'
-8. [롱샷] 거리에 사람들이 모여있다.`;
-let gLast='';
+const G_SAMPLE = __SAMPLE_TXT__;
+const G_SAMPLE_SVG = __SAMPLE_SVG__;   // 첫 진입용 베이크된 예시 패널들
 const gq = id => document.getElementById(id);
-gq('gsample').onclick = () => { gq('ginp').value = G_SAMPLE; };
-gq('gdl').onclick = () => { if(!gLast) return; const b=new Blob([gLast],{type:'image/svg+xml'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='conti.svg'; a.click(); };
+let gPanels = [];          // [{svg, shot,pose,emotion,view,panel}] — 현재 결과 상태
+let gStrip = '';           // 전체 strip SVG(SVG 저장용)
+
+// 편집 드롭다운 선택지 (label, value)
+const OPT = {
+  shot:    [['풀샷','full'],['미들샷','medium'],['클로즈업','closeup'],['익스트림CU','extreme_closeup'],['롱샷','long'],['인서트','insert']],
+  pose:    [['서있음','stand'],['걷기','walk'],['달리기','run'],['통화','phone'],['손번쩍','raise_hand'],['인사','wave'],['팔짱','arms_cross'],['가리킴','point'],['머리긁','scratch_head'],['생각(턱)','think_chin'],['머리부여잡','hold_head'],['앉기','sit'],['포옹','hug'],['고개숙임','head_down'],['뒷모습','turn_away'],['거부','hand_no']],
+  emotion: [['무표정','neutral'],['미소','smile'],['활짝','happy'],['크게웃음','laugh'],['놀람','surprise'],['진지','serious'],['황당','dumbfound'],['화남','angry'],['슬픔','sad'],['하트','love'],['윙크','wink'],['실쭉','smirk'],['지침','tired']],
+  view:    [['정면','front'],['반측면','q3'],['완측면','profile']],
+};
+const LBL = {shot:'샷',pose:'포즈',emotion:'표정',view:'시점'};
+
+// ── 입력 칩: 커서 위치에 삽입 ──
+gq('gchips').addEventListener('click', e => {
+  const c = e.target.closest('.chip'); if(!c) return;
+  const t = gq('ginp'), ins = c.dataset.ins;
+  const s = t.selectionStart, en = t.selectionEnd, v = t.value;
+  t.value = v.slice(0,s) + ins + v.slice(en);
+  const caret = s + ins.length - (ins.endsWith('""')||ins.endsWith("''") ? 1 : 0);
+  t.focus(); t.setSelectionRange(caret, caret); parsePreview();
+});
+
+// ── 실시간 파싱 프리뷰 (클라이언트 추정, 서버 불필요) ──
+const SHOT_WORDS = {풀샷:'풀샷',풀:'풀샷',미들:'미들',바스트:'미들',클로즈업:'클로즈업',클로즈:'클로즈업',클로즈샷:'클로즈업',롱샷:'롱샷',롱:'롱샷',인서트:'인서트'};
+const KNOWN = ['매리','무결','엘리','라이더','정인','민수','지훈','수아','하늘','준영'];
+function parsePreview(){
+  const raw = gq('ginp').value;
+  const pv = gq('gpreview'); if(!pv) return;
+  if(!raw.trim()){ pv.innerHTML='<span class="pv muted">입력하면 감지 결과가 여기에 표시됩니다</span>'; return; }
+  const lines = raw.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  let units = lines.filter(l=>/^\s*\d+[.)\]]/.test(l));   // 번호 매겨진 줄
+  if(units.length===0) units = lines;                      // 줄글: 줄 단위
+  const shots = {};
+  let names = new Set(), dlg = 0, sfx = 0, multi = false;
+  for(const l of units){
+    const sm = l.match(/\[([^\]]+)\]/);
+    if(sm){ for(const k in SHOT_WORDS){ if(sm[1].includes(k)){ shots[SHOT_WORDS[k]]=(shots[SHOT_WORDS[k]]||0)+1; break; } } }
+    if(/["“][^"”]+["”]/.test(l)) dlg++;
+    if(/효과음/.test(l)) sfx++;
+    if(/둘|서로|마주|함께|나란히/.test(l)) multi = true;
+    if(/사람들|군중|모여/.test(l)) multi = true;
+    for(const nm of KNOWN){ if(l.includes(nm)) names.add(nm); }
+  }
+  const chips = [`<span class="pv">패널 ${units.length}개</span>`];
+  if(names.size) chips.push(`<span class="pv">인물 ${[...names].join('·')}</span>`);
+  else if(multi) chips.push('<span class="pv">인물 여럿</span>');
+  const sh = Object.entries(shots).map(([k,v])=>`${k}×${v}`).join(' · ');
+  if(sh) chips.push(`<span class="pv muted">샷 ${sh}</span>`);
+  if(dlg) chips.push(`<span class="pv muted">대사 ${dlg}</span>`);
+  if(sfx) chips.push(`<span class="pv muted">효과음 ${sfx}</span>`);
+  pv.innerHTML = chips.join('');
+}
+let _pvT; gq('ginp').addEventListener('input', ()=>{ clearTimeout(_pvT); _pvT=setTimeout(parsePreview,120); });
+
+// ── 카드 렌더 ──
+function optSel(field, cur, idx){
+  const o = OPT[field].map(([l,v])=>`<option value="${v}"${v===cur?' selected':''}>${LBL[field]}: ${l}</option>`).join('');
+  return `<select data-idx="${idx}" data-field="${field}">${o}</select>`;
+}
+function cardHTML(p, i){
+  return `<div class="pcard" data-idx="${i}" id="pcard${i}">`
+    + p.svg
+    + '<div class="pcard-bar">'
+    + `<span class="pn">#${i+1}</span>`
+    + optSel('shot',p.shot,i)+optSel('pose',p.pose,i)+optSel('emotion',p.emotion,i)+optSel('view',p.view,i)
+    + `<button class="iconbtn" data-reroll="${i}">🎲 리롤</button>`
+    + '<span class="sp"></span>'
+    + `<button class="iconbtn" data-png="${i}">⬇ PNG</button>`
+    + '</div></div>';
+}
+function renderCards(){
+  gq('gout').innerHTML = '<div class="pstack" id="pstack">'+gPanels.map(cardHTML).join('')+'</div>';
+}
+
+// ── 단일 패널 재요청(편집/리롤) ──
+async function panelReq(i, extra){
+  const p = gPanels[i];
+  const card = gq('pcard'+i); card.classList.add('busy');
+  card.insertAdjacentHTML('beforeend','<div class="pcard-mini"><div class="spin"></div></div>');
+  try{
+    const res = await fetch(G_API+'/api/panel', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(Object.assign({panel:p.panel, gray:gq('ggray').checked, seed:p.seed||5}, extra))});
+    const d = await res.json();
+    if(d.error){ gq('gstat').innerHTML='<span style="color:#f99">⚠ '+d.error+'</span>'; }
+    else{
+      gPanels[i] = {svg:d.svg, shot:d.shot, pose:d.pose, emotion:d.emotion, view:d.view, panel:d.panel, seed:d.seed};
+      const nc = document.createElement('div'); nc.innerHTML = cardHTML(gPanels[i], i);
+      card.replaceWith(nc.firstChild);
+    }
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>'; }
+}
+// 이벤트 위임: 드롭다운 편집 / 리롤 / 패널 PNG
+gq('gout').addEventListener('change', e=>{
+  const s=e.target.closest('select'); if(!s) return;
+  panelReq(+s.dataset.idx, {[s.dataset.field]: s.value});
+});
+gq('gout').addEventListener('click', e=>{
+  const rr=e.target.closest('[data-reroll]'); if(rr){ const i=+rr.dataset.reroll;
+    panelReq(i, {seed: ((gPanels[i].seed||5)%97)+7}); return; }   // 시드 회전 → 선 흔들림 다르게
+  const pg=e.target.closest('[data-png]'); if(pg){ exportPNG(+pg.dataset.png); }
+});
+
+// ── 생성 ──
 async function genConti(){
   const text = gq('ginp').value.trim();
   if(!text){ gq('gstat').innerHTML='<span style="color:#f99">글콘티를 입력하세요.</span>'; return; }
   gq('ggen').disabled=true; gq('gstat').textContent='생성 중...';
-  gq('gout').innerHTML='<div class="gph"><div class="spin"></div>생성 중...</div>';   // 로딩 스피너
+  gq('gout').innerHTML='<div class="gph"><div class="spin"></div>생성 중...</div>';
   try{
     const res = await fetch(G_API+'/api/generate', {method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({text, gray: gq('ggray').checked})});
@@ -357,8 +524,11 @@ async function genConti(){
       gq('gstat').innerHTML='<span style="color:#f99">오류</span>';
       gq('gout').innerHTML='<div class="gph">⚠ '+d.error+'</div>';
     } else {
-      gLast=d.svg; gq('gout').innerHTML=d.svg; gq('gdl').disabled=false;
-      gq('gstat').textContent = d.panels+'컷 생성 · 샷 '+JSON.stringify(d.shots);
+      gPanels = d.panels.map(p=>({svg:p.svg,shot:p.shot,pose:p.pose,emotion:p.emotion,view:p.view,panel:p.panel,seed:5}));
+      gStrip = d.strip || '';
+      renderCards();
+      ['gpng','gpdf','gcopy','gdl'].forEach(id=>gq(id).disabled=false);
+      gq('gstat').textContent = d.count+'컷 · 샷 '+Object.entries(d.shots).map(([k,v])=>k+'×'+v).join(' ');
     }
   }catch(e){
     gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>';
@@ -368,11 +538,68 @@ async function genConti(){
   }
   gq('ggen').disabled=false;
 }
+
+// ── 내보내기: SVG→canvas 래스터화 ──
+function svgToCanvas(svgEl, scale){
+  scale = scale||2;
+  return new Promise((res,rej)=>{
+    const vb = svgEl.viewBox.baseVal;
+    const w = (vb&&vb.width)||svgEl.width.baseVal.value||750;
+    const h = (vb&&vb.height)||svgEl.height.baseVal.value||480;
+    let xml = new XMLSerializer().serializeToString(svgEl);
+    if(!/^<svg[^>]+xmlns=/.test(xml)) xml = xml.replace('<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+    const url = 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
+    const img = new Image();
+    img.onload=()=>{ const c=document.createElement('canvas'); c.width=Math.round(w*scale); c.height=Math.round(h*scale);
+      const cx=c.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,c.width,c.height);
+      cx.drawImage(img,0,0,c.width,c.height); res({canvas:c,w,h}); };
+    img.onerror=rej; img.src=url;
+  });
+}
+function dlBlob(blob, name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),3000); }
+
+async function exportPNG(idx){   // idx 주면 그 패널만, 없으면 전체 세로 합성
+  const svgs = [...gq('gout').querySelectorAll('.pcard svg')];
+  if(!svgs.length) return;
+  if(idx!=null){ const {canvas}=await svgToCanvas(svgs[idx],2); canvas.toBlob(b=>dlBlob(b,`conti_${idx+1}.png`)); return; }
+  gq('gstat').textContent='PNG 합성 중...';
+  const cs = await Promise.all(svgs.map(s=>svgToCanvas(s,2)));
+  const W = Math.max(...cs.map(c=>c.canvas.width)), H = cs.reduce((a,c)=>a+c.canvas.height,0)+ (cs.length-1)*16;
+  const big = document.createElement('canvas'); big.width=W; big.height=H;
+  const cx = big.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,W,H);
+  let y=0; for(const c of cs){ cx.drawImage(c.canvas,(W-c.canvas.width)/2,y); y+=c.canvas.height+16*2; }
+  big.toBlob(b=>{ dlBlob(b,'storyboard.png'); gq('gstat').textContent='PNG 저장됨'; });
+}
+async function exportPDF(){
+  const svgs=[...gq('gout').querySelectorAll('.pcard svg')]; if(!svgs.length) return;
+  if(!(window.jspdf&&window.jspdf.jsPDF)){ alert('PDF 라이브러리를 불러오지 못했습니다(인터넷 필요).'); return; }
+  gq('gstat').textContent='PDF 생성 중...';
+  const cs=await Promise.all(svgs.map(s=>svgToCanvas(s,2)));
+  const {jsPDF}=window.jspdf; let pdf=null;
+  cs.forEach((c,i)=>{ const w=c.canvas.width, h=c.canvas.height;
+    if(i===0) pdf=new jsPDF({orientation:w>h?'l':'p',unit:'px',format:[w,h]});
+    else pdf.addPage([w,h], w>h?'l':'p');
+    pdf.addImage(c.canvas.toDataURL('image/png'),'PNG',0,0,w,h); });
+  pdf.save('storyboard.pdf'); gq('gstat').textContent='PDF 저장됨';
+}
+async function copyPNG(){
+  const svgs=[...gq('gout').querySelectorAll('.pcard svg')]; if(!svgs.length) return;
+  try{ const {canvas}=await svgToCanvas(svgs[0],2);
+    canvas.toBlob(async b=>{ try{ await navigator.clipboard.write([new ClipboardItem({'image/png':b})]);
+      gq('gstat').textContent='첫 컷 클립보드 복사됨'; }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 미지원 브라우저</span>'; } });
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 실패</span>'; }
+}
+
+gq('gsample').onclick = () => { gq('ginp').value = G_SAMPLE; parsePreview(); };
 gq('ggen').onclick = genConti;
+gq('gpng').onclick = ()=>exportPNG();
+gq('gpdf').onclick = exportPDF;
+gq('gcopy').onclick = copyPNG;
+gq('gdl').onclick = () => { if(!gStrip) return; dlBlob(new Blob([gStrip],{type:'image/svg+xml'}),'storyboard.svg'); };
 gq('ginp').addEventListener('keydown', e => { if((e.ctrlKey||e.metaKey)&&e.key==='Enter') genConti(); });
 
-window.addEventListener('load',()=>{ if(location.hash==='#cmp') show(2); if(location.hash==='#char') show(3); if(location.hash==='#pose') show(4); if(location.hash==='#angle') show(5); if(location.hash==='#gen') show(6); if(location.hash==='#prop') show(7); });
-</script></body></html>""" % data_js)
+window.addEventListener('load',()=>{ parsePreview(); if(location.hash==='#cmp') show(2); if(location.hash==='#char') show(3); if(location.hash==='#pose') show(4); if(location.hash==='#angle') show(5); if(location.hash==='#gen') show(6); if(location.hash==='#prop') show(7); });
+</script></body></html>""".replace("__CMP__", data_js).replace("__SAMPLE_SVG__", sample_svg_js).replace("__SAMPLE_TXT__", sample_txt_js))
 
     out = OUT_DIR / "viewer.html"
     out.write_text("".join(html), encoding="utf-8")

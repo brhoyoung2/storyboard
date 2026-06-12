@@ -13,14 +13,12 @@
 """
 import json
 import sys
-from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import classify_panels as C
-import svg_render as R
+import genapi as G
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -69,19 +67,17 @@ class Handler(BaseHTTPRequestHandler):
             self._send(404, "not found")
 
     def do_POST(self):
-        if self.path not in ("/generate", "/api/generate"):   # Vercel과 동일 경로 호환
-            self._send(404, "not found"); return
+        path = self.path.split("?")[0]
         try:
             n = int(self.headers.get("Content-Length", 0))
-            req = json.loads(self.rfile.read(n).decode("utf-8"))
-            R.GRAY = bool(req.get("gray", True))
-            panels = C.panels_from_text(req.get("text", ""))
-            if not panels:
-                raise ValueError("패널을 못 찾음. 형식: `번호. [샷] 묘사 / 화자: \"대사\"`")
-            svg, _ = R.build_strip_svg(panels)
-            shots = dict(Counter(p["axes"]["A_shot"] for p in panels).most_common())
-            self._send(200, json.dumps({"svg": svg, "panels": len(panels), "shots": shots},
-                                       ensure_ascii=False), "application/json; charset=utf-8")
+            req = json.loads(self.rfile.read(n).decode("utf-8")) if n else {}
+            if path in ("/generate", "/api/generate"):       # Vercel과 동일 경로 호환
+                out = G.gen(req.get("text", ""), req.get("gray", True))
+            elif path in ("/panel", "/api/panel"):
+                out = G.panel(req)
+            else:
+                self._send(404, "not found"); return
+            self._send(200, json.dumps(out, ensure_ascii=False), "application/json; charset=utf-8")
         except Exception as e:
             self._send(200, json.dumps({"error": str(e)}, ensure_ascii=False),
                        "application/json; charset=utf-8")

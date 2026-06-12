@@ -1076,14 +1076,15 @@ def render_panel(panel, y0):
 GRAY = True
 
 
-def svg_header(total_h, width=W):
+def svg_header(total_h, width=W, seed=5):
     # @import을 SVG 안에 넣어 <object>/<img>로 써도 손글씨 폰트가 적용되게 함
     # gray 필터: 채도 0(feColorMatrix saturate=0) → 원래 밝기 그대로 회색조. sRGB로 perceptual.
+    # seed: rough 필터 난수 시드 — 패널 '리롤(다시 뽑기)'마다 바꿔 선 흔들림을 다르게.
     h = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{total_h}" '
          f'viewBox="0 0 {width} {total_h}">'
          f'<defs><style>@import url(https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap);</style>'
          f'<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.019 0.022" '
-         f'numOctaves="2" seed="5" result="n"/>'
+         f'numOctaves="2" seed="{seed}" result="n"/>'
          f'<feDisplacementMap in="SourceGraphic" in2="n" scale="4.6"/></filter>'
          f'<filter id="gray" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/></filter>'
          f'</defs>'
@@ -1097,7 +1098,7 @@ def svg_footer():
     return ('</g>' if GRAY else '') + '</svg>'
 
 
-def build_strip_svg(panels, limit=None):
+def build_strip_svg(panels, limit=None, seed=5):
     """패널 리스트 → (svg 문자열, 높이). 파일로 저장하지 않음(서버/인메모리용)."""
     if limit:
         panels = panels[:limit]
@@ -1106,7 +1107,13 @@ def build_strip_svg(panels, limit=None):
         seg, h = render_panel(p, y)
         body.append(seg)
         y += h
-    return svg_header(y) + "".join(body) + svg_footer(), y
+    return svg_header(y, seed=seed) + "".join(body) + svg_footer(), y
+
+
+def build_panel_svg(panel, seed=5):
+    """단일 패널 → (svg 문자열, 높이). 패널별 리롤/편집·PNG 내보내기용."""
+    seg, h = render_panel(panel, 0)
+    return svg_header(h, seed=seed) + seg + svg_footer(), h
 
 
 def render_strip(panels, out_path, limit=None):

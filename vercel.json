@@ -5,6 +5,10 @@
     "api/generate.py": {
       "includeFiles": "src/**",
       "maxDuration": 30
+    },
+    "api/panel.py": {
+      "includeFiles": "src/**",
+      "maxDuration": 30
     }
   }
 }

@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Vercel Python 서버리스 함수: POST /api/generate
-{text, gray} → 패널별 SVG 배열(+strip) → {panels:[{svg,shot,pose,emotion,view,...}], count, shots, strip}
+Vercel Python 서버리스 함수: POST /api/panel
+{panel, gray, shot?, pose?, emotion?, view?, seed?} → 단일 패널 재렌더
+→ {svg, shot, pose, emotion, view, panel, seed}
 
-분류기/렌더러(src/)는 순수 표준 라이브러리라 외부 의존성 없음.
+패널별 리롤(seed 변경)·인라인 편집(샷/포즈/표정/시점 드롭다운)에 사용.
 """
 import json
 import os
 import sys
 from http.server import BaseHTTPRequestHandler
 
-# src/ 모듈 import 경로 확보 (Vercel includeFiles로 번들됨)
 _HERE = os.path.dirname(os.path.abspath(__file__))
 for _cand in (os.path.join(_HERE, "..", "src"), os.path.join(_HERE, "src"), _HERE):
     if os.path.exists(os.path.join(_cand, "svg_render.py")):
@@ -41,12 +41,12 @@ class handler(BaseHTTPRequestHandler):
         try:
             n = int(self.headers.get("content-length", 0) or 0)
             req = json.loads(self.rfile.read(n).decode("utf-8")) if n else {}
-            self._json(G.gen(req.get("text", ""), req.get("gray", True)))
+            self._json(G.panel(req))
         except Exception as e:
             self._json({"error": str(e)})
 
     def do_GET(self):
-        self._json({"ok": True, "hint": "POST {text, gray} 로 호출하세요."})
+        self._json({"ok": True, "hint": "POST {panel, shot?, pose?, emotion?, view?, seed?}"})
 
     def log_message(self, *a):
         pass
