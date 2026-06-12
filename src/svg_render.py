@@ -1178,15 +1178,20 @@ def svg_footer():
     return ('</g>' if GRAY else '') + '</svg>'
 
 
-def build_strip_svg(panels, limit=None, seed=5):
-    """패널 리스트 → (svg 문자열, 높이). 파일로 저장하지 않음(서버/인메모리용)."""
+STRIP_GAP = 90   # 컷 사이 웹툰 여백(흰 거터) — 모든 스트립(샘플·에피소드·비교)에 일관 적용
+
+
+def build_strip_svg(panels, limit=None, seed=5, gap=None):
+    """패널 리스트 → (svg 문자열, 높이). 컷 사이에 일정 여백(gap)을 둬 웹툰처럼."""
     if limit:
         panels = panels[:limit]
-    body, y = [], 0
-    for p in panels:
+    if gap is None:
+        gap = STRIP_GAP
+    body, y, n = [], 0, len(panels)
+    for i, p in enumerate(panels):
         seg, h = render_panel(p, y)
         body.append(seg)
-        y += h
+        y += h + (gap if i < n-1 else 0)
     return svg_header(y, seed=seed) + "".join(body) + svg_footer(), y
 
 
