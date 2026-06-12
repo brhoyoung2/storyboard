@@ -30,29 +30,36 @@ CLS_DIR = ROOT / "data" / "classified"
 OUT_DIR = ROOT / "output"
 
 # ---- 스타일 토큰 ----------------------------------------------------------
+# SKETCH=True : 채움을 모두 흰색으로 → 러프한 선 스케치 느낌 (색 없는 콘티)
+SKETCH = True
 W = 720                       # 웹툰 패널 폭
-INK = "#2f5d8a"               # 블루 연필 라인
-INK2 = "#5b8bbf"              # 옅은 보조선
+INK = "#3a3a3a" if SKETCH else "#2f5d8a"   # 스케치=짙은 연필선 / 컬러=블루
+INK2 = "#9a9a9a" if SKETCH else "#5b8bbf"
 NOTE = "#c0392b"             # 연출 메모(빨강)
-SFX_FILL = "#9bbbd8"
+SFX_FILL = "#ffffff" if SKETCH else "#9bbbd8"
 PANEL_BG = "#ffffff"
+
+
+def PAINT(c):
+    """채움색 — 스케치 모드면 흰색으로."""
+    return "#ffffff" if SKETCH else c
 FONT = "'Nanum Pen Script','Gulim','Malgun Gothic',sans-serif"
 
 # 샷 프레이밍: 패널 높이 + 인물 head 반지름 + head 중심 y비율
 SHOT_FRAME = {
     "extreme_closeup": dict(h=520, head_r=170, head_cy=0.50, body="none"),
     "closeup":         dict(h=520, head_r=120, head_cy=0.42, body="bust"),
-    "medium":          dict(h=560, head_r=72,  head_cy=0.26, body="waist"),
+    "medium":          dict(h=480, head_r=82,  head_cy=0.24, body="waist"),
     "full":            dict(h=820, head_r=58,  head_cy=0.12, body="full"),
     "long":            dict(h=680, head_r=34,  head_cy=0.10, body="full"),
     "insert":          dict(h=440, head_r=0,   head_cy=0.0,  body="none"),
     "sd":              dict(h=460, head_r=85,  head_cy=0.30, body="chibi"),
     "title":           dict(h=400, head_r=0,   head_cy=0.0,  body="none"),
-    "unspecified":     dict(h=540, head_r=78,  head_cy=0.30, body="waist"),
+    "unspecified":     dict(h=480, head_r=80,  head_cy=0.25, body="waist"),
 }
 
 # 캐릭터 레지스트리: hair 스타일·색, accent(의상색), gender, glasses, outfit
-SKIN = "#fff3ea"
+SKIN = "#ffffff" if SKETCH else "#fff3ea"
 CHARS = {
     # 풀하우스
     "엘리":   dict(hair="updo",    hairc="#5b4636", accent="#d65a7a", gender="F", outfit="dress"),
@@ -211,7 +218,7 @@ def _profile_face(cx, cy, r, expr, facing, gender, glasses):
         if expr == "crying":
             s.append(f'<path d="M{ex:.1f},{ey+r*0.12:.1f} q0,{r*0.35:.1f} {-d*r*0.04:.1f},{r*0.42:.1f}" {st}/>')
     elif expr in ("surprise", "shock"):
-        s.append(f'<ellipse cx="{mx:.1f}" cy="{my:.1f}" rx="{r*0.08:.1f}" ry="{r*0.12:.1f}" fill="#7a4a4a" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+        s.append(f'<ellipse cx="{mx:.1f}" cy="{my:.1f}" rx="{r*0.08:.1f}" ry="{r*0.12:.1f}" fill="{PAINT('#7a4a4a')}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
     else:
         s.append(f'<path d="M{mx-d*r*0.14:.1f},{my:.1f} L{mx+d*r*0.04:.1f},{my:.1f}" {st}/>')
     if glasses:
@@ -220,13 +227,17 @@ def _profile_face(cx, cy, r, expr, facing, gender, glasses):
 
 
 def _blush(cx, cy, r, ox=0.0):
+    if SKETCH:   # 러프 스케치엔 볼터치 생략(흰색 무의미)
+        return (f'<path d="M{cx-r*0.66+ox:.1f},{cy+r*0.36:.1f} l{r*0.18:.1f},0 M{cx-r*0.6+ox:.1f},{cy+r*0.46:.1f} l{r*0.16:.1f},0" stroke="{INK2}" stroke-width="{max(1.2,r*0.02):.1f}" fill="none" stroke-linecap="round"/>'
+                f'<path d="M{cx+r*0.48+ox:.1f},{cy+r*0.36:.1f} l{r*0.18:.1f},0 M{cx+r*0.44+ox:.1f},{cy+r*0.46:.1f} l{r*0.16:.1f},0" stroke="{INK2}" stroke-width="{max(1.2,r*0.02):.1f}" fill="none" stroke-linecap="round"/>')
     return (f'<ellipse cx="{cx-r*0.55+ox:.1f}" cy="{cy+r*0.4:.1f}" rx="{r*0.18:.1f}" ry="{r*0.11:.1f}" fill="#f6a6b2" opacity="0.6" stroke="none"/>'
             f'<ellipse cx="{cx+r*0.55+ox:.1f}" cy="{cy+r*0.4:.1f}" rx="{r*0.18:.1f}" ry="{r*0.11:.1f}" fill="#f6a6b2" opacity="0.6" stroke="none"/>')
 
 
 def _heart(x, y, s):
     return (f'<path d="M{x:.1f},{y+s*0.35:.1f} C{x-s:.1f},{y-s*0.35:.1f} {x-s*0.35:.1f},{y-s:.1f} {x:.1f},{y-s*0.45:.1f} '
-            f'C{x+s*0.35:.1f},{y-s:.1f} {x+s:.1f},{y-s*0.35:.1f} {x:.1f},{y+s*0.35:.1f} Z" fill="#e8516b" stroke="none"/>')
+            f'C{x+s*0.35:.1f},{y-s:.1f} {x+s:.1f},{y-s*0.35:.1f} {x:.1f},{y+s*0.35:.1f} Z" '
+            f'fill="{PAINT("#e8516b")}" stroke="{INK if SKETCH else "none"}" stroke-width="{1.4 if SKETCH else 0}"/>')
 
 
 def _sweat(x, y, r, sw):
@@ -265,7 +276,7 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
     elif expr in ("surprise", "shock"):
         bk = "raise"
         s.append(_open_eye(el, eye_y, r*1.12, look, lash=lash, sw=sw) + _open_eye(er_, eye_y, r*1.12, look, lash=lash, sw=sw))
-        mouth = f'<ellipse cx="{cx+ox:.1f}" cy="{my+r*0.04:.1f}" rx="{r*0.13:.1f}" ry="{r*0.18:.1f}" fill="#7a4a4a" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>'
+        mouth = f'<ellipse cx="{cx+ox:.1f}" cy="{my+r*0.04:.1f}" rx="{r*0.13:.1f}" ry="{r*0.18:.1f}" fill="{PAINT('#7a4a4a')}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>'
         if expr == "shock":
             s.append(f'<path d="M{cx+r*0.62:.1f},{cy-r*0.55:.1f} l{r*0.14:.1f},{-r*0.2:.1f} M{cx+r*0.8:.1f},{cy-r*0.42:.1f} l{r*0.18:.1f},{-r*0.1:.1f}" {stroke()}/>')
     elif expr == "angry":
@@ -306,7 +317,7 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
         bk = "up"
         s.append(f'<path d="M{el-r*0.18:.1f},{eye_y-r*0.02:.1f} Q{el:.1f},{eye_y-r*0.24:.1f} {el+r*0.18:.1f},{eye_y-r*0.02:.1f}" {stroke()}/>'
                  f'<path d="M{er_-r*0.18:.1f},{eye_y-r*0.02:.1f} Q{er_:.1f},{eye_y-r*0.24:.1f} {er_+r*0.18:.1f},{eye_y-r*0.02:.1f}" {stroke()}/>')
-        mouth = f'<path d="M{cx-r*0.3+ox:.1f},{my-r*0.08:.1f} Q{cx+ox:.1f},{my+r*0.42:.1f} {cx+r*0.3+ox:.1f},{my-r*0.08:.1f} Q{cx+ox:.1f},{my+r*0.12:.1f} {cx-r*0.3+ox:.1f},{my-r*0.08:.1f} Z" fill="#7a4a4a" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>'
+        mouth = f'<path d="M{cx-r*0.3+ox:.1f},{my-r*0.08:.1f} Q{cx+ox:.1f},{my+r*0.42:.1f} {cx+r*0.3+ox:.1f},{my-r*0.08:.1f} Q{cx+ox:.1f},{my+r*0.12:.1f} {cx-r*0.3+ox:.1f},{my-r*0.08:.1f} Z" fill="{PAINT('#7a4a4a')}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>'
     elif expr == "smirk":
         bk = "raise"
         s.append(_open_eye(el, eye_y, r, look, lid=0.3, sw=sw) + _open_eye(er_, eye_y, r, look, lid=0.3, sw=sw))
@@ -362,8 +373,9 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
 # ---- 헤어 (얼굴 뒤 머리 덩어리 + 이마 앞머리). 반환: (back, front) -------
 def hair(cx, cy, r, kind, color):
     sw = max(1.6, r * 0.05)
-    fill = f'fill="{color}" stroke="{color}" stroke-width="{sw*0.6:.1f}" stroke-linejoin="round"'
-    line = f'fill="none" stroke="{color}" stroke-width="{sw:.1f}" stroke-linecap="round"'
+    hc, hs = PAINT(color), (INK if SKETCH else color)   # 스케치=흰 채움+INK 윤곽
+    fill = f'fill="{hc}" stroke="{hs}" stroke-width="{sw*0.7:.1f}" stroke-linejoin="round"'
+    line = f'fill="none" stroke="{hs}" stroke-width="{sw:.1f}" stroke-linecap="round"'
     top = cy - r
     back, front = [], []
 
@@ -405,8 +417,9 @@ def hair_profile(cx, cy, r, kind, color, facing):
     sw = max(1.6, r * 0.05)
     X = lambda v: cx + d*v*r
     Y = lambda v: cy + v*r
-    fill = f'fill="{color}" stroke="{color}" stroke-width="{sw*0.6:.1f}" stroke-linejoin="round"'
-    line = f'fill="none" stroke="{color}" stroke-width="{sw:.1f}" stroke-linecap="round"'
+    hc, hs = PAINT(color), (INK if SKETCH else color)
+    fill = f'fill="{hc}" stroke="{hs}" stroke-width="{sw*0.7:.1f}" stroke-linejoin="round"'
+    line = f'fill="none" stroke="{hs}" stroke-width="{sw:.1f}" stroke-linecap="round"'
     longhair = kind in ("long", "ponytail", "bob")
     updo = (kind == "updo")
     nape = 1.85 if longhair else (0.5 if updo else 0.62)   # 뒤로 내려오는 길이
@@ -482,7 +495,7 @@ POSES = {
 P_NECK, P_SHO, P_TORSO, P_HIPY = 0.32, 0.82, 2.05, 0.0
 P_HIP, P_THIGH, P_CALF = 0.52, 1.65, 1.55
 P_UPARM, P_FOREARM, P_HAND = 1.20, 1.08, 0.30   # 팔 약간 길게(머리/턱 닿기 여유)
-PANTS = "#5b6470"
+PANTS = "#ffffff" if SKETCH else "#5b6470"
 
 
 def _pt(x, y, length, ang):
@@ -505,6 +518,24 @@ def _limb(x1, y1, x2, y2, w, fillc, sw):
             f'stroke="{fillc}" stroke-width="{w:.1f}" stroke-linecap="round"/>')
 
 
+def _taper(x1, y1, w1, x2, y2, w2, fillc, sw):
+    """테이퍼 세그먼트: 뿌리(w1) 두껍고 끝(w2) 가는 사다리꼴 — 자연스런 팔/다리."""
+    dx, dy = x2-x1, y2-y1
+    L = math.hypot(dx, dy) or 0.001
+    nx, ny = -dy/L*0.5, dx/L*0.5
+    return (f'<path d="M{x1+nx*w1:.1f},{y1+ny*w1:.1f} L{x2+nx*w2:.1f},{y2+ny*w2:.1f} '
+            f'L{x2-nx*w2:.1f},{y2-ny*w2:.1f} L{x1-nx*w1:.1f},{y1-ny*w1:.1f} Z" '
+            f'fill="{fillc}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"/>')
+
+
+def _arm_seg(rx, ry, ex, ey, hx, hy, r, sleeve, sw):
+    """상박(어깨 두껍게→팔꿈치) + 전박(팔꿈치→손목 가늘게) + 팔꿈치 라운드 + 손."""
+    return (_taper(rx, ry, r*0.33, ex, ey, r*0.21, sleeve, sw)
+            + _taper(ex, ey, r*0.21, hx, hy, r*0.16, sleeve, sw)
+            + f'<circle cx="{ex:.1f}" cy="{ey:.1f}" r="{r*0.105:.1f}" fill="{sleeve}" stroke="{INK}" stroke-width="{sw:.1f}"/>'
+            + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.15:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+
+
 def prop_at(kind, hx, hy, r):
     if kind == "phone":
         return (f'<rect x="{hx-r*0.12:.1f}" y="{hy-r*0.22:.1f}" width="{r*0.24:.1f}" '
@@ -519,9 +550,7 @@ def _arm(root, ua, fa, r, sleeve, sw, prop=None):
     """상박+전박+손. root=(x,y). ua/fa=상박/전박 각도. 반환 (svg, hand_xy)."""
     ex, ey = _pt(root[0], root[1], P_UPARM*r, ua)
     hx, hy = _pt(ex, ey, P_FOREARM*r, fa)
-    s = (_limb(root[0], root[1], ex, ey, r*0.26, sleeve, sw)
-         + _limb(ex, ey, hx, hy, r*0.22, sleeve, sw)
-         + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.16:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+    s = _arm_seg(root[0], root[1], ex, ey, hx, hy, r, sleeve, sw)
     if prop:
         s += prop_at(prop, hx, hy, r)
     return s, (hx, hy)
@@ -545,9 +574,7 @@ def _arm_to(rx, ry, tx, ty, r, sleeve, sw, elbow_sign=1, prop=None):
         ex = mx + elbow_sign*h*(-uy)        # 팔꿈치 굽힘 방향
         ey = my + elbow_sign*h*(ux)
         hx, hy = tx, ty
-    s = (_limb(rx, ry, ex, ey, r*0.26, sleeve, sw)
-         + _limb(ex, ey, hx, hy, r*0.22, sleeve, sw)
-         + f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="{r*0.16:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+    s = _arm_seg(rx, ry, ex, ey, hx, hy, r, sleeve, sw)
     if prop:
         s += prop_at(prop, hx, hy, r)
     return s
@@ -557,11 +584,14 @@ def _leg(root, ta, ca, r, foot_dir, sw, dress=False):
     kx, ky = _pt(root[0], root[1], P_THIGH*r, ta)
     ax, ay = _pt(kx, ky, P_CALF*r, ca)
     fx, fy = _pt(ax, ay, P_HAND*r*1.4, 90*foot_dir)   # 발: 옆으로
+    pants = PAINT(PANTS) if not dress else SKIN
     s = ""
-    if not dress:
-        s += _limb(root[0], root[1], kx, ky, r*0.40, PANTS, sw)
-    s += _limb(kx, ky, ax, ay, r*0.32, PANTS if not dress else SKIN, sw)
-    s += f'<path d="M{ax:.1f},{ay:.1f} Q{fx:.1f},{ay+r*0.18:.1f} {fx:.1f},{ay+r*0.05:.1f}" stroke="{INK}" stroke-width="{r*0.34:.1f}" stroke-linecap="round" fill="none"/>'  # 신발
+    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게)
+        s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw)
+        s += f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="{r*0.16:.1f}" fill="{pants}" stroke="{INK}" stroke-width="{sw:.1f}"/>'  # 무릎
+    # 종아리: 무릎→발목(더 가늘게)
+    s += _taper(kx, ky, r*0.30, ax, ay, r*0.20, pants, sw)
+    s += f'<path d="M{ax:.1f},{ay:.1f} Q{fx:.1f},{ay+r*0.2:.1f} {fx:.1f},{ay+r*0.04:.1f}" stroke="{INK}" stroke-width="{r*0.32:.1f}" stroke-linecap="round" fill="none"/>'  # 신발
     return s
 
 
@@ -582,7 +612,7 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
         info = DEFAULT_FEMALE if gender == "F" else DEFAULT_MALE
     male = (gender != "F")
     sw = max(1.4, r * 0.035)
-    accent = info.get("accent", "#8a9aa8")
+    accent = PAINT(info.get("accent", "#8a9aa8"))
     dress = info.get("outfit") == "dress"
     body = frame["body"]
     cloth = f'fill="{accent}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"'
@@ -660,7 +690,8 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
             botL, botR = cxb-r*1.15*wf, cxb+r*1.15*wf
             boty = hip_y + r*0.7
         elif body == "waist":
-            botL, botR, boty = cxb-r*0.62*wf, cxb+r*0.62*wf, frame["h"]  # 크롭(허리폭 유지)
+            # 자연스런 골반에서 끝 — 상체가 프레임 끝까지 길어지지 않게 (인체 비율 유지)
+            botL, botR, boty = cxb-r*0.58*wf, cxb+r*0.58*wf, hip_y
         else:
             botL, botR, boty = cxb-r*0.5, cxb+r*0.5, hip_y-r*0.02  # 상의는 골반 위에서 끝(골반 노출)
         g.append(f'<path d="M{sLx:.1f},{sho_y:.1f} '
@@ -706,7 +737,7 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
     # 4) 머리 (목은 위에서 back_hair 다음에 이미 그림)
     if cfg.get("back"):
         g.append(f'<ellipse cx="{hcx:.1f}" cy="{hcy:.1f}" rx="{r*0.98:.1f}" ry="{r*1.05:.1f}" '
-                 f'fill="{info["hairc"]}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
+                 f'fill="{PAINT(info["hairc"])}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
         g.append(f'<path d="M{hcx:.1f},{hcy-r*0.7:.1f} L{hcx:.1f},{hcy+r*0.5:.1f}" fill="none" stroke="{INK2}" stroke-width="{sw*0.8:.1f}"/>')
     else:
         g.append(head_shape(hcx, hcy, r, sw, view, facing, male))
@@ -783,7 +814,7 @@ def panel_number(n, y):
 
 # ---- 배경 -----------------------------------------------------------------
 BG = f'fill="none" stroke="{INK2}" stroke-width="1.6" stroke-linejoin="round" opacity="0.7"'
-BG_FILL = f'fill="#eef4fa" stroke="{INK2}" stroke-width="1.4" opacity="0.7"'
+BG_FILL = f'fill="{PAINT("#eef4fa")}" stroke="{INK2}" stroke-width="1.4" opacity="0.7"'
 
 
 def background(scene_type, location, h):
@@ -830,7 +861,7 @@ def background(scene_type, location, h):
 
 # ---- 소품/오브젝트 에셋 ----------------------------------------------------
 # 모두 라인아트(INK 선 + 옅은 채움) — rough 필터·흑백과 호환.
-WOOD, OBJ, OBJ2, WHT = "#cbb796", "#dfe6ee", "#cdd6e0", "#ffffff"
+WOOD, OBJ, OBJ2, WHT = (("#ffffff",)*4 if SKETCH else ("#cbb796", "#dfe6ee", "#cdd6e0", "#ffffff"))
 
 
 def _pk(sw):

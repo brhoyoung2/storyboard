@@ -27,7 +27,7 @@ def esc(s):
 
 PAGE = r"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>글콘티 → 그림콘티 · AI 그림콘티 생성기</title>
+<title>AI Storyboard · 글콘티 → 그림콘티 생성기</title>
 <meta name="description" content="텍스트 콘티(글콘티)를 입력하면 손그림 스타일 그림콘티를 SVG로 즉시 생성. 캐릭터·포즈·표정·말풍선까지 자동.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -138,7 +138,7 @@ footer a{color:var(--mut)}
 </style></head><body>
 
 <nav><div class="wrap">
-  <div class="logo"><span class="dot"></span><span class="brand">글콘티 → 그림콘티</span></div>
+  <div class="logo"><span class="dot"></span><span class="brand">AI Storyboard</span></div>
   <div class="nav-r">
     <a href="https://github.com/brhoyoung2/storyboard" target="_blank">GitHub</a>
     <a href="viewer.html">뷰어</a>
@@ -214,7 +214,7 @@ footer a{color:var(--mut)}
 </div></div></section>
 
 <footer><div class="wrap">
-  <div>© 글콘티 → 그림콘티 · 텍스트 스토리보드를 그림 스토리보드로</div>
+  <div>© AI Storyboard · 텍스트 콘티를 그림 콘티로</div>
   <div><a href="viewer.html">뷰어</a> &nbsp;·&nbsp; <a href="https://github.com/brhoyoung2/storyboard" target="_blank">GitHub</a></div>
 </div></footer>
 

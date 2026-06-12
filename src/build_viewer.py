@@ -63,7 +63,7 @@ def esc(s):
 
 HEAD = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>글콘티 → 그림콘티 · 뷰어</title>
+<title>AI Storyboard · 뷰어</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
@@ -171,7 +171,7 @@ def main():
     html = [HEAD]
     html.append('<header>'
                 '<div class="nav">'
-                '<a class="logo" href="index.html"><span class="dot"></span><b>글콘티 → 그림콘티</b></a>'
+                '<a class="logo" href="index.html"><span class="dot"></span><b>AI Storyboard</b></a>'
                 '<div class="nav-r">'
                 '<a href="index.html">← 홈</a>'
                 '<a href="https://github.com/brhoyoung2/storyboard" target="_blank">GitHub</a>'
