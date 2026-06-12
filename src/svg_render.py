@@ -489,6 +489,23 @@ POSES = {
     "dance":         dict(aL=(-150,-150), aR=(44,120), lL=(-14,-8), lR=(16,10)),
     "bow":           dict(aL=(22,30), aR=(-22,-30), droop=True),      # 절/굽혀 인사
     "kneel":         dict(aL=(-14,-17), aR=(14,17), lL=(8,4), lR=(78,4), sit=True),
+    # 추가 포즈 3차 — 엄선 웹툰 포즈 확장
+    "both_out":      dict(aL=(-92,-96), aR=(92,96)),                  # 양팔 벌림(환영)
+    "present":       dict(aL=(-14,-17), aR=(56,40)),                  # 한 손 내밀어 제시
+    "block":         dict(aL=(-58,-112), aR=(58,112)),                # 양팔 방어/막기
+    "stop_hand":     dict(aL=(-14,-17), aR=(86,96)),                  # 손바닥 내밀어 멈춰
+    "point_up":      dict(aL=(-14,-17), aR=(150,150)),                # 위 가리킴
+    "flex":          dict(aL=(-150,-56), aR=(150,56)),                # 알통(이두 자랑)
+    "salute":        dict(aL=(-14,-17), tR=(0.30,-0.50)),             # 경례(손→이마 옆)
+    "cover_mouth":   dict(aL=(-14,-17), tR=(0.05,0.46)),              # 입 가림
+    "wipe_tears":    dict(aL=(-14,-17), tR=(0.22,0.12)),              # 눈물 닦기
+    "whisper":       dict(aL=(-14,-17), tR=(0.50,0.14)),              # 귓속말(손→입 옆)
+    "listen":        dict(aL=(-14,-17), tR=(0.62,0.02)),              # 귀 기울임(손→귀)
+    "chin_both":     dict(tL=(-0.22,1.0), tR=(0.22,1.0)),             # 양손 턱 괴기
+    "hands_back_head": dict(tL=(-0.50,-0.46), tR=(0.50,-0.46)),       # 뒤통수 깍지(여유)
+    "crossed_legs":  dict(aL=(-14,-17), aR=(14,17), lL=(-6,-2), lR=(12,30)),   # 짝다리
+    "kick":          dict(aL=(-32,-44), aR=(32,44), lL=(-12,-6), lR=(72,16)),  # 발차기
+    "lean":          dict(aL=(-12,-15), aR=(22,30), lean=0.16),       # 기대다
 }
 
 # 비율(×r): 목/어깨/몸통/골반/허벅지/종아리/팔
@@ -998,8 +1015,143 @@ def prop_sofa(cx, topy, w, sw):
             f'<rect x="{cx+w/2-w*0.15:.1f}" y="{topy-h*0.35:.1f}" width="{w*0.15:.1f}" height="{h*0.9:.1f}" rx="9" fill="{OBJ}" {_pk(sw)}/>')
 
 
+# ---- 추가 소품 에셋(엄선 확장) — 모두 (cx, y, s, sw), (cx,y) 중심 -----------
+def prop_umbrella(cx, y, s, sw):
+    return (f'<path d="M{cx-s*0.55:.1f},{y-s*0.18:.1f} Q{cx:.1f},{y-s*0.85:.1f} {cx+s*0.55:.1f},{y-s*0.18:.1f} '
+            f'Q{cx+s*0.27:.1f},{y-s*0.34:.1f} {cx:.1f},{y-s*0.18:.1f} Q{cx-s*0.27:.1f},{y-s*0.34:.1f} {cx-s*0.55:.1f},{y-s*0.18:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.62:.1f}" x2="{cx:.1f}" y2="{y+s*0.55:.1f}" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.55:.1f} q{-s*0.18:.1f},0 {-s*0.18:.1f},{-s*0.16:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_bag(cx, y, s, sw):     # 핸드백
+    return (f'<path d="M{cx-s*0.42:.1f},{y-s*0.18:.1f} L{cx-s*0.32:.1f},{y+s*0.4:.1f} L{cx+s*0.32:.1f},{y+s*0.4:.1f} '
+            f'L{cx+s*0.42:.1f},{y-s*0.18:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.26:.1f},{y-s*0.18:.1f} Q{cx:.1f},{y-s*0.62:.1f} {cx+s*0.26:.1f},{y-s*0.18:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_backpack(cx, y, s, sw):
+    return (f'<rect x="{cx-s*0.34:.1f}" y="{y-s*0.34:.1f}" width="{s*0.68:.1f}" height="{s*0.74:.1f}" rx="14" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.24:.1f}" y="{y-s*0.04:.1f}" width="{s*0.48:.1f}" height="{s*0.3:.1f}" rx="7" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.2:.1f},{y-s*0.34:.1f} Q{cx:.1f},{y-s*0.5:.1f} {cx+s*0.2:.1f},{y-s*0.34:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_coffee(cx, y, s, sw):  # 테이크아웃 컵
+    return (f'<path d="M{cx-s*0.26:.1f},{y-s*0.2:.1f} L{cx-s*0.2:.1f},{y+s*0.42:.1f} Q{cx:.1f},{y+s*0.5:.1f} {cx+s*0.2:.1f},{y+s*0.42:.1f} '
+            f'L{cx+s*0.26:.1f},{y-s*0.2:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.3:.1f}" y="{y-s*0.3:.1f}" width="{s*0.6:.1f}" height="{s*0.12:.1f}" rx="3" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<line x1="{cx+s*0.12:.1f}" y1="{y-s*0.3:.1f}" x2="{cx+s*0.2:.1f}" y2="{y-s*0.6:.1f}" {_pk(sw)}/>')
+
+
+def prop_books(cx, y, s, sw):   # 책 더미
+    return "".join(
+        f'<rect x="{cx-s*0.4+i*s*0.05:.1f}" y="{y+s*0.34-i*s*0.18:.1f}" width="{s*0.8-i*s*0.1:.1f}" '
+        f'height="{s*0.15:.1f}" rx="2" fill="{WHT}" {_pk(sw)}/>' for i in range(3))
+
+
+def prop_plant(cx, y, s, sw):   # 화분
+    return (f'<path d="M{cx-s*0.26:.1f},{y+s*0.1:.1f} L{cx-s*0.2:.1f},{y+s*0.45:.1f} L{cx+s*0.2:.1f},{y+s*0.45:.1f} '
+            f'L{cx+s*0.26:.1f},{y+s*0.1:.1f} Z" fill="{WOOD}" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.1:.1f} Q{cx-s*0.4:.1f},{y-s*0.2:.1f} {cx-s*0.28:.1f},{y-s*0.55:.1f}" fill="none" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.1:.1f} Q{cx:.1f},{y-s*0.4:.1f} {cx:.1f},{y-s*0.6:.1f}" fill="none" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.1:.1f} Q{cx+s*0.4:.1f},{y-s*0.2:.1f} {cx+s*0.28:.1f},{y-s*0.55:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_clock(cx, y, s, sw):
+    return (f'<circle cx="{cx:.1f}" cy="{y:.1f}" r="{s*0.42:.1f}" fill="{WHT}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y:.1f}" x2="{cx:.1f}" y2="{y-s*0.28:.1f}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y:.1f}" x2="{cx+s*0.2:.1f}" y2="{y+s*0.06:.1f}" {_pk(sw)}/>')
+
+
+def prop_phone2(cx, y, s, sw):  # 스마트폰
+    return (f'<rect x="{cx-s*0.22:.1f}" y="{y-s*0.42:.1f}" width="{s*0.44:.1f}" height="{s*0.84:.1f}" rx="7" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.16:.1f}" y="{y-s*0.32:.1f}" width="{s*0.32:.1f}" height="{s*0.56:.1f}" rx="2" fill="{WHT}" stroke="none"/>'
+            f'<circle cx="{cx:.1f}" cy="{y+s*0.32:.1f}" r="{s*0.04:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_guitar(cx, y, s, sw):
+    return (f'<ellipse cx="{cx:.1f}" cy="{y+s*0.22:.1f}" rx="{s*0.34:.1f}" ry="{s*0.4:.1f}" fill="{WOOD}" {_pk(sw)}/>'
+            f'<circle cx="{cx:.1f}" cy="{y+s*0.22:.1f}" r="{s*0.12:.1f}" fill="none" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.07:.1f}" y="{y-s*0.62:.1f}" width="{s*0.14:.1f}" height="{s*0.55:.1f}" rx="3" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.1:.1f}" y="{y-s*0.72:.1f}" width="{s*0.2:.1f}" height="{s*0.12:.1f}" rx="2" fill="{OBJ2}" {_pk(sw)}/>')
+
+
+def prop_mic(cx, y, s, sw):
+    return (f'<ellipse cx="{cx:.1f}" cy="{y-s*0.3:.1f}" rx="{s*0.18:.1f}" ry="{s*0.22:.1f}" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.08:.1f}" x2="{cx:.1f}" y2="{y+s*0.45:.1f}" stroke="{INK}" stroke-width="{sw*1.8:.1f}" stroke-linecap="round"/>')
+
+
+def prop_balloon(cx, y, s, sw):
+    return (f'<ellipse cx="{cx:.1f}" cy="{y-s*0.18:.1f}" rx="{s*0.3:.1f}" ry="{s*0.36:.1f}" fill="{OBJ}" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.18:.1f} l{-s*0.05:.1f},{s*0.06:.1f} l{s*0.1:.1f},0 z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y+s*0.24:.1f} q{s*0.12:.1f},{s*0.18:.1f} 0,{s*0.36:.1f}" fill="none" stroke="{INK2}" stroke-width="{sw*0.8:.1f}"/>')
+
+
+def prop_gift(cx, y, s, sw):
+    return (f'<rect x="{cx-s*0.36:.1f}" y="{y-s*0.16:.1f}" width="{s*0.72:.1f}" height="{s*0.5:.1f}" rx="3" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.4:.1f}" y="{y-s*0.28:.1f}" width="{s*0.8:.1f}" height="{s*0.16:.1f}" rx="3" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.28:.1f}" x2="{cx:.1f}" y2="{y+s*0.34:.1f}" {_pk(sw)}/>'
+            f'<path d="M{cx:.1f},{y-s*0.28:.1f} q{-s*0.16:.1f},{-s*0.18:.1f} {-s*0.02:.1f},{-s*0.02:.1f} q{s*0.14:.1f},{-s*0.16:.1f} {s*0.02:.1f},{s*0.02:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_flower(cx, y, s, sw):
+    petals = "".join(f'<circle cx="{cx+s*0.16*math.cos(a):.1f}" cy="{y-s*0.28+s*0.16*math.sin(a):.1f}" r="{s*0.12:.1f}" fill="{OBJ}" {_pk(sw)}/>'
+                     for a in (0, 1.26, 2.51, 3.77, 5.03))
+    return (petals + f'<circle cx="{cx:.1f}" cy="{y-s*0.28:.1f}" r="{s*0.1:.1f}" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.16:.1f}" x2="{cx:.1f}" y2="{y+s*0.45:.1f}" {_pk(sw)}/>')
+
+
+def prop_camera(cx, y, s, sw):
+    return (f'<rect x="{cx-s*0.4:.1f}" y="{y-s*0.22:.1f}" width="{s*0.8:.1f}" height="{s*0.5:.1f}" rx="6" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.12:.1f}" y="{y-s*0.32:.1f}" width="{s*0.24:.1f}" height="{s*0.12:.1f}" rx="2" fill="{OBJ}" {_pk(sw)}/>'
+            f'<circle cx="{cx:.1f}" cy="{y+s*0.03:.1f}" r="{s*0.18:.1f}" fill="{WHT}" {_pk(sw)}/>')
+
+
+def prop_bottle(cx, y, s, sw):
+    return (f'<path d="M{cx-s*0.16:.1f},{y+s*0.42:.1f} L{cx-s*0.16:.1f},{y-s*0.1:.1f} Q{cx-s*0.16:.1f},{y-s*0.28:.1f} {cx-s*0.07:.1f},{y-s*0.36:.1f} '
+            f'L{cx-s*0.07:.1f},{y-s*0.5:.1f} L{cx+s*0.07:.1f},{y-s*0.5:.1f} L{cx+s*0.07:.1f},{y-s*0.36:.1f} '
+            f'Q{cx+s*0.16:.1f},{y-s*0.28:.1f} {cx+s*0.16:.1f},{y-s*0.1:.1f} L{cx+s*0.16:.1f},{y+s*0.42:.1f} Z" fill="{OBJ}" {_pk(sw)}/>')
+
+
+def prop_cake(cx, y, s, sw):    # 케이크 조각
+    return (f'<path d="M{cx-s*0.36:.1f},{y+s*0.3:.1f} L{cx+s*0.36:.1f},{y+s*0.3:.1f} L{cx+s*0.1:.1f},{y-s*0.28:.1f} Z" fill="{WHT}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.36:.1f},{y+s*0.3:.1f} L{cx+s*0.36:.1f},{y+s*0.3:.1f} L{cx+s*0.36:.1f},{y+s*0.12:.1f} '
+            f'Q{cx:.1f},{y-s*0.02:.1f} {cx-s*0.36:.1f},{y+s*0.12:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<circle cx="{cx-s*0.02:.1f}" cy="{y-s*0.18:.1f}" r="{s*0.06:.1f}" fill="{OBJ2}" {_pk(sw)}/>')
+
+
+def prop_hat(cx, y, s, sw):     # 캡 모자
+    return (f'<path d="M{cx-s*0.34:.1f},{y+s*0.06:.1f} Q{cx:.1f},{y-s*0.46:.1f} {cx+s*0.34:.1f},{y+s*0.06:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<path d="M{cx+s*0.1:.1f},{y+s*0.06:.1f} Q{cx+s*0.5:.1f},{y+s*0.06:.1f} {cx+s*0.5:.1f},{y+s*0.16:.1f} L{cx+s*0.1:.1f},{y+s*0.13:.1f} Z" fill="{OBJ2}" {_pk(sw)}/>')
+
+
+def prop_glasses(cx, y, s, sw):
+    return (f'<circle cx="{cx-s*0.22:.1f}" cy="{y:.1f}" r="{s*0.18:.1f}" fill="none" {_pk(sw)}/>'
+            f'<circle cx="{cx+s*0.22:.1f}" cy="{y:.1f}" r="{s*0.18:.1f}" fill="none" {_pk(sw)}/>'
+            f'<line x1="{cx-s*0.04:.1f}" y1="{y:.1f}" x2="{cx+s*0.04:.1f}" y2="{y:.1f}" {_pk(sw)}/>')
+
+
+def prop_ball(cx, y, s, sw):
+    return (f'<circle cx="{cx:.1f}" cy="{y:.1f}" r="{s*0.36:.1f}" fill="{WHT}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.36:.1f},{y:.1f} Q{cx:.1f},{y-s*0.16:.1f} {cx+s*0.36:.1f},{y:.1f}" fill="none" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.26:.1f},{y-s*0.25:.1f} Q{cx:.1f},{y:.1f} {cx-s*0.26:.1f},{y+s*0.25:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_suitcase(cx, y, s, sw):  # 캐리어
+    return (f'<rect x="{cx-s*0.3:.1f}" y="{y-s*0.32:.1f}" width="{s*0.6:.1f}" height="{s*0.72:.1f}" rx="8" fill="{OBJ}" {_pk(sw)}/>'
+            f'<line x1="{cx-s*0.1:.1f}" y1="{y-s*0.32:.1f}" x2="{cx-s*0.1:.1f}" y2="{y+s*0.4:.1f}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.12:.1f},{y-s*0.32:.1f} L{cx-s*0.12:.1f},{y-s*0.5:.1f} L{cx+s*0.04:.1f},{y-s*0.5:.1f} L{cx+s*0.04:.1f},{y-s*0.32:.1f}" fill="none" {_pk(sw)}/>')
+
+
 PROP_FN = {"bowl": prop_bowl, "spoon": prop_spoon, "cup": prop_cup, "plate": prop_plate,
-           "book": prop_book, "laptop": prop_laptop}
+           "book": prop_book, "laptop": prop_laptop, "books": prop_books,
+           "coffee": prop_coffee, "cake": prop_cake, "phone2": prop_phone2,
+           "camera": prop_camera, "bottle": prop_bottle, "glasses": prop_glasses}
+
+# 손에 들거나 인물 옆에 두는 소품(테이블 위가 아님) → 인물 옆 바닥/공중에 배치
+HELD_FN = {"umbrella": prop_umbrella, "bag": prop_bag, "backpack": prop_backpack,
+           "plant": prop_plant, "guitar": prop_guitar, "mic": prop_mic,
+           "balloon": prop_balloon, "gift": prop_gift, "flower": prop_flower,
+           "ball": prop_ball, "suitcase": prop_suitcase, "hat": prop_hat}
 
 
 def scene_props(props, h, sw):
@@ -1014,13 +1166,20 @@ def scene_props(props, h, sw):
         behind.append(prop_sofa(cx, h*0.6, W*0.66, sw))
     if "chair" in props:
         behind.append(prop_chair(cx, h*0.64, W*0.36, sw))
-    tableware = [p for p in ("bowl", "plate", "cup", "spoon", "book", "laptop") if p in props]
+    tableware = [p for p in ("bowl", "plate", "cup", "spoon", "book", "laptop",
+                             "coffee", "cake", "phone2", "camera", "bottle", "glasses", "books") if p in props]
     if "table" in props or tableware:
         ty = h*0.66
         front.append(prop_table(cx, ty, W*0.8, h*0.32, sw))
         for i, it in enumerate(tableware):
             ix = cx + (i-(len(tableware)-1)/2.0)*W*0.17
             front.append(PROP_FN[it](ix, ty, W*0.11, sw))
+    # 손에 들거나 인물 옆에 두는 소품 — 인물 좌우 지면 근처에 배치
+    held = [p for p in HELD_FN if p in props]
+    for i, it in enumerate(held):
+        side = -1 if i % 2 == 0 else 1
+        hx = cx + side*W*0.34 - (i//2)*W*0.04
+        front.append(HELD_FN[it](hx, h*0.58, W*0.17, sw))
     return "".join(behind), "".join(front)
 
 
@@ -1317,21 +1476,30 @@ def render_expr_sheet(out_path, char="매리"):
 
 # ---- 포즈 시트(바디/포즈 검토용) ------------------------------------------
 def render_pose_sheet(out_path, char="매리"):
-    poses = ["stand", "walk", "run", "arms_cross", "think_chin", "scratch_head",
-             "hold_head", "cover_face", "both_up", "hand_no", "point", "wave",
-             "phone", "head_down", "hands_on_hips", "clap", "shrug", "thumbs_up",
-             "facepalm", "peace_sign", "beckon", "jump", "sit", "hands_behind",
-             "drink", "pray", "carry", "dance", "bow", "kneel"]
-    labels = {"stand": "서기", "walk": "걷기", "run": "달리기", "arms_cross": "팔짱",
-              "think_chin": "생각(턱)", "scratch_head": "머리긁적", "hold_head": "머리감싸기",
-              "cover_face": "얼굴가림", "both_up": "두손들기",
-              "hand_no": "손으로안돼", "point": "가리킴", "wave": "손인사",
-              "phone": "통화", "head_down": "고개숙임", "hands_on_hips": "허리손",
-              "clap": "박수", "shrug": "어깨으쓱", "thumbs_up": "엄지척",
-              "facepalm": "이마짚기", "peace_sign": "브이", "beckon": "손짓",
-              "jump": "점프", "sit": "앉기", "hands_behind": "뒷짐",
-              "drink": "마시기", "pray": "기도", "carry": "들기", "dance": "춤",
-              "bow": "절", "kneel": "무릎"}
+    poses = ["stand", "walk", "run", "jump", "kick", "crossed_legs", "lean", "crouch",
+             "wave", "wave_both", "raise_hand", "both_up", "point", "point_up", "beckon",
+             "stop_hand", "present", "reach", "carry", "hug", "kiss",
+             "arms_cross", "hands_on_hips", "hands_behind", "hands_back_head", "block", "flex",
+             "think_chin", "chin_both", "scratch_head", "hold_head", "facepalm",
+             "cover_face", "cover_mouth", "wipe_tears", "whisper", "listen",
+             "shrug", "thumbs_up", "peace_sign", "salute", "clap", "pray",
+             "phone", "look_phone", "drink", "dance", "stretch",
+             "head_down", "bow", "kneel", "sit", "turn_away", "hand_no", "fall"]
+    labels = {"stand": "서기", "walk": "걷기", "run": "달리기", "jump": "점프", "kick": "발차기",
+              "crossed_legs": "짝다리", "lean": "기대기", "crouch": "웅크림",
+              "wave": "손인사", "wave_both": "양손인사", "raise_hand": "손번쩍", "both_up": "두손들기",
+              "point": "가리킴", "point_up": "위가리킴", "beckon": "이리와", "stop_hand": "멈춰",
+              "present": "내밀기", "reach": "손내밈", "carry": "들기", "hug": "포옹", "kiss": "키스",
+              "arms_cross": "팔짱", "hands_on_hips": "허리손", "hands_behind": "뒷짐",
+              "hands_back_head": "뒤통수깍지", "block": "막기", "flex": "알통",
+              "think_chin": "생각(턱)", "chin_both": "양손턱", "scratch_head": "머리긁적",
+              "hold_head": "머리감싸기", "facepalm": "이마짚기",
+              "cover_face": "얼굴가림", "cover_mouth": "입가림", "wipe_tears": "눈물닦기",
+              "whisper": "귓속말", "listen": "귀기울임", "shrug": "어깨으쓱", "thumbs_up": "엄지척",
+              "peace_sign": "브이", "salute": "경례", "clap": "박수", "pray": "기도",
+              "phone": "통화", "look_phone": "폰보기", "drink": "마시기", "dance": "춤", "stretch": "기지개",
+              "head_down": "고개숙임", "bow": "절", "kneel": "무릎", "sit": "앉기",
+              "turn_away": "뒷모습", "hand_no": "손으로안돼", "fall": "넘어짐"}
     cols, cw, ch, hdr = 4, 156, 320, 50
     rows = (len(poses) + cols - 1) // cols
     total_w, total_h = cw*cols, hdr + ch*rows
@@ -1394,6 +1562,26 @@ def render_prop_sheet(out_path):
         ("접시", lambda x, y: prop_plate(x, y+24, 80, sw)),
         ("책", lambda x, y: prop_book(x, y+18, 84, sw)),
         ("노트북", lambda x, y: prop_laptop(x, y+34, 86, sw)),
+        ("책더미", lambda x, y: prop_books(x, y, 86, sw)),
+        ("커피", lambda x, y: prop_coffee(x, y, 80, sw)),
+        ("우산", lambda x, y: prop_umbrella(x, y, 96, sw)),
+        ("핸드백", lambda x, y: prop_bag(x, y, 90, sw)),
+        ("백팩", lambda x, y: prop_backpack(x, y, 92, sw)),
+        ("화분", lambda x, y: prop_plant(x, y, 96, sw)),
+        ("시계", lambda x, y: prop_clock(x, y, 92, sw)),
+        ("스마트폰", lambda x, y: prop_phone2(x, y, 86, sw)),
+        ("기타", lambda x, y: prop_guitar(x, y, 100, sw)),
+        ("마이크", lambda x, y: prop_mic(x, y, 92, sw)),
+        ("풍선", lambda x, y: prop_balloon(x, y, 92, sw)),
+        ("선물", lambda x, y: prop_gift(x, y, 90, sw)),
+        ("꽃", lambda x, y: prop_flower(x, y, 96, sw)),
+        ("카메라", lambda x, y: prop_camera(x, y, 90, sw)),
+        ("물병", lambda x, y: prop_bottle(x, y, 96, sw)),
+        ("케이크", lambda x, y: prop_cake(x, y, 90, sw)),
+        ("모자", lambda x, y: prop_hat(x, y, 96, sw)),
+        ("안경", lambda x, y: prop_glasses(x, y, 96, sw)),
+        ("공", lambda x, y: prop_ball(x, y, 90, sw)),
+        ("캐리어", lambda x, y: prop_suitcase(x, y, 92, sw)),
     ]
     cols, cw, ch, hdr = 5, 156, 156, 50
     rows = (len(items)+cols-1)//cols
