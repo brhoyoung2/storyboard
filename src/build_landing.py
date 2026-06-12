@@ -56,8 +56,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   background:rgba(11,13,19,.72);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:26px;font-weight:800;display:flex;align-items:center;gap:8px}
-.logo .pen{font-size:30px}
+.logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
+.logo .brand{background:linear-gradient(90deg,#fff,#c9c2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--grad)}
 .nav-r{display:flex;align-items:center;gap:18px;font-size:15px;color:var(--mut)}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;font-weight:700;
@@ -89,11 +89,10 @@ h1{font-size:54px;line-height:1.14;font-weight:800;letter-spacing:-.02em;margin-
 .demo-in{padding:15px 18px;font-size:13.5px;color:#cdd3e0;font-family:ui-monospace,monospace;line-height:1.85;
   border-bottom:1px solid var(--line);background:#10131c;white-space:pre-wrap}
 .demo-in b{color:#a855f7}
-.arrow{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--dim);font-size:13px;padding:8px;background:#0e1119}
-.demo-out{background:#fff;max-height:430px;overflow:hidden;position:relative}
-.demo-out svg{display:block;width:100%;height:auto}
-.demo-out::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;
-  background:linear-gradient(transparent,#fff)}
+.demo-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:16px 20px;font-size:16px;font-weight:700;color:#fff;background:var(--grad);transition:.18s}
+.demo-cta:hover{filter:brightness(1.08)}
+.demo-cta b{font-size:18px}
 /* sections */
 section{padding:64px 0}
 .eyebrow{font-size:14px;font-weight:700;color:#a855f7;letter-spacing:.04em;text-align:center;margin-bottom:10px}
@@ -139,7 +138,7 @@ footer a{color:var(--mut)}
 </style></head><body>
 
 <nav><div class="wrap">
-  <div class="logo"><span class="dot"></span><span class="pen">글콘티 → 그림콘티</span></div>
+  <div class="logo"><span class="dot"></span><span class="brand">글콘티 → 그림콘티</span></div>
   <div class="nav-r">
     <a href="https://github.com/brhoyoung2/storyboard" target="_blank">GitHub</a>
     <a href="viewer.html">뷰어</a>
@@ -165,10 +164,9 @@ footer a{color:var(--mut)}
     </div>
   </div>
   <div class="demo-card">
-    <div class="demo-head"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="t">예시 — 입력</span></div>
+    <div class="demo-head"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="t">예시 — 글콘티 입력</span></div>
     <div class="demo-in">__EXAMPLE_TEXT__</div>
-    <div class="arrow">▼ &nbsp;자동 생성</div>
-    <div class="demo-out">__DEMO_SVG__</div>
+    <a class="demo-cta" href="viewer.html#gen"><span>이대로 그림콘티 만들기</span><b>✎ →</b></a>
   </div>
 </div></div></header>
 
@@ -224,12 +222,9 @@ footer a{color:var(--mut)}
 
 
 def main():
-    R.GRAY = False   # 랜딩은 컬러로 화사하게
-    panels = C.panels_from_text(EXAMPLE)
-    svg, _ = R.build_strip_svg(panels)
-    html = PAGE.replace("__DEMO_SVG__", svg).replace("__EXAMPLE_TEXT__", esc(EXAMPLE))
+    html = PAGE.replace("__EXAMPLE_TEXT__", esc(EXAMPLE))
     (ROOT / "output" / "index.html").write_text(html, encoding="utf-8")
-    print("✓ output/index.html (서비스 랜딩) · 예시", len(panels), "컷 인라인")
+    print("✓ output/index.html (서비스 랜딩, 고딕 로고 · 데모 입력만)")
 
 
 if __name__ == "__main__":

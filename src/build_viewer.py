@@ -63,80 +63,100 @@ def esc(s):
 
 HEAD = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>그림콘티 뷰어</title>
+<title>글콘티 → 그림콘티 · 뷰어</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-* { box-sizing: border-box; }
-body { margin:0; background:#2b2f36; color:#e8eaed;
-  font-family:'Nanum Pen Script','Malgun Gothic',sans-serif; }
-header { padding:20px 28px; background:#22252b; border-bottom:1px solid #3a3f47;
-  position:sticky; top:0; z-index:10; }
-h1 { margin:0; font-size:30px; }
-.sub { color:#9aa0a8; font-size:18px; margin-top:4px; }
-.tabs { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
-.tab { padding:6px 16px; background:#343a43; border-radius:20px; cursor:pointer;
-  font-size:18px; border:1px solid #444b55; }
-.tab.on { background:#3f7fb0; border-color:#3f7fb0; color:#fff; }
-.view { display:none; padding:28px; }
-.view.on { display:block; }
-.gallery { display:flex; flex-wrap:wrap; gap:28px; justify-content:center; }
-.paper { background:#fff; border-radius:6px; box-shadow:0 8px 30px rgba(0,0,0,.4);
-  overflow:hidden; }
-.paper svg { display:block; width:360px; height:auto; }
-.cap { text-align:center; color:#9aa0a8; font-size:17px; margin-top:8px; }
-.split { display:flex; gap:24px; align-items:flex-start; justify-content:center; }
-.txtcol { width:360px; max-height:90vh; overflow:auto; }
-.pcard { display:flex; gap:10px; background:#343a43; border-radius:8px;
-  padding:10px 12px; margin-bottom:8px; border:1px solid #404652; }
-.pnum { flex:0 0 28px; height:28px; border-radius:50%; background:#3f7fb0;
-  color:#fff; text-align:center; line-height:28px; font-size:16px; }
-.ptags { color:#7fb0d8; font-size:15px; letter-spacing:.5px; }
-.pdesc { font-size:19px; margin-top:2px; }
-.pdlg { color:#ffe; background:#4a5160; display:inline-block; padding:1px 8px;
-  border-radius:10px; margin-top:4px; font-size:18px; }
-.pinner { color:#cdd; font-style:italic; font-size:17px; margin-top:3px; }
-.psfx { color:#9bd; font-size:17px; margin-top:3px; }
-.note { max-width:760px; margin:0 auto 22px; background:#343a43; padding:14px 18px;
-  border-radius:8px; border-left:4px solid #3f7fb0; font-size:18px; line-height:1.5; }
+:root{--bg:#0b0d13;--card:#151823;--card2:#1c2030;--line:#262b3b;--tx:#eaecf3;
+  --mut:#9aa3b6;--dim:#6b7488;--grad:linear-gradient(135deg,#6366f1,#a855f7 55%,#ec4899)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Pretendard',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(700px 360px at 85% -8%,rgba(99,102,241,.16),transparent 60%),
+    radial-gradient(600px 340px at 5% 4%,rgba(168,85,247,.12),transparent 60%)}
+a{color:inherit;text-decoration:none}
+/* nav header */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+  background:rgba(11,13,19,.78);border-bottom:1px solid var(--line);padding:0 26px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-size:19px;font-weight:800;display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--grad)}
+.logo b{background:linear-gradient(90deg,#fff,#cbc4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-r{display:flex;align-items:center;gap:18px;font-size:14px;color:var(--mut)}
+.nav-r a:hover{color:var(--tx)}
+.navbtn{background:var(--grad);color:#fff!important;font-weight:700;padding:9px 18px;border-radius:11px;
+  cursor:pointer;box-shadow:0 6px 18px rgba(124,58,237,.4);transition:.15s}
+.navbtn:hover{transform:translateY(-1px)}
+.tabs{display:flex;gap:8px;padding:11px 0 13px;flex-wrap:wrap}
+.tab{padding:8px 16px;background:var(--card2);border-radius:11px;cursor:pointer;font-size:14.5px;
+  font-weight:600;border:1px solid var(--line);color:var(--mut);transition:.15s}
+.tab:hover{color:var(--tx);border-color:#3a415a}
+.tab.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(124,58,237,.4)}
+.tab.gen{color:#d9caff;border-color:rgba(124,58,237,.4)}
+.tab.gen.on{color:#fff}
+.view{display:none;padding:30px 26px}
+.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.gallery{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}
+.paper{background:#fff;border-radius:12px;box-shadow:0 14px 44px rgba(0,0,0,.5);overflow:hidden}
+.paper svg{display:block;width:360px;height:auto}
+.cap{text-align:center;color:var(--mut);font-size:14px;margin-top:10px;font-weight:600}
+.split{display:flex;gap:24px;align-items:flex-start;justify-content:center}
+.txtcol{width:380px;max-height:84vh;overflow:auto}
+.pcard{display:flex;gap:11px;background:var(--card);border-radius:12px;padding:12px 14px;
+  margin-bottom:9px;border:1px solid var(--line)}
+.pnum{flex:0 0 28px;height:28px;border-radius:9px;background:var(--grad);
+  color:#fff;text-align:center;line-height:28px;font-size:14px;font-weight:700}
+.ptags{color:#b39dff;font-size:12.5px;letter-spacing:.3px;font-weight:600}
+.pdesc{font-size:15px;margin-top:3px}
+.pdlg{color:#fff;background:#33384a;display:inline-block;padding:2px 9px;border-radius:9px;margin-top:5px;font-size:14px}
+.pinner{color:var(--mut);font-style:italic;font-size:13.5px;margin-top:3px}
+.psfx{color:#86c5e6;font-size:13.5px;margin-top:3px}
+.note{max-width:820px;margin:0 auto 24px;background:var(--card);padding:15px 20px;
+  border-radius:14px;border:1px solid var(--line);border-left:4px solid #a855f7;font-size:15px;line-height:1.6;color:var(--mut)}
+.note b{color:var(--tx)}
 /* 비교 탭 */
-.cmpbar { display:flex; gap:12px; align-items:center; justify-content:center;
-  margin-bottom:18px; flex-wrap:wrap; }
-.cmpbar select { font-family:inherit; font-size:18px; padding:6px 12px; border-radius:8px;
-  background:#343a43; color:#e8eaed; border:1px solid #444b55; }
-.cmpwrap { display:flex; gap:28px; justify-content:center; align-items:flex-start; }
-.cmpcol { text-align:center; }
-.cmphead { font-size:19px; color:#cdd; margin-bottom:8px; }
-.cmpcol .paper { width:340px; height:82vh; overflow-y:auto; }
-.cmpcol object, .cmpcol img { display:block; width:340px; height:auto; }
-.cmpcol img { filter: grayscale(1); }   /* 원본 참조도 흑백으로 (색상없이 비교) */
-.cmpmeta { color:#9aa0a8; font-size:16px; margin-top:8px; }
-#v3 .paper svg { width:540px; }
-#v3 .gallery { gap:36px; align-items:flex-start; }
-#v4 .paper svg { width:600px; }
-#v5 .paper svg { width:600px; }
+.cmpbar{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:20px;flex-wrap:wrap;font-size:15px;color:var(--mut)}
+.cmpbar select{font-family:inherit;font-size:15px;padding:9px 14px;border-radius:11px;
+  background:var(--card2);color:var(--tx);border:1px solid var(--line)}
+.cmpwrap{display:flex;gap:28px;justify-content:center;align-items:flex-start}
+.cmpcol{text-align:center}
+.cmphead{font-size:15px;color:var(--tx);margin-bottom:10px;font-weight:700}
+.cmpcol .paper{width:340px;height:80vh;overflow-y:auto}
+.cmpcol object,.cmpcol img{display:block;width:340px;height:auto}
+.cmpcol img{filter:grayscale(1)}
+.cmpmeta{color:var(--dim);font-size:13px;margin-top:9px}
+#v3 .paper svg{width:540px}
+#v3 .gallery{gap:36px;align-items:flex-start}
+#v4 .paper svg{width:600px}
+#v5 .paper svg{width:600px}
 /* 직접 생성 탭 */
-.genwrap { display:flex; gap:18px; align-items:stretch; height:78vh; }
-.genleft { flex:0 0 40%; display:flex; flex-direction:column; }
-.genright { flex:1; display:flex; flex-direction:column; }
-.genleft textarea { flex:1; width:100%; resize:none; background:#1e2127; color:#e8eaed;
-  border:1px solid #444b55; border-radius:8px; padding:12px 14px;
-  font-family:'Malgun Gothic',monospace; font-size:14px; line-height:1.6; }
-.genhint { font-size:14px; color:#8a929c; margin:8px 0; line-height:1.5; }
-.genhint code { background:#343a43; padding:1px 6px; border-radius:5px; color:#bcd; }
-.genbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-.genbar button { font-family:inherit; font-size:18px; padding:8px 18px; border-radius:8px;
-  cursor:pointer; border:1px solid #444b55; background:#343a43; color:#e8eaed; }
-.genbar button.primary { background:#3f7fb0; border-color:#3f7fb0; color:#fff; padding:8px 26px; font-size:20px; }
-.genbar button:disabled { opacity:.5; cursor:default; }
-.gchk { display:flex; align-items:center; gap:6px; font-size:16px; color:#cdd; }
-.gstat { font-size:15px; color:#9aa0a8; margin:8px 0; min-height:20px; }
-.genright .paper { flex:1; background:#fff; border-radius:8px; overflow:auto; }
-.genright .paper svg { display:block; width:100%; height:auto; }
-.gph { color:#556; text-align:center; padding:90px 24px; font-size:18px; line-height:1.7; }
-.gph code { background:#eef; padding:2px 7px; border-radius:5px; color:#2a4d6e; }
-.spin { width:42px; height:42px; margin:0 auto 16px; border:5px solid #d6deea;
-  border-top-color:#3f7fb0; border-radius:50%; animation:spin .8s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
+.genwrap{display:flex;gap:20px;align-items:stretch;height:80vh}
+.genleft{flex:0 0 42%;display:flex;flex-direction:column}
+.genright{flex:1;display:flex;flex-direction:column}
+.genleft textarea{flex:1;width:100%;resize:none;background:#0e1118;color:var(--tx);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.8;outline:none;transition:.15s}
+.genleft textarea:focus{border-color:#7c5cff;box-shadow:0 0 0 4px rgba(124,58,237,.18)}
+.genhint{font-size:13px;color:var(--dim);margin:10px 0;line-height:1.6}
+.genhint code{background:var(--card2);padding:2px 7px;border-radius:6px;color:#bcd}
+.genbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.genbar button{font-family:inherit;font-size:15px;font-weight:700;padding:11px 18px;border-radius:12px;
+  cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.15s}
+.genbar button:hover{border-color:#3a415a}
+.genbar button.primary{background:var(--grad);border-color:transparent;color:#fff;padding:11px 26px;font-size:16px;
+  box-shadow:0 8px 22px rgba(124,58,237,.4)}
+.genbar button.primary:hover{transform:translateY(-1px)}
+.genbar button:disabled{opacity:.45;cursor:default;transform:none}
+.gchk{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--mut)}
+.gstat{font-size:14px;color:var(--mut);margin:10px 0;min-height:20px}
+.genright .paper{flex:1;background:#fff;border-radius:14px;overflow:auto}
+.genright .paper svg{display:block;width:100%;height:auto}
+.gph{color:#667;text-align:center;padding:90px 24px;font-size:16px;line-height:1.7}
+.gph code{background:#eef;padding:2px 7px;border-radius:6px;color:#5b3fd6}
+.spin{width:42px;height:42px;margin:0 auto 16px;border:5px solid #e6e2ff;
+  border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style></head><body>"""
 
 
@@ -148,16 +168,22 @@ def main():
     compare = json.load(open(cmp_path, encoding="utf-8")) if cmp_path.exists() else []
 
     html = [HEAD]
-    html.append('<header><h1>글콘티 → 그림콘티 SVG 뷰어</h1>'
-                '<div class="sub">손그림 rough 필터 · 손글씨 폰트가 적용된 실제 렌더 (브라우저 전용)</div>'
+    html.append('<header>'
+                '<div class="nav">'
+                '<a class="logo" href="index.html"><span class="dot"></span><b>글콘티 → 그림콘티</b></a>'
+                '<div class="nav-r">'
+                '<a href="index.html">← 홈</a>'
+                '<a href="https://github.com/brhoyoung2/storyboard" target="_blank">GitHub</a>'
+                '<a class="navbtn" onclick="show(6)">✎ 직접 생성</a>'
+                '</div></div>'
                 '<div class="tabs">'
                 '<div class="tab on" onclick="show(0)">유형/포즈 샘플</div>'
-                '<div class="tab" onclick="show(1)">풀하우스 EP01 (입력↔출력)</div>'
+                '<div class="tab" onclick="show(1)">풀하우스 EP01</div>'
                 '<div class="tab" onclick="show(2)">20화 ↔ 원본 비교</div>'
                 '<div class="tab" onclick="show(3)">캐릭터 시트</div>'
                 '<div class="tab" onclick="show(4)">바디/포즈</div>'
                 '<div class="tab" onclick="show(5)">시점/각도</div>'
-                '<div class="tab" onclick="show(6)">✎ 직접 생성</div>'
+                '<div class="tab gen" onclick="show(6)">✎ 직접 생성</div>'
                 '</div></header>')
 
     # View 0: 샘플 시트
@@ -237,9 +263,9 @@ def main():
 
     # View 6: 직접 생성 (서버 /generate 호출)
     html.append('<div class="view" id="v6">')
-    html.append('<div class="note">글콘티를 직접 쓰거나 붙여넣고 [생성]을 누르세요. '
-                '<b>실시간 생성은 서버가 필요합니다 — 터미널에서 <code>python src/server.py</code> 실행</b> '
-                '후 이 페이지를 여세요.</div>')
+    html.append('<div class="note">글콘티를 직접 쓰거나 붙여넣고 <b>[✎ 생성]</b>을 누르면 '
+                '오른쪽에 그림콘티가 즉시 만들어집니다. '
+                '<span style="color:#7a8398">· 내 PC에서 직접 띄울 땐 <code>서버실행.bat</code></span></div>')
     html.append(
         '<div class="genwrap">'
         '<div class="genleft">'
