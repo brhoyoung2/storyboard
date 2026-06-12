@@ -382,8 +382,8 @@ def main():
         '</div>')
 
     data_js = json.dumps({m["stem"]: m for m in compare}, ensure_ascii=False)
-    sample_svg_js = json.dumps(_bake_sample(), ensure_ascii=False)
-    sample_txt_js = json.dumps(SAMPLE_TEXT, ensure_ascii=False)
+    sample_svg_js = '""'                       # 생성 탭은 빈 상태로 시작(샘플 미삽입)
+    sample_txt_js = json.dumps(SAMPLE_TEXT, ensure_ascii=False)   # '샘플 불러오기' 버튼용으로만 유지
     html.append(r"""<script>
 const CMP = __CMP__;
 function show(i){
@@ -393,16 +393,10 @@ function show(i){
   if(i===2 && !document.getElementById('genobj').data) loadEp();
   if(i===6) checkGen();
 }
-function checkGen(){     // 생성 탭 진입 시 첫 예시를 보여주고 서버 연결 확인
+function checkGen(){     // 생성 탭 진입 시 서버 연결만 확인(샘플·프리필 없음 — 빈 상태로 시작)
   if(window.__gen_shown) return;
   window.__gen_shown = true;
-  if(!gq('ginp').value.trim()) gq('ginp').value = G_SAMPLE;   // 첫 진입: 입력칸 미리 채움
   parsePreview();
-  if(G_SAMPLE_SVG){        // 베이크된 예시 결과를 즉시 표시(서버 없이도 "이렇게 나와요")
-    gq('gout').innerHTML='<div class="gsample-banner"><span class="ic">👀</span>'
-      +'<span><b>예시 결과</b>입니다 — <b>[✎ 생성]</b>을 누르면 내가 쓴 글콘티로 바뀝니다. 각 컷은 🎲·드롭다운으로 바로 수정돼요.</span></div>'
-      +'<div class="pstack">'+G_SAMPLE_SVG+'</div>';
-  }
   fetch(G_API+'/', {method:'GET'}).catch(()=>{});
 }
 function loadEp(){

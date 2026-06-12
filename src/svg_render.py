@@ -685,12 +685,19 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
         g.append(_leg((cxb-hipJ, hjy), lL[0], lL[1], r, -1, sw, dress))
         g.append(_leg((cxb+hipJ, hjy), lR[0], lR[1], r, 1, sw, dress))
         if not dress:
-            # 골반(바지): 허리~사타구니 곡선으로 다리 뿌리를 자연스럽게 연결
+            # 골반(바지): 면은 닫아 채우되, 아래 다리연결부(사타구니)는 외곽선을 비워 열어둔다(러프)
+            pelvis_d = (f'M{cxb-r*0.52:.1f},{hip_y-r*0.25:.1f} '
+                        f'L{cxb-hipJ-r*0.06:.1f},{hjy+r*0.05:.1f} '
+                        f'Q{cxb:.1f},{hjy+r*0.42:.1f} {cxb+hipJ+r*0.06:.1f},{hjy+r*0.05:.1f} '
+                        f'L{cxb+r*0.52:.1f},{hip_y-r*0.25:.1f} Z')
+            g.append(f'<path d="{pelvis_d}" fill="{PANTS}" stroke="none"/>')   # 면만 채움
+            # 외곽선: 양옆(허리→다리뿌리)만 — 사타구니 아래 곡선은 생략해 다리연결부가 열림
             g.append(f'<path d="M{cxb-r*0.52:.1f},{hip_y-r*0.25:.1f} '
-                     f'L{cxb-hipJ-r*0.06:.1f},{hjy+r*0.05:.1f} '
-                     f'Q{cxb:.1f},{hjy+r*0.42:.1f} {cxb+hipJ+r*0.06:.1f},{hjy+r*0.05:.1f} '
-                     f'L{cxb+r*0.52:.1f},{hip_y-r*0.25:.1f} Z" '
-                     f'fill="{PANTS}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"/>')
+                     f'L{cxb-hipJ-r*0.06:.1f},{hjy+r*0.05:.1f}" fill="none" '
+                     f'stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>')
+            g.append(f'<path d="M{cxb+r*0.52:.1f},{hip_y-r*0.25:.1f} '
+                     f'L{cxb+hipJ+r*0.06:.1f},{hjy+r*0.05:.1f}" fill="none" '
+                     f'stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>')
 
     # 2) 몸통(의상)
     if body == "bust":
