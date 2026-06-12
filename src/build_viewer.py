@@ -231,6 +231,58 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gsample-banner span{flex:1 1 auto}
 .gsample-banner b{color:#fff}
 .exp-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
+/* ── 모바일/태블릿 대응 ───────────────────────────── */
+@media(max-width:860px){
+  header{padding:0 14px}
+  .nav{height:54px}
+  .logo{font-size:17px}
+  .nav-r{gap:11px;font-size:13px}
+  .navbtn{padding:8px 13px}
+  .tabs{gap:6px;padding:9px 0 11px}
+  .tab{padding:7px 12px;font-size:13.5px}
+  .view{padding:18px 12px}
+  .note{font-size:14px;padding:13px 15px;margin-bottom:18px}
+  /* 직접 생성: 좌우 1:1 → 세로 스택(입력 위, 결과 아래) */
+  #v6.view{padding-bottom:74px}
+  .genwrap{flex-direction:column;gap:14px;max-width:none}
+  .genleft{position:static;flex:none;width:100%;min-width:0}
+  .genright{flex:none;width:100%}
+  .genleft textarea{height:34vh;min-height:170px}
+  .gresult{min-height:0}
+  .gph{min-height:200px;padding:30px 18px}
+  .chips .chip{font-size:12px;padding:5px 9px}
+  /* 결과 캔버스: 여백/간격 모바일에 맞게 축소 */
+  .pstack{gap:42px;padding:24px 10px;border-radius:10px}
+  /* 컷 컨트롤: 터치엔 hover가 없으므로 컷 아래 항상 보이는 막대로 전환 */
+  .gcard-bar{position:static;left:auto;right:auto;margin:0;width:auto;transform:none;opacity:1;
+    pointer-events:auto;flex-direction:row;flex-wrap:wrap;gap:6px;align-items:center;
+    background:#f6f7fb;border:none;border-top:1px solid #e6e8f0;border-radius:0;box-shadow:none;padding:9px 10px;z-index:auto}
+  .gcard:hover .gcard-bar{transform:none}
+  .gcard-bar .pn{flex:0 0 100%;margin-bottom:1px}
+  .gcard-bar select{width:auto;flex:1 1 44%;font-size:12.5px}
+  .gcard-bar .iconbtn{flex:1 1 44%;font-size:12.5px}
+  /* 하단 생성바: 한 줄 가로 스크롤 */
+  .genbottom{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;gap:7px;padding:9px 12px}
+  .genbottom>*{flex:0 0 auto}
+  .genbottom button{font-size:13px;padding:9px 13px}
+  .genbottom button.primary{padding:9px 18px;font-size:14px}
+  .gstat{min-width:0}
+  .exp-sep{display:none}
+  /* 비교·갤러리·시트: 세로 스택 + 폭 100% */
+  .cmpwrap{flex-direction:column;align-items:center;gap:18px}
+  .cmpcol .paper{width:100%;max-width:360px;height:auto;max-height:66vh}
+  .cmpcol object,.cmpcol img{width:100%}
+  .split{flex-direction:column;align-items:center}
+  .txtcol{width:100%;max-width:460px;max-height:none}
+  .gallery{gap:18px}
+  .gallery .paper{max-width:100%}
+  .paper svg{width:100%!important;height:auto}
+}
+@media(max-width:480px){
+  .tab{font-size:12.5px;padding:6px 10px}
+  .gcard-bar select,.gcard-bar .iconbtn{flex-basis:100%}
+  .genleft textarea{height:30vh}
+}
 </style></head><body>"""
 
 
@@ -338,12 +390,7 @@ def main():
 
     # View 6: 직접 생성 (서버 /generate 호출)
     html.append('<div class="view" id="v6">')
-    html.append('<div class="note">글콘티를 직접 쓰거나 붙여넣고 <b>[✎ 생성]</b>을 누르면 '
-                '오른쪽에 그림콘티가 즉시 만들어집니다. '
-                '<span style="color:#7a8398">· 내 PC에서 직접 띄울 땐 <code>서버실행.bat</code></span></div>')
     html.append(
-        '<div class="genwrap">'
-        '<div class="genleft">'
         '<div class="chips" id="gchips">'
         '<span class="chip" data-ins="[풀샷] ">풀샷</span>'
         '<span class="chip" data-ins="[미들샷] ">미들샷</span>'
@@ -353,6 +400,8 @@ def main():
         '<span class="chip alt" data-ins=" / 효과음: \'\'">효과음</span>'
         '<span class="chip alt" data-ins=" / 나레이션: ">나레이션</span>'
         '</div>'
+        '<div class="genwrap">'
+        '<div class="genleft">'
         '<textarea id="ginp" placeholder="여기에 글콘티 입력 (줄글을 그대로 붙여넣어도 됩니다)...&#10;예) 1. [미들샷] 매리가 웃는다. / 매리: &quot;안녕!&quot;"></textarea>'
         '<div class="gpreview" id="gpreview"></div>'
         '<div class="genhint">형식: <code>번호. [샷] 상황묘사 / 화자: "대사"</code> · '
