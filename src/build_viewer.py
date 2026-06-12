@@ -131,27 +131,31 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 #v4 .paper svg{width:600px}
 #v5 .paper svg{width:600px}
 #v7 .paper svg{width:660px}
-/* 직접 생성 탭 — 중앙정렬·좌우 여백·콤팩트 */
-.genwrap{display:flex;gap:22px;align-items:stretch;height:66vh;max-width:1040px;margin:0 auto}
-.genleft{flex:0 0 42%;display:flex;flex-direction:column}
-.genright{flex:1;display:flex;flex-direction:column}
-.genleft textarea{flex:1;width:100%;resize:none;background:#0e1118;color:var(--tx);
+/* 직접 생성 탭 — 좌:입력(고정) / 우:결과(웹툰 스크롤), 1:1 동일폭, 하단 생성바 */
+#v6.view{padding-bottom:96px}            /* 하단 고정바에 가리지 않게 */
+.genwrap{display:flex;gap:22px;align-items:flex-start;max-width:1180px;margin:0 auto}
+.genleft{flex:1 1 0;min-width:0;position:sticky;top:118px;align-self:flex-start;display:flex;flex-direction:column}
+.genright{flex:1 1 0;min-width:0}
+.genleft textarea{width:100%;height:calc(100vh - 320px);min-height:300px;resize:none;background:#0e1118;color:var(--tx);
   border:1px solid var(--line);border-radius:14px;padding:16px 18px;
   font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.8;outline:none;transition:.15s}
 .genleft textarea:focus{border-color:#7c5cff;box-shadow:0 0 0 4px rgba(124,58,237,.18)}
-.genhint{font-size:13px;color:var(--dim);margin:10px 0;line-height:1.6}
+.genhint{font-size:13px;color:var(--dim);margin:10px 0 0;line-height:1.6}
 .genhint code{background:var(--card2);padding:2px 7px;border-radius:6px;color:#bcd}
-.genbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.genbar button{font-family:inherit;font-size:15px;font-weight:700;padding:11px 18px;border-radius:12px;
+/* 하단 생성 바 (탭 진입 시에만 표시) */
+.genbottom{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:13px 26px;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+  background:rgba(13,16,24,.82);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.genbottom button{font-family:inherit;font-size:15px;font-weight:700;padding:12px 20px;border-radius:12px;
   cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.15s}
-.genbar button:hover{border-color:#3a415a}
-.genbar button.primary{background:var(--grad);border-color:transparent;color:#fff;padding:11px 26px;font-size:16px;
+.genbottom button:hover{border-color:#3a415a}
+.genbottom button.primary{background:var(--grad);border-color:transparent;color:#fff;padding:12px 34px;font-size:16px;
   box-shadow:0 8px 22px rgba(124,58,237,.4)}
-.genbar button.primary:hover{transform:translateY(-1px)}
-.genbar button:disabled{opacity:.45;cursor:default;transform:none}
+.genbottom button.primary:hover{transform:translateY(-1px)}
+.genbottom button:disabled{opacity:.45;cursor:default;transform:none}
 .gchk{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--mut)}
-.gstat{font-size:14px;color:var(--mut);margin:10px 0;min-height:20px}
-.genright .paper{flex:1;background:#fff;border-radius:14px;overflow:auto}
+.gstat{font-size:14px;color:var(--mut);min-width:120px;text-align:left}
+.genright .paper{background:#fff;border-radius:14px;overflow:visible;min-height:calc(100vh - 320px)}
 .genright .paper svg{display:block;width:100%;height:auto}
 .gph{color:#667;text-align:center;padding:90px 24px;font-size:16px;line-height:1.7}
 .gph code{background:#eef;padding:2px 7px;border-radius:6px;color:#5b3fd6}
@@ -275,12 +279,6 @@ def main():
         '<div class="genhint">형식: <code>번호. [샷] 상황묘사 / 화자: "대사"</code> · '
         '샷: 풀샷·미들샷·클로즈업·롱샷 · 인물 이름(매리·무결·엘리·라이더·정인 등)으로 색/성별 반영 · '
         '"둘/서로"=2명, "사람들"=다인물 · Ctrl+Enter로 생성</div>'
-        '<div class="genbar">'
-        '<button class="primary" id="ggen">✎ 생성</button>'
-        '<button id="gsample">샘플 불러오기</button>'
-        '<button id="gdl" disabled>SVG 저장</button>'
-        '<span class="gchk"><input type="checkbox" id="ggray" checked> 흑백</span>'
-        '</div><div class="gstat" id="gstat"></div>'
         '</div>'
         '<div class="genright"><div class="paper" id="gout"><div class="gph">생성 결과가 여기에 표시됩니다</div></div></div>'
         '</div></div>')
@@ -295,12 +293,23 @@ def main():
         html.append(f'<div class="gallery"><div class="paper" style="width:680px">{inline_svg(psheet,"prop")}</div></div>')
     html.append('</div>')
 
+    # 하단 고정 생성 바 (생성 탭에서만 표시)
+    html.append(
+        '<div class="genbottom" id="genbottom">'
+        '<button class="primary" id="ggen">✎ 생성</button>'
+        '<button id="gsample">샘플 불러오기</button>'
+        '<button id="gdl" disabled>SVG 저장</button>'
+        '<span class="gchk"><input type="checkbox" id="ggray" checked> 흑백</span>'
+        '<span class="gstat" id="gstat"></span>'
+        '</div>')
+
     data_js = json.dumps({m["stem"]: m for m in compare}, ensure_ascii=False)
     html.append("""<script>
 const CMP = %s;
 function show(i){
   document.querySelectorAll('.view').forEach((v,j)=>v.classList.toggle('on',i===j));
   document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',i===j));
+  document.getElementById('genbottom').style.display = (i===6)?'flex':'none';
   if(i===2 && !document.getElementById('genobj').data) loadEp();
   if(i===6) checkGen();
 }
