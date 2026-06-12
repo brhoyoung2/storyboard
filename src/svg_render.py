@@ -828,6 +828,108 @@ def background(scene_type, location, h):
     return "".join(s)
 
 
+# ---- 소품/오브젝트 에셋 ----------------------------------------------------
+# 모두 라인아트(INK 선 + 옅은 채움) — rough 필터·흑백과 호환.
+WOOD, OBJ, OBJ2, WHT = "#cbb796", "#dfe6ee", "#cdd6e0", "#ffffff"
+
+
+def _pk(sw):
+    return f'stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round" stroke-linecap="round"'
+
+
+def prop_table(cx, topy, w, legh, sw):
+    L, th = cx-w/2, max(8, w*0.05)
+    return (f'<rect x="{L:.1f}" y="{topy:.1f}" width="{w:.1f}" height="{th:.1f}" rx="4" fill="{WOOD}" {_pk(sw)}/>'
+            f'<line x1="{L+w*0.11:.1f}" y1="{topy+th:.1f}" x2="{L+w*0.14:.1f}" y2="{topy+legh:.1f}" stroke="{INK}" stroke-width="{sw*1.7:.1f}" stroke-linecap="round"/>'
+            f'<line x1="{cx+w*0.39:.1f}" y1="{topy+th:.1f}" x2="{cx+w*0.36:.1f}" y2="{topy+legh:.1f}" stroke="{INK}" stroke-width="{sw*1.7:.1f}" stroke-linecap="round"/>')
+
+
+def prop_chair(cx, seaty, w, sw):
+    s = w
+    return (f'<rect x="{cx-s*0.42:.1f}" y="{seaty-s*0.95:.1f}" width="{s*0.84:.1f}" height="{s*0.72:.1f}" rx="7" fill="{WOOD}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.5:.1f}" y="{seaty:.1f}" width="{s:.1f}" height="{s*0.16:.1f}" rx="4" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<line x1="{cx-s*0.4:.1f}" y1="{seaty+s*0.16:.1f}" x2="{cx-s*0.43:.1f}" y2="{seaty+s*0.72:.1f}" stroke="{INK}" stroke-width="{sw*1.5:.1f}"/>'
+            f'<line x1="{cx+s*0.4:.1f}" y1="{seaty+s*0.16:.1f}" x2="{cx+s*0.43:.1f}" y2="{seaty+s*0.72:.1f}" stroke="{INK}" stroke-width="{sw*1.5:.1f}"/>')
+
+
+def prop_bowl(cx, y, s, sw):   # 밥그릇(흰밥+김)
+    return (f'<path d="M{cx-s*0.15:.1f},{y-s*0.62:.1f} q{-s*0.1:.1f},{-s*0.16:.1f} 0,{-s*0.32:.1f}" fill="none" stroke="{INK2}" stroke-width="{sw:.1f}"/>'
+            f'<path d="M{cx+s*0.12:.1f},{y-s*0.66:.1f} q{s*0.1:.1f},{-s*0.16:.1f} 0,{-s*0.32:.1f}" fill="none" stroke="{INK2}" stroke-width="{sw:.1f}"/>'
+            f'<path d="M{cx-s*0.52:.1f},{y-s*0.28:.1f} Q{cx-s*0.28:.1f},{y-s*0.62:.1f} {cx-s*0.05:.1f},{y-s*0.42:.1f} '
+            f'Q{cx+s*0.1:.1f},{y-s*0.64:.1f} {cx+s*0.3:.1f},{y-s*0.44:.1f} Q{cx+s*0.45:.1f},{y-s*0.58:.1f} {cx+s*0.52:.1f},{y-s*0.28:.1f} Z" fill="{WHT}" {_pk(sw)}/>'
+            f'<path d="M{cx-s*0.6:.1f},{y-s*0.3:.1f} Q{cx:.1f},{y+s*0.32:.1f} {cx+s*0.6:.1f},{y-s*0.3:.1f}" fill="{OBJ}" {_pk(sw)}/>'
+            f'<line x1="{cx-s*0.6:.1f}" y1="{y-s*0.3:.1f}" x2="{cx+s*0.6:.1f}" y2="{y-s*0.3:.1f}" {_pk(sw)}/>')
+
+
+def prop_spoon(cx, y, s, sw):
+    return (f'<ellipse cx="{cx:.1f}" cy="{y-s*0.4:.1f}" rx="{s*0.16:.1f}" ry="{s*0.24:.1f}" fill="{OBJ}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.16:.1f}" x2="{cx:.1f}" y2="{y+s*0.05:.1f}" stroke="{INK}" stroke-width="{sw*1.5:.1f}" stroke-linecap="round"/>')
+
+
+def prop_cup(cx, y, s, sw):
+    return (f'<path d="M{cx-s*0.06:.1f},{y-s*0.72:.1f} q{-s*0.08:.1f},{-s*0.14:.1f} 0,{-s*0.28:.1f}" fill="none" stroke="{INK2}" stroke-width="{sw:.1f}"/>'
+            f'<path d="M{cx-s*0.3:.1f},{y-s*0.55:.1f} L{cx-s*0.24:.1f},{y:.1f} Q{cx:.1f},{y+s*0.12:.1f} {cx+s*0.24:.1f},{y:.1f} L{cx+s*0.3:.1f},{y-s*0.55:.1f} Z" fill="{OBJ}" {_pk(sw)}/>'
+            f'<path d="M{cx+s*0.28:.1f},{y-s*0.46:.1f} q{s*0.26:.1f},0 {s*0.24:.1f},{s*0.2:.1f} q{-s*0.02:.1f},{s*0.12:.1f} {-s*0.2:.1f},{s*0.08:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_plate(cx, y, s, sw):
+    return (f'<ellipse cx="{cx:.1f}" cy="{y-s*0.12:.1f}" rx="{s*0.6:.1f}" ry="{s*0.18:.1f}" fill="{OBJ}" {_pk(sw)}/>'
+            f'<ellipse cx="{cx:.1f}" cy="{y-s*0.12:.1f}" rx="{s*0.38:.1f}" ry="{s*0.11:.1f}" fill="none" stroke="{INK}" stroke-width="{sw*0.8:.1f}"/>')
+
+
+def prop_book(cx, y, s, sw):   # 펼친 책
+    return (f'<path d="M{cx-s*0.62:.1f},{y-s*0.02:.1f} Q{cx:.1f},{y-s*0.2:.1f} {cx+s*0.62:.1f},{y-s*0.02:.1f} '
+            f'L{cx+s*0.62:.1f},{y+s*0.12:.1f} Q{cx:.1f},{y-s*0.06:.1f} {cx-s*0.62:.1f},{y+s*0.12:.1f} Z" fill="{WHT}" {_pk(sw)}/>'
+            f'<line x1="{cx:.1f}" y1="{y-s*0.14:.1f}" x2="{cx:.1f}" y2="{y+s*0.03:.1f}" {_pk(sw)}/>')
+
+
+def prop_laptop(cx, y, s, sw):
+    return (f'<rect x="{cx-s*0.5:.1f}" y="{y-s*0.78:.1f}" width="{s:.1f}" height="{s*0.62:.1f}" rx="4" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<rect x="{cx-s*0.42:.1f}" y="{y-s*0.7:.1f}" width="{s*0.84:.1f}" height="{s*0.46:.1f}" rx="2" fill="{OBJ}" stroke="none"/>'
+            f'<path d="M{cx-s*0.6:.1f},{y:.1f} L{cx-s*0.5:.1f},{y-s*0.16:.1f} L{cx+s*0.5:.1f},{y-s*0.16:.1f} L{cx+s*0.6:.1f},{y:.1f} Z" fill="{OBJ}" {_pk(sw)}/>')
+
+
+def prop_bed(cx, topy, w, sw):
+    h = w*0.42
+    return (f'<rect x="{cx-w/2:.1f}" y="{topy:.1f}" width="{w:.1f}" height="{h:.1f}" rx="9" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-w*0.43:.1f}" y="{topy+h*0.1:.1f}" width="{w*0.3:.1f}" height="{h*0.32:.1f}" rx="8" fill="{WHT}" {_pk(sw)}/>'
+            f'<path d="M{cx-w*0.05:.1f},{topy+h*0.5:.1f} L{cx+w*0.5:.1f},{topy+h*0.5:.1f}" fill="none" {_pk(sw)}/>')
+
+
+def prop_sofa(cx, topy, w, sw):
+    h = w*0.4
+    return (f'<rect x="{cx-w/2:.1f}" y="{topy-h*0.5:.1f}" width="{w:.1f}" height="{h*0.6:.1f}" rx="12" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx-w/2:.1f}" y="{topy:.1f}" width="{w:.1f}" height="{h:.1f}" rx="13" fill="{OBJ2}" {_pk(sw)}/>'
+            f'<rect x="{cx-w/2:.1f}" y="{topy-h*0.35:.1f}" width="{w*0.15:.1f}" height="{h*0.9:.1f}" rx="9" fill="{OBJ}" {_pk(sw)}/>'
+            f'<rect x="{cx+w/2-w*0.15:.1f}" y="{topy-h*0.35:.1f}" width="{w*0.15:.1f}" height="{h*0.9:.1f}" rx="9" fill="{OBJ}" {_pk(sw)}/>')
+
+
+PROP_FN = {"bowl": prop_bowl, "spoon": prop_spoon, "cup": prop_cup, "plate": prop_plate,
+           "book": prop_book, "laptop": prop_laptop}
+
+
+def scene_props(props, h, sw):
+    """소품 배치 → (behind, front). behind=인물 뒤(의자·침대·소파), front=인물 앞(책상+위 물건)."""
+    if not props:
+        return "", ""
+    cx = W/2
+    behind, front = [], []
+    if "bed" in props:
+        behind.append(prop_bed(cx, h*0.46, W*0.72, sw))
+    if "sofa" in props:
+        behind.append(prop_sofa(cx, h*0.6, W*0.66, sw))
+    if "chair" in props:
+        behind.append(prop_chair(cx, h*0.64, W*0.36, sw))
+    tableware = [p for p in ("bowl", "plate", "cup", "spoon", "book", "laptop") if p in props]
+    if "table" in props or tableware:
+        ty = h*0.66
+        front.append(prop_table(cx, ty, W*0.8, h*0.32, sw))
+        for i, it in enumerate(tableware):
+            ix = cx + (i-(len(tableware)-1)/2.0)*W*0.17
+            front.append(PROP_FN[it](ix, ty, W*0.11, sw))
+    return "".join(behind), "".join(front)
+
+
 # ---- 패널 렌더 ------------------------------------------------------------
 def render_panel(panel, y0):
     ax = panel["axes"]
@@ -837,6 +939,8 @@ def render_panel(panel, y0):
     emo = ax["C_emotion"][0]
     pose = ax.get("F_pose", "stand")
     view = ax.get("G_view", "front")
+    if pose == "stand" and "chair" in panel.get("props", []):   # 의자/식사 → 앉은 자세
+        pose = "sit"
     people = panel.get("n_people")
     if people is None:                       # resolve 안 거친 데모 패널 폴백
         if "group" in ax["B_compose"]:
@@ -858,6 +962,13 @@ def render_panel(panel, y0):
     location = panel.get("location", "unknown")
     if scene_type != "blank" and shot in ("medium", "full", "long", "unspecified", "insert"):
         s.append(background(scene_type, location, h))
+
+    # 소품 — 인물 뒤(의자·침대·소파) / 인물 앞(책상+위 물건). 몸이 보이는 샷만.
+    behind_props, front_props = "", ""
+    if panel.get("props") and shot in ("medium", "full", "long", "unspecified"):
+        behind_props, front_props = scene_props(panel["props"], h, 2.2)
+        if behind_props:
+            s.append(behind_props)
 
     # 인물 배치 — actors(이름·성별) 기반으로 1명/2명/다인물
     speakers = panel.get("speakers", [])
@@ -896,6 +1007,9 @@ def render_panel(panel, y0):
         fac = 0.85 if view in ("q3", "profile") else 0.0
         n0, g0 = actor(0)
         s.append(person(W*0.5, frame, emo, n0, facing=fac, pose=pose, view=view, gender=g0))
+
+    if front_props:           # 책상+물건은 인물 앞(전경)
+        s.append(front_props)
 
     s.append('</g>')  # /rough
 
@@ -1141,11 +1255,48 @@ def render_angle_sheet(out_path, char="매리"):
     return total_h
 
 
+def render_prop_sheet(out_path):
+    """소품/오브젝트 에셋 그리드 (검토용)."""
+    sw = 2.2
+    items = [
+        ("책상", lambda x, y: prop_table(x, y-6, 116, 54, sw)),
+        ("의자", lambda x, y: prop_chair(x, y+6, 64, sw)),
+        ("침대", lambda x, y: prop_bed(x, y-18, 128, sw)),
+        ("소파", lambda x, y: prop_sofa(x, y+4, 118, sw)),
+        ("밥그릇", lambda x, y: prop_bowl(x, y+30, 70, sw)),
+        ("숟가락", lambda x, y: prop_spoon(x, y+26, 76, sw)),
+        ("컵", lambda x, y: prop_cup(x, y+28, 70, sw)),
+        ("접시", lambda x, y: prop_plate(x, y+24, 80, sw)),
+        ("책", lambda x, y: prop_book(x, y+18, 84, sw)),
+        ("노트북", lambda x, y: prop_laptop(x, y+34, 86, sw)),
+    ]
+    cols, cw, ch, hdr = 5, 156, 156, 50
+    rows = (len(items)+cols-1)//cols
+    total_w, total_h = cw*cols, hdr + ch*rows
+    s = [svg_header(total_h, total_w)]
+    s.append(f'<text x="{total_w/2}" y="32" font-family="{FONT}" font-size="24" '
+             f'fill="{INK}" text-anchor="middle">소품 에셋 — {len(items)}종</text>')
+    for i, (lbl, fn) in enumerate(items):
+        col, row = i % cols, i // cols
+        x0, y0 = col*cw, hdr + row*ch
+        s.append(f'<rect x="{x0+3}" y="{y0+3}" width="{cw-6}" height="{ch-6}" fill="white" stroke="{INK2}" stroke-width="1"/>')
+        s.append(f'<g filter="url(#rough)">')
+        s.append(fn(x0+cw/2, y0+ch/2))
+        s.append('</g>')
+        s.append(f'<text x="{x0+cw/2}" y="{y0+ch-12}" font-family="{FONT}" font-size="17" '
+                 f'fill="{NOTE}" text-anchor="middle">{lbl}</text>')
+    s.append(svg_footer())
+    out_path.write_text("".join(s), encoding="utf-8")
+    return total_h
+
+
 def main():
     OUT_DIR.mkdir(exist_ok=True)
     # 0) 캐릭터 시트(외형 검토)
     render_character_sheet(OUT_DIR / "_character_sheet.svg")
     print("✓ output/_character_sheet.svg  (캐릭터 × 표정 그리드)")
+    render_prop_sheet(OUT_DIR / "_prop_sheet.svg")
+    print("✓ output/_prop_sheet.svg  (소품 에셋)")
     render_expr_sheet(OUT_DIR / "_expr_sheet.svg")
     print("✓ output/_expr_sheet.svg  (표정 22종)")
     render_pose_sheet(OUT_DIR / "_pose_sheet.svg")

@@ -406,6 +406,34 @@ MALE_WORDS = ["남자", "남성", "소년", "아빠", "아버지", "오빠", "�
               "아저씨", "남학생", "남자아이", "아들", "삼촌", "청년", "사내"]
 
 
+# 소품/오브젝트 (묘사 → 소품 집합). '밥/식사/먹'은 식사 세트(밥+숟가락+책상+의자)로 확장.
+PROP_RULES = [
+    ("eat",    ["밥을", "식사", "먹는다", "먹고", "먹으", "음식", "밥상", "끼니", "밥 먹"]),
+    ("table",  ["책상", "식탁", "테이블", "탁자", "상에 "]),
+    ("chair",  ["의자", "걸터앉", "쪼그려 앉"]),
+    ("cup",    ["커피", "컵을", "찻잔", "머그", "음료", "차를 마", "잔을 들"]),
+    ("book",   ["책을", "독서", "교과서", "노트를", "공책"]),
+    ("laptop", ["노트북", "랩탑", "컴퓨터", "모니터"]),
+    ("bed",    ["침대", "눕는다", "누워"]),
+    ("sofa",   ["소파"]),
+]
+
+
+def detect_props(desc):
+    props = set()
+    for kind, kws in PROP_RULES:
+        if any(k in desc for k in kws):
+            if kind == "eat":
+                props.update(["bowl", "spoon", "table", "chair"])
+            elif kind == "cup":
+                props.update(["cup", "table"])
+            elif kind == "laptop":
+                props.update(["laptop", "table"])
+            else:
+                props.add(kind)
+    return sorted(props)
+
+
 def detect_gender_word(desc):
     """묘사의 일반 성별어로 성별 추정. 둘 다/없으면 None."""
     f = any(w in desc for w in FEMALE_WORDS)
@@ -533,6 +561,7 @@ def classify_panel(num, body):
         "axes": axes,
         "flags": flags,
         "gender_hint": detect_gender_word(desc),   # 일반 성별어(여자/남자 등)
+        "props": detect_props(desc),               # 소품(밥·책상·의자 등)
     }
 
 

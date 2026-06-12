@@ -130,6 +130,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 #v3 .gallery{gap:36px;align-items:flex-start}
 #v4 .paper svg{width:600px}
 #v5 .paper svg{width:600px}
+#v7 .paper svg{width:660px}
 /* 직접 생성 탭 — 중앙정렬·좌우 여백·콤팩트 */
 .genwrap{display:flex;gap:22px;align-items:stretch;height:66vh;max-width:1040px;margin:0 auto}
 .genleft{flex:0 0 42%;display:flex;flex-direction:column}
@@ -184,6 +185,7 @@ def main():
                 '<div class="tab" onclick="show(4)">바디/포즈</div>'
                 '<div class="tab" onclick="show(5)">시점/각도</div>'
                 '<div class="tab gen" onclick="show(6)">✎ 직접 생성</div>'
+                '<div class="tab" onclick="show(7)">소품</div>'
                 '</div></header>')
 
     # View 0: 샘플 시트
@@ -283,6 +285,16 @@ def main():
         '<div class="genright"><div class="paper" id="gout"><div class="gph">생성 결과가 여기에 표시됩니다</div></div></div>'
         '</div></div>')
 
+    # View 7: 소품 에셋
+    psheet = OUT_DIR / "_prop_sheet.svg"
+    html.append('<div class="view" id="v7">')
+    html.append('<div class="note">묘사에 소품이 나오면 자동 배치됩니다 — '
+                '<b>"밥을 먹는다"</b> → 밥+숟가락+책상+의자(앉은 자세) · <b>"노트북/책"</b> → 책상 위에 · '
+                '<b>"소파·침대"</b> 등. 아래는 기본 소품 에셋입니다.</div>')
+    if psheet.exists():
+        html.append(f'<div class="gallery"><div class="paper" style="width:680px">{inline_svg(psheet,"prop")}</div></div>')
+    html.append('</div>')
+
     data_js = json.dumps({m["stem"]: m for m in compare}, ensure_ascii=False)
     html.append("""<script>
 const CMP = %s;
@@ -350,7 +362,7 @@ async function genConti(){
 gq('ggen').onclick = genConti;
 gq('ginp').addEventListener('keydown', e => { if((e.ctrlKey||e.metaKey)&&e.key==='Enter') genConti(); });
 
-window.addEventListener('load',()=>{ if(location.hash==='#cmp') show(2); if(location.hash==='#char') show(3); if(location.hash==='#pose') show(4); if(location.hash==='#angle') show(5); if(location.hash==='#gen') show(6); });
+window.addEventListener('load',()=>{ if(location.hash==='#cmp') show(2); if(location.hash==='#char') show(3); if(location.hash==='#pose') show(4); if(location.hash==='#angle') show(5); if(location.hash==='#gen') show(6); if(location.hash==='#prop') show(7); });
 </script></body></html>""" % data_js)
 
     out = OUT_DIR / "viewer.html"
