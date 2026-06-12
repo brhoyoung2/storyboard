@@ -1,0 +1,3710 @@
+{
+  "file": "매리는_외박중_EP10.txt",
+  "panel_count": 82,
+  "panels": [
+    {
+      "num": 1,
+      "shot_raw": "인서트컷",
+      "description": "맑은 하늘 아래 펼쳐진 대형 야외 페스티벌 현장.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "insert",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "exterior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 2,
+      "shot_raw": "인서트컷",
+      "description": "",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“ RE:VIBE FESTIVAL” 현수막이 펄럭인다.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "insert",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 3,
+      "shot_raw": "미들샷",
+      "description": "관객 두 명이 맥주를 들고 걸으며 대화한다.”",
+      "dialogue": [
+        {
+          "speaker": "관객1",
+          "text": "“좀 이따 마몬 무대한대!”"
+        },
+        {
+          "speaker": "관객2",
+          "text": "“침식의 멜로디 라이브는 처음아냐?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관객1",
+        "관객2"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 2
+    },
+    {
+      "num": 4,
+      "shot_raw": "미들샷",
+      "description": "두 사람은 흥분된 얼굴로 뛰어간다.",
+      "dialogue": [
+        {
+          "speaker": "관객1",
+          "text": "“빨리 가자! 자리 없겠다!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관객1"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "run",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 2
+    },
+    {
+      "num": 5,
+      "shot_raw": "미들샷",
+      "description": "그들이 떠나자, 뒤로 장비를 들고 있는 스트로베리 필즈 멤버들이 보인다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "carry",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 6,
+      "shot_raw": "미들샷",
+      "description": "멍하니 메인무대를 바라보는 하은.",
+      "dialogue": [
+        {
+          "speaker": "하은",
+          "text": "“저긴 사람이 많네요…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "하은"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "하은",
+          null
+        ]
+      ],
+      "cast": [
+        "하은"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 7,
+      "shot_raw": "하은 얼굴 클로즈업",
+      "description": "하은의 시무룩한 표정.",
+      "dialogue": [
+        {
+          "speaker": "하은",
+          "text": "“우리 쪽은…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "하은"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "하은",
+          null
+        ]
+      ],
+      "cast": [
+        "하은"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 8,
+      "shot_raw": "풀샷",
+      "description": "반대로, 스트로베리필즈가 공연할 무대는 한산하다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 9,
+      "shot_raw": "미들샷",
+      "description": "그 때, 관계자가 다가와 말을 건다.",
+      "dialogue": [
+        {
+          "speaker": "관계자",
+          "text": "“스트로베리 필즈 맞으시죠? 세팅 도와드릴게요.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관계자"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 10,
+      "shot_raw": "클로즈업",
+      "description": "관계자가 들고있는 큐시트 클로즈업.  ‘18:00 - MAIN STAGE : MAMON - 침식의 멜로디",
+      "dialogue": [
+        {
+          "speaker": "SUB STAGE",
+          "text": "STRAWBERRY FIELD - 다시 피어나’ 라고 쓰여있다."
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "SUB STAGE"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 11,
+      "shot_raw": "미들샷",
+      "description": "관계자가 웃으며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "관계자",
+          "text": "“동시 진행이니까 서로 들리실 수도 있어요. 그래도 잘 부탁드립니다.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관계자"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 12,
+      "shot_raw": "클로즈업",
+      "description": "매리, 큐시트를 보며 잠시 생각하다 고개를 든다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 13,
+      "shot_raw": "클로즈업",
+      "description": "매리가 결의에 찬 얼굴로 말한다.",
+      "dialogue": [
+        {
+          "speaker": "매리",
+          "text": "“네. 저희는 무대만 할 수 있으면 돼요.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "매리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "찬"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 14,
+      "shot_raw": "풀샷",
+      "description": "공연을 준비하고 있는 멤버들.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 15,
+      "shot_raw": "미들샷",
+      "description": "그 때, 멀리서 관중의 환호 소리가 들려온다.",
+      "dialogue": [
+        {
+          "speaker": "관중들",
+          "text": "“와아아!!!””"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관중들"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "both_up",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "찬"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 16,
+      "shot_raw": "트랜지션컷",
+      "description": "메인 스테이지, 의 거대한 로고가 점등된다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "MAMON"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 17,
+      "shot_raw": "풀샷",
+      "description": "관중 수천 명이 소리지른다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "angry"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "찬"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 18,
+      "shot_raw": "클로즈업",
+      "description": "마몬 리더, 어둠의 미소.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 19,
+      "shot_raw": "클로즈업",
+      "description": "붉게 빛나는 마몬 리더의 눈동자. 웃으며 노래한다.",
+      "dialogue": [
+        {
+          "speaker": "리더",
+          "text": "“이건 널 위한 침식의 멜로디.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "리더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 20,
+      "shot_raw": "효과컷",
+      "description": "무대에서 검은 음파가 퍼져나간다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 21,
+      "shot_raw": "미들샷",
+      "description": "팬들의 눈동자가 붉게 빛난다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 22,
+      "shot_raw": "클로즈업",
+      "description": "관중석, 흥분과 광기의 표정들.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "찬"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 23,
+      "shot_raw": "풀샷",
+      "description": "음악이 페스티벌 장소 전체에 울려 퍼지는 듯한 컷.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 24,
+      "shot_raw": "클로즈업",
+      "description": "무결, 괴로워하며 머리를 감싼다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“아…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 25,
+      "shot_raw": "미들샷",
+      "description": "매리가 무결 옆에서 걱정스러워하며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "매리",
+          "text": "“무결씨!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "매리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "worried"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "profile"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "무결"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 26,
+      "shot_raw": "무결 손 클로즈업",
+      "description": "무결, 마이크를 잡는다.",
+      "dialogue": [],
+      "sfx": [
+        "‘텁-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "손",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "reach",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 27,
+      "shot_raw": "클로즈업",
+      "description": "무결이 말한다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“걱정마요.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 28,
+      "shot_raw": "클로즈업",
+      "description": "마이크를 잡고 고개를 든 무결이 비장한 표정으로 말한다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“이젠 피하지 않을거니까.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 29,
+      "shot_raw": "인서트컷 연속컷",
+      "description": "암전된 무대. 서서히 무대 조명이 들어온다.",
+      "dialogue": [],
+      "sfx": [
+        "“파앗-”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "insert",
+        "A_focus": null,
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 30,
+      "shot_raw": "클로즈업 연속컷",
+      "description": "눈을 감은 무결, 서서히 눈을 뜨는데.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 31,
+      "shot_raw": "미들샷",
+      "description": "무결의 앞에 관객이 단 한 명도 없다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 32,
+      "shot_raw": "미들샷",
+      "description": "밴드 멤버들, 모두 당황한다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "flustered"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 33,
+      "shot_raw": "미들샷",
+      "description": "찬이 놀란 표정으로 혼잣말 한다.",
+      "dialogue": [
+        {
+          "speaker": "찬",
+          "text": "“아무도.. 없어..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "찬"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 34,
+      "shot_raw": "클로즈업",
+      "description": "그 때, 지우가 찬의 어깨에 손을 올린다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "손",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "raise_hand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 35,
+      "shot_raw": "미들샷",
+      "description": "지우가 찬을 바라보며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "지우",
+          "text": "“괜찮아. 리허설이라고 생각하자.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "지우"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 36,
+      "shot_raw": "매리 클로즈업 연속컷",
+      "description": "놀란 얼굴의 매리, 미소짓는다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "smile",
+          "surprise"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 37,
+      "shot_raw": "미들샷",
+      "description": "매리가 환하게 웃으며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "매리",
+          "text": "“그럼, 멋지게 리허설 한번 해볼까요?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "매리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 38,
+      "shot_raw": "클로즈업",
+      "description": "긴장 반 설렘 반 표정의 무결.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "” “시작하죠.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "love"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 39,
+      "shot_raw": "풀샷 로우앵글",
+      "description": "다시 힘을 되찾은 밴드 멤버들의 모습.",
+      "dialogue": [
+        {
+          "speaker": "스트로베리 필드",
+          "text": "‘..이건 우리의 무대니까!’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "스트로베리 필드"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "low_angle"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 40,
+      "shot_raw": "미들샷",
+      "description": "지우가 기타를 친다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 41,
+      "shot_raw": "클로즈업",
+      "description": "무대에 흘러나오는 기타 선율.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 42,
+      "shot_raw": "미들샷",
+      "description": "전화하며 서브 스테이지 근처를 지나던 소녀.",
+      "dialogue": [
+        {
+          "speaker": "소녀",
+          "text": "“마몬 무대 시작했다고?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "소녀"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "phone",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": "F",
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          null,
+          "F"
+        ]
+      ],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 43,
+      "shot_raw": "미들샷",
+      "description": "소녀가 짜증내며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "소녀",
+          "text": "“아 짜증나! 왜 벌써..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "소녀"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": "F",
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          null,
+          "F"
+        ]
+      ],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 44,
+      "shot_raw": "귀 클로즈업, 들려오는 노래 효과컷",
+      "description": "그 때, 소녀의 귀에 들어오는 노래.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [
+        {
+          "speaker": "노래",
+          "text": "“멈춘 계절 위에 네 숨결이 닿아-”"
+        }
+      ],
+      "speakers": [
+        "노래"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "lyrics"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": "F",
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          null,
+          "F"
+        ]
+      ],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 45,
+      "shot_raw": "미들샷",
+      "description": "길 가던 소녀가 멈춘다.",
+      "dialogue": [],
+      "sfx": [
+        "‘우뚝-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "exterior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": "F",
+      "location": "street",
+      "scene_resolved": "exterior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          null,
+          "F"
+        ]
+      ],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 46,
+      "shot_raw": "미들샷",
+      "description": "소녀가 부드러워진 표정으로 뒤를 돌아본다.",
+      "dialogue": [
+        {
+          "speaker": "소녀",
+          "text": "“이 노래… 좋네.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "소녀"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "q3"
+      },
+      "flags": [],
+      "gender_hint": "F",
+      "location": "street",
+      "scene_resolved": "exterior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          null,
+          "F"
+        ]
+      ],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 47,
+      "shot_raw": "클로즈업",
+      "description": "노래를 하고 있는 무결.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“다시 피어, 그늘 속에서도-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "street",
+      "scene_resolved": "exterior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 48,
+      "shot_raw": "풀샷",
+      "description": "서브무대 앞, 관객이 한두명씩 모여든다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“우리의 작은 빛 하나가-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 49,
+      "shot_raw": "미들샷",
+      "description": "매리의 피아노, 따뜻한 멜로디.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“어둠을 뚫고 자라나-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 50,
+      "shot_raw": "미들샷",
+      "description": "연주하고 있는 찬, 지우, 하은.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ],
+        [
+          "하은",
+          null
+        ]
+      ],
+      "cast": [
+        "찬",
+        "하은"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 51,
+      "shot_raw": "미들샷",
+      "description": "행사 스탭이 길을 가다 매리밴드의 공연을 보고 멈칫한다.",
+      "dialogue": [],
+      "sfx": [
+        "“멈칫-”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "exterior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 52,
+      "shot_raw": "미들샷",
+      "description": "스탭이 중얼거린다.",
+      "dialogue": [
+        {
+          "speaker": "스탭",
+          "text": "“서브스테이지에 관객이 꽤 있네..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "스탭"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 53,
+      "shot_raw": "풀샷",
+      "description": "그때, 메인 무대의 마몬 — 팬들이 광기에 휩싸인 듯한 함성.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [
+        "effect"
+      ],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 54,
+      "shot_raw": "효과컷",
+      "description": "어둠의 음표가 장내를 덮는다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 55,
+      "shot_raw": "클로즈업",
+      "description": "뒤에 있던 한 팬이 머리를 감싸며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "팬",
+          "text": "“머리가… 아파…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "팬"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "hold_head",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 56,
+      "shot_raw": "클로즈업",
+      "description": "그러나 멀리서 들려오는 스트로베리 필즈의 노래.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“짙은 어둠이 덮쳐도-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 57,
+      "shot_raw": "클로즈업",
+      "description": "팬의 눈빛이 맑아진다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“이 노래는 멈추지 않아-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 58,
+      "shot_raw": "미들샷",
+      "description": "서브무대 쪽에서 비치는 밝은 빛.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior",
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 59,
+      "shot_raw": "미들샷",
+      "description": "팬들이 대화를 나눈다.",
+      "dialogue": [
+        {
+          "speaker": "팬1",
+          "text": "“우리 저기도 한번 가보자!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "팬1"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 60,
+      "shot_raw": "미들샷",
+      "description": "뒤에 있던 팬들 몇명이 서브무대쪽으로 향한다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 61,
+      "shot_raw": "미들샷",
+      "description": "마몬 리더, 무대를 하던 중 이상함을 느끼며 고개를 든다.",
+      "dialogue": [],
+      "sfx": [
+        "‘휙-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 62,
+      "shot_raw": "클로즈업",
+      "description": "관객석이 군데 군데 비어있다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 63,
+      "shot_raw": "미들샷",
+      "description": "마몬 리더가 멤버에게 속삭인다.",
+      "dialogue": [
+        {
+          "speaker": "리더",
+          "text": "“뭐야, 사람들 어디갔어?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "리더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 64,
+      "shot_raw": "풀샷",
+      "description": "연주하는 스트로베리 필즈 멤버들. 간주 중이다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 65,
+      "shot_raw": "풀샷",
+      "description": "꽉 찬 서브 스테이지의 관객석, 관중들이 환호를 한다.",
+      "dialogue": [
+        {
+          "speaker": "관중",
+          "text": "“와아~!!!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "관중"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "both_up",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 66,
+      "shot_raw": "미들샷",
+      "description": "벅찬 표정의 스트로베리 필즈 멤버들이 눈빛을 교환한다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 67,
+      "shot_raw": null,
+      "description": "클로즈업] 찬의 못믿겠다는 듯한 얼굴.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [
+        {
+          "speaker": "찬",
+          "text": "‘이게 말이 돼…?’"
+        }
+      ],
+      "lyrics": [],
+      "speakers": [
+        "찬"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "inner_thought"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "찬"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 68,
+      "shot_raw": "미들샷",
+      "description": "하은이 반짝이는 눈빛을 하며 생각한다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [
+        {
+          "speaker": "하은",
+          "text": "‘다들 여기로 오고 있잖아..!!’"
+        }
+      ],
+      "lyrics": [],
+      "speakers": [
+        "하은"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "inner_thought"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "하은",
+          null
+        ]
+      ],
+      "cast": [
+        "하은"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 69,
+      "shot_raw": "클로즈업",
+      "description": "지우가 행복한 얼굴로 생각한다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [
+        {
+          "speaker": "지우",
+          "text": "‘행복해…’"
+        }
+      ],
+      "lyrics": [],
+      "speakers": [
+        "지우"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "happy",
+          "thinking"
+        ],
+        "D_text": [
+          "inner_thought"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 70,
+      "shot_raw": "클로즈업",
+      "description": "매리의 눈빛, 빛난다. 매리가 멤버들에게 말한다.",
+      "dialogue": [
+        {
+          "speaker": "매리",
+          "text": "“계속 가요. 지금이에요.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "매리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 71,
+      "shot_raw": "클로즈업",
+      "description": "무결이 관중쪽으로 발을 한발짝 더 내딛는다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "발",
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 72,
+      "shot_raw": "풀샷",
+      "description": "무결이 한발 앞으로 나가 말한다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“이건, 여러분들을 위한 노래예요!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 73,
+      "shot_raw": "효과컷",
+      "description": "빛의 파동이 퍼져나가며 어둠의 잔향을 지운다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“다시 피어, 쓰러진 자리 위”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 74,
+      "shot_raw": "풀샷",
+      "description": "서브무대 전체가 빛으로 물든다.",
+      "dialogue": [
+        {
+          "speaker": "무결",
+          "text": "“흩어진 꿈들이 날아올라-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "무결"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "interior",
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [
+        "effect"
+      ],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "무결"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 75,
+      "shot_raw": "클로즈업 크로스컷",
+      "description": "행복하게 무대하는 스트로베리 필즈 멤버들.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "cross"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 76,
+      "shot_raw": "클로즈업 크로스컷",
+      "description": "행복하게 무대하는 무결과 매리. — 진심어린 행복이 보인다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "cross",
+          "two_shot"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "무결",
+          null
+        ],
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "무결",
+        "매리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 77,
+      "shot_raw": "풀샷",
+      "description": "호응하는 서브스테이지의 관객들 사이 수상해보이는 사람 한명.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 78,
+      "shot_raw": "미들샷",
+      "description": "무서운 웃음을 짓는 태경이 말한다.",
+      "dialogue": [
+        {
+          "speaker": "태경",
+          "text": "“결국 이렇게 됐네… 무결.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "태경"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "scared",
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 79,
+      "shot_raw": "클로즈업",
+      "description": "무대 위 매리밴드 — 커튼콜을 하는 것처럼 손을 마주잡는 멤버들.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "손",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "매리",
+          null
+        ]
+      ],
+      "cast": [
+        "매리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 80,
+      "shot_raw": "풀샷",
+      "description": "앞에서 인사하는 스트로베리 필즈의 뒷모습과 반짝거리는 조명, 관객들의 환호.",
+      "dialogue": [
+        {
+          "speaker": "스트로베리 필즈",
+          "text": "“감사합니다!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "스트로베리 필즈"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "establishing",
+          "exterior"
+        ],
+        "F_pose": "both_up",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "street",
+      "scene_resolved": "exterior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 81,
+      "shot_raw": "미들샷",
+      "description": "매리와 무결 둘이 서로를 쳐다보며 웃는다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "street",
+      "scene_resolved": "exterior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "매리",
+          null
+        ],
+        [
+          "무결",
+          null
+        ]
+      ],
+      "cast": [
+        "매리",
+        "무결"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 82,
+      "shot_raw": "인서트컷",
+      "description": "무대 위 청명한 하늘.",
+      "dialogue": [],
+      "sfx": [
+        "♩♪ “네가 내 곁에 있다면, 우리는 다시 피어나-” 스트로베리필즈의 노래가 울려퍼진다."
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "insert",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "stage",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+.vercel
+__pycache__/
+*.pyc
+*.pdf
+output/_*.png
+output/_*.svg
+.DS_Store
+node_modules/

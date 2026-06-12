@@ -1,0 +1,82 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글콘티 → 그림콘티 생성기</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+*{box-sizing:border-box}
+body{margin:0;background:#2b2f36;color:#e8eaed;font-family:'Nanum Pen Script','Malgun Gothic',sans-serif;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.wrap{width:100%;max-width:980px;padding:48px 24px 60px}
+h1{font-size:46px;margin:0 0 6px}
+.sub{color:#9aa0a8;font-size:22px;margin-bottom:30px}
+.run{background:#22252b;border:1px solid #3a3f47;border-left:5px solid #3f7fb0;border-radius:10px;
+  padding:18px 22px;margin-bottom:34px}
+.run b{font-size:20px}
+.run code{background:#343a43;color:#bcd;padding:3px 10px;border-radius:6px;font-size:18px}
+.run .note{color:#9aa0a8;font-size:16px;margin-top:8px}
+.cards{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:40px}
+a.card{flex:1;min-width:240px;background:#343a43;border:1px solid #444b55;border-radius:14px;
+  padding:24px 22px;text-decoration:none;color:#e8eaed;transition:.15s}
+a.card:hover{background:#3d4450;border-color:#3f7fb0;transform:translateY(-2px)}
+.card .ic{font-size:30px}
+.card .t{font-size:26px;margin:8px 0 4px}
+.card .d{color:#9aa0a8;font-size:17px;line-height:1.5}
+.card.primary{background:#3f7fb0;border-color:#3f7fb0}
+.card.primary .d{color:#dde}
+h2{font-size:28px;margin:34px 0 14px;border-bottom:1px solid #3a3f47;padding-bottom:8px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:#343a43;border:1px solid #444b55;border-radius:20px;padding:6px 16px;font-size:17px;color:#cdd}
+ul{line-height:1.9;font-size:18px;color:#cdd}
+ul code{background:#343a43;color:#bcd;padding:2px 8px;border-radius:5px;font-size:16px}
+.muted{color:#8a929c;font-size:16px}
+</style></head><body><div class="wrap">
+
+<h1>글콘티 → 그림콘티</h1>
+<div class="sub">텍스트 콘티를 넣으면 그림 콘티(SVG)를 자동 생성합니다 · 손그림 필터 · 흑백/컬러</div>
+
+<div class="run">
+  <b>▶ 바로 사용:</b> 아래 <b>[직접 생성]</b> 을 눌러 글콘티를 입력하고 [생성] — <b>설치 없이</b> 웹에서 바로 동작합니다.
+  <div class="note">· 흑백/컬러 전환 · SVG 파일 저장 가능</div>
+  <div class="note">· 내 PC에서 직접 실행하려면: 프로젝트 폴더의 <code>서버실행.bat</code> 더블클릭 (또는 <code>python src/server.py</code>)</div>
+</div>
+
+<div class="cards">
+  <a class="card primary" href="viewer.html#gen">
+    <div class="ic">✎</div><div class="t">직접 생성</div>
+    <div class="d">글콘티를 쓰거나 붙여넣고 [생성] → 오른쪽에 그림콘티가 바로</div>
+  </a>
+  <a class="card" href="viewer.html">
+    <div class="ic">📺</div><div class="t">결과 뷰어</div>
+    <div class="d">20화 콘티·원본 비교·캐릭터/포즈/표정/각도 시트 등 7개 탭</div>
+  </a>
+</div>
+
+<h2>뷰어 탭</h2>
+<div class="tabs">
+  <span class="chip">유형/포즈 샘플</span>
+  <span class="chip">풀하우스 EP01 (입력↔출력)</span>
+  <span class="chip">20화 ↔ 원본 비교</span>
+  <span class="chip">캐릭터 시트</span>
+  <span class="chip">바디/포즈 (30종)</span>
+  <span class="chip">시점/각도</span>
+  <span class="chip">✎ 직접 생성</span>
+</div>
+
+<h2>입력 형식</h2>
+<ul>
+  <li><code>번호. [샷] 상황묘사 / 화자: "대사"</code></li>
+  <li>샷: <code>풀샷</code> · <code>미들샷</code> · <code>클로즈업</code> · <code>롱샷</code></li>
+  <li>인물 이름(매리·무결·엘리·라이더·정인 등) → 색·성별 자동 반영</li>
+  <li>“둘 / 서로” → 2명, “사람들” → 다인물, “(속마음)” → 생각 풍선, “효과음:” → 효과음</li>
+</ul>
+
+<h2>다른 실행 방법</h2>
+<ul>
+  <li><code>python src/server.py</code> — 웹앱(뷰어+실시간 생성). <b>가장 편함</b></li>
+  <li><code>python src/generate.py 내콘티.txt</code> — 파일 1개 → SVG 1장 (.pdf도 가능)</li>
+  <li><code>python src/batch_generate.py</code> — data의 20화 일괄 생성</li>
+</ul>
+
+<p class="muted">* 손그림 떨림 필터와 손글씨 폰트는 브라우저(크롬)에서만 보입니다.</p>
+
+</div></body></html>

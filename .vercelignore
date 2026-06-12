@@ -1,0 +1,10 @@
+# 용량 큰/불필요 파일 배포 제외
+data/
+*.pdf
+__pycache__/
+**/__pycache__/
+*.pyc
+.git/
+서버실행.bat
+output/_*.png
+output/_*.svg
