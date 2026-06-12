@@ -86,6 +86,8 @@ def esc(s):
 HEAD = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Storyboard · 뷰어</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
@@ -196,9 +198,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
 .gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
 /* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감(여백·그림자·카드테두리 없음) */
-.pstack{display:flex;flex-direction:column;gap:0;background:#fff;border-radius:14px;
-  overflow:hidden;box-shadow:0 10px 36px rgba(0,0,0,.4)}
-.gcard{display:flex;flex-direction:column;background:#fff;position:relative}
+.pstack{display:flex;flex-direction:column;gap:16px;background:#fff;border-radius:14px;
+  padding:16px;box-shadow:0 10px 36px rgba(0,0,0,.4)}
+.gcard{display:flex;flex-direction:column;background:#fff;position:relative;border-radius:6px;overflow:hidden}
 .gcard.busy{opacity:.5}
 .gcard svg{display:block;width:100%;height:auto}
 /* 컨트롤바: 평소엔 숨김 → 컷에 마우스 올리면 그림 위에 떠오름(캔버스 연속성 유지) */
