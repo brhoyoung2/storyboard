@@ -197,25 +197,26 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
   border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
 .gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
-/* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감(여백·그림자·카드테두리 없음) */
+/* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감. 첫 컷 위·아래 여백을 컷 간격과 동일하게 */
 .pstack{display:flex;flex-direction:column;gap:160px;background:#fff;border-radius:14px;
-  padding:16px;box-shadow:0 10px 36px rgba(0,0,0,.4)}
+  padding:160px 16px;box-shadow:0 10px 36px rgba(0,0,0,.4)}
 .gcard{display:flex;flex-direction:column;background:#fff;position:relative;border-radius:6px;overflow:hidden}
 .gcard.busy{opacity:.5}
 .gcard svg{display:block;width:100%;height:auto}
-/* 컨트롤바: 평소엔 숨김 → 컷에 마우스 올리면 그림 위에 떠오름(캔버스 연속성 유지) */
-.gcard-bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:7px;align-items:center;flex-wrap:wrap;
-  padding:10px 12px;background:rgba(13,16,24,.86);backdrop-filter:blur(8px);
-  opacity:0;transform:translateY(8px);transition:.16s;pointer-events:none}
-.gcard:hover .gcard-bar{opacity:1;transform:none;pointer-events:auto}
-.gcard-bar .pn{font-size:13px;font-weight:800;color:#aeb6cc;margin-right:2px}
-.gcard-bar select{font-family:inherit;font-size:13px;padding:6px 9px;border-radius:8px;
-  background:var(--card2);color:var(--tx);border:1px solid var(--line);cursor:pointer;outline:none}
-.gcard-bar select:hover{border-color:#3a415a}
-.gcard-bar .iconbtn{font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;
-  border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.12s}
-.gcard-bar .iconbtn:hover{border-color:#7c5cff;color:#fff}
-.gcard-bar .sp{flex:1}
+/* 컨트롤: 평소 숨김 → 컷에 마우스 올리면 우측에 화이트 UI 패널로 떠오름 */
+.gcard-bar{position:absolute;top:50%;right:14px;transform:translate(12px,-50%);
+  display:flex;flex-direction:column;gap:8px;align-items:stretch;width:178px;
+  padding:13px;background:#fff;border:1px solid #e4e7ef;border-radius:13px;
+  box-shadow:0 12px 30px rgba(0,0,0,.22);opacity:0;transition:.16s;pointer-events:none;z-index:5}
+.gcard:hover .gcard-bar{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+.gcard-bar .pn{font-size:12px;font-weight:800;color:#9aa0b2;letter-spacing:.04em}
+.gcard-bar select{font-family:inherit;font-size:13px;padding:8px 9px;border-radius:9px;
+  background:#f5f6fa;color:#222;border:1px solid #dde1ec;cursor:pointer;outline:none;width:100%}
+.gcard-bar select:hover{border-color:#a99bff}
+.gcard-bar .iconbtn{font-size:13px;font-weight:700;padding:9px 10px;border-radius:9px;cursor:pointer;
+  border:1px solid #dde1ec;background:#f5f6fa;color:#333;transition:.12s;width:100%}
+.gcard-bar .iconbtn:hover{border-color:#7c5cff;color:#7c5cff;background:#fff}
+.gcard-bar .sp{display:none}
 /* 컷 번호 배지(좌상단, 항상 표시) */
 .gcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.55)}

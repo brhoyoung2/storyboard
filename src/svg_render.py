@@ -786,12 +786,20 @@ def wrap(text, n):
     return out or [""]
 
 
-def bubble(x, y, text, kind="dialogue", maxw=260):
-    chars_per = max(6, int(maxw / 24))
+def bubble_size(text, kind="dialogue", maxw=330):
+    chars_per = max(6, int(maxw / 28))
     lines = wrap(text, chars_per)
-    lh = 33
-    h = len(lines) * lh + 30
-    w = min(maxw, max(96, max(len(l) for l in lines) * 24 + 32))
+    lh = 42
+    w = min(maxw, max(110, max(len(l) for l in lines) * 28 + 36))
+    return w, len(lines) * lh + 34
+
+
+def bubble(x, y, text, kind="dialogue", maxw=330):
+    chars_per = max(6, int(maxw / 28))
+    lines = wrap(text, chars_per)
+    lh = 42
+    h = len(lines) * lh + 34
+    w = min(maxw, max(110, max(len(l) for l in lines) * 28 + 36))
     s = []
     if kind == "narration":
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" '
@@ -805,9 +813,9 @@ def bubble(x, y, text, kind="dialogue", maxw=260):
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="16" '
                  f'fill="white" stroke="{INK}" stroke-width="1.8"/>')
         s.append(f'<path d="M{x+w*0.3},{y+h} l-6,18 l22,-16 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
-    ty = y + 28
+    ty = y + 34
     for ln in lines:
-        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="25" '
+        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="33" '
                  f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
         ty += lh
     return "".join(s), (w, h)
@@ -818,8 +826,8 @@ def caption_box(text, h, panel_w=W):
     text = (text or "").strip()
     if not text:
         return ""
-    fs = 28                                   # 큰 글씨
-    maxw = int(panel_w * 0.82)
+    fs = 52                                   # 식자(캡션) 글씨 — 크게(2배급)
+    maxw = int(panel_w * 0.9)
     cps = max(8, int(maxw / (fs * 0.62)))
     lines = wrap(text, cps)[:3]
     lh = fs + 11
@@ -1068,14 +1076,32 @@ def render_panel(panel, y0):
         s.append(f'<rect x="{W*0.25}" y="{h*0.3}" width="{W*0.5}" height="{h*0.4}" '
                  f'fill="none" stroke="{INK2}" stroke-width="1.5" stroke-dasharray="6 6"/>')
     elif people == "group":
-        # 다인물: 작은 인물 여럿 (가운데가 주인공 포즈/표정)
-        gf = dict(frame); gf["head_r"] = frame["head_r"] * 0.6
-        xs = (0.20, 0.4, 0.6, 0.8) if len(actors) >= 4 else (0.24, 0.5, 0.76)
-        for i, gx in enumerate(xs):
-            mid = (i == len(xs)//2)
-            nm, g = actor(i)
-            s.append(person(W*gx, gf, emo if mid else "neutral",
-                            nm, facing=0.0, pose=pose if mid else "stand", gender=g))
+        # 다인물: 지면(수평선)에 발을 딛고 선 군중. 비균등 간격·원근(깊이)·다양한 포즈/방향으로 자연스럽게.
+        horizon = h * 0.60
+        na = len(actors)
+        n = min(max(na if na >= 2 else 3, 2), 5)
+        XS = {2: [0.33, 0.67], 3: [0.20, 0.50, 0.80],
+              4: [0.17, 0.39, 0.62, 0.85], 5: [0.13, 0.33, 0.52, 0.71, 0.90]}[n]
+        POSES_G = ["stand", "walk", "stand", "walk", "walk"]
+        FACE_G = [0.0, 0.30, -0.25, 0.18, -0.12]
+        SCL_G = [1.0, 0.80, 1.14, 0.90, 0.72]          # 깊이감(원근): 클수록 앞·아래
+        members = []
+        for i in range(n):
+            sc = SCL_G[i % len(SCL_G)]
+            gr = h * 0.060 * sc                         # 패널 높이에 비례(샷 무관하게 전신이 들어감)
+            foot_y = horizon + (sc - 0.95) * h * 0.30   # 가까울수록 지면 아래, 멀수록 수평선 근처
+            gf = dict(frame)
+            gf["head_r"] = gr
+            gf["head_cy"] = (foot_y - 7.0 * gr) / h     # 발이 foot_y에 닿도록 머리 위치 역산
+            nm, ggd = actor(i)
+            if nm is None and ggd is None:
+                ggd = "F" if i % 2 == 0 else "M"        # 익명 군중은 성별 교차로 다양하게
+            mid = (i == n // 2)
+            pz = pose if (mid and pose != "stand") else POSES_G[i % len(POSES_G)]
+            members.append((sc, person(W*XS[i], gf, emo if mid else "neutral",
+                                       nm, facing=FACE_G[i % len(FACE_G)], pose=pz, gender=ggd)))
+        for _sc, ps in sorted(members, key=lambda m: m[0]):   # 뒤(작은)→앞(큰) 순으로 그려 겹침 자연스럽게
+            s.append(ps)
     elif people == 2:
         tv = "profile" if view == "profile" else "q3"
         close = pose in ("kiss", "hug")                 # 키스/포옹은 더 가까이
@@ -1093,17 +1119,19 @@ def render_panel(panel, y0):
 
     s.append('</g>')  # /rough
 
-    # 효과음
+    # 효과음 — 인물(중앙)·말풍선(우상단)과 안 겹치게 빈 좌상단 여백에 배치
     for i, fx in enumerate(panel.get("sfx", [])[:2]):
-        s.append(sfx(W*0.55 + i*30, h*0.35 + i*70, fx))
+        s.append(sfx(W*0.07, h*0.17 + i*80, fx))
 
-    # 말풍선
-    by = 40
+    # 말풍선 — 우상단, 패널 안에 들어오도록 폭만큼 우측 정렬
+    by = 36
     for d in panel.get("dialogue", []):
-        b, (bw, bh) = bubble(W - 280, by, d["text"], "dialogue")
+        bw0, _ = bubble_size(d["text"], "dialogue")
+        b, (bw, bh) = bubble(W - bw0 - 22, by, d["text"], "dialogue")
         s.append(b); by += bh + 14
     for d in panel.get("inner", []):
-        b, (bw, bh) = bubble(W - 280, by, d["text"], "inner")
+        bw0, _ = bubble_size(d["text"], "inner")
+        b, (bw, bh) = bubble(W - bw0 - 22, by, d["text"], "inner")
         s.append(b); by += bh + 14
     # 하단 캡션: 나레이션이 있으면 나레이션, 없으면 묘사 — 네모박스·가운데·큰 글씨
     cap = " ".join(panel.get("narration", [])).strip()
