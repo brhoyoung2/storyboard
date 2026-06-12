@@ -1,0 +1,4068 @@
+{
+  "file": "풀하우스_EP02.txt",
+  "panel_count": 77,
+  "panels": [
+    {
+      "num": 1,
+      "shot_raw": "미들샷, 투샷",
+      "description": "엘리와 라이더가 어이없다는 듯 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "“.....고양이?” (1화 마지막 컷)"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "dumbfound"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 2,
+      "shot_raw": "미들샷",
+      "description": "루나, 엘리와 라이더를 바라보며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“뭘봐, 말하는 고양이 처음봐?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "루나",
+        "엘리",
+        "라이더"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 3,
+      "shot_raw": "풀샷",
+      "description": "엘리, 라이더 너무 놀라 뒷걸음질 친다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“고양이가 말을 해?!?!?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "walk",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 4,
+      "shot_raw": "클로즈업",
+      "description": "루나 눈동자가 반짝인다.",
+      "dialogue": [],
+      "sfx": [
+        "‘반짝-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 5,
+      "shot_raw": "미들샷",
+      "description": "루나, 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“난 루나. 시간을 관장하는 영물이야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 6,
+      "shot_raw": "클로즈업",
+      "description": "루나, 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“이곳에 들어온 인간은 모두 -”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 7,
+      "shot_raw": "미디엄샷",
+      "description": "젊어진 엘리와 라이더의 모습을 보여준다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“-20대 모습으로 돌아가지.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 8,
+      "shot_raw": "클로즈업샷",
+      "description": "놀라는 엘리와 라이더.",
+      "dialogue": [
+        {
+          "speaker": "라이더, 엘리",
+          "text": "“뭐…?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 9,
+      "shot_raw": "클로즈업샷 연속컷",
+      "description": "라이더, 젊어진 자신의 손을 바라본다. 크게 웃는 라이더.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“하….”"
+        },
+        {
+          "speaker": "라이더",
+          "text": "“하하하!!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "손",
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "laugh",
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 10,
+      "shot_raw": "미들샷",
+      "description": "라이더, 벅찬 표정으로 말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“지금 이 모습이라면 다시 스타가 될 수 있어!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "찬",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "찬"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 11,
+      "shot_raw": "클로즈업",
+      "description": "엘리, 뚱한 표정으로 라이더를 쳐다본다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“뭐, 유명해져서 연애라도 할 생각이신가?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "dumbfound"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 12,
+      "shot_raw": "클로즈업 sd컷",
+      "description": "라이더, 엘리를 정떨어진다는 듯이 쳐다본다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“....당신은 그 입이 문제야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 13,
+      "shot_raw": "미들샷 sd컷",
+      "description": "엘리, 지지않고 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“당신은 모든게 문제야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 14,
+      "shot_raw": "미들샷, 투샷",
+      "description": "발끈하는 라이더.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“이 여편네가 진짜!” 엘리: “흥-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 15,
+      "shot_raw": "미들샷",
+      "description": "둘을 보며 말하는 루나.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“혈기왕성하구나. 목소리가 아주 우렁차졌네.”"
+        }
+      ],
+      "sfx": [
+        "‘싱긋-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 16,
+      "shot_raw": "풀샷",
+      "description": "라이더, 루나쪽으로 고개를 돌리며 말한다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“그래서, 이제 어떻게 되는겁니까?”"
+        }
+      ],
+      "sfx": [
+        "‘휙-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "루나"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 17,
+      "shot_raw": "미들샷",
+      "description": "엘리와 라이더의 모습.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“계속 이렇게 살아도.. 되는겁니까?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 18,
+      "shot_raw": "클로즈업 연속컷",
+      "description": "라이더의 긴장된 표정. 덩달아 긴장한 엘리.",
+      "dialogue": [],
+      "sfx": [
+        "‘꿀꺽-’ (엘리의 침 삼키는 소리)"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "sequence",
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 19,
+      "shot_raw": "클로즈업",
+      "description": "루나의 입 클로즈업",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“조건이 있어.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "입",
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 20,
+      "shot_raw": "미들샷",
+      "description": "루나가 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“젊게 사는 대신, 24시간이 경과할 때마다 실제 수명도 하루씩 줄어들거야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 21,
+      "shot_raw": "미들샷",
+      "description": "엘리와 라이더가 놀라 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "“...뭐라구요?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 22,
+      "shot_raw": "클로즈업",
+      "description": "루나가 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“싫어?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 23,
+      "shot_raw": "미들샷",
+      "description": "루나가 몸을 돌려 떠나려고 한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“그럼 원래의 쭈글쭈글한 모습으로 돌려주고~”"
+        },
+        {
+          "speaker": "효과움",
+          "text": "‘휙-’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나",
+        "효과움"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 24,
+      "shot_raw": "클로즈업",
+      "description": "엘리가 소리친다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“안돼요!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 25,
+      "shot_raw": "미들샷 로우앵글",
+      "description": "엘리, 바닥을 보며 혼잣말 한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“어떻게 얻은 젊음인데….”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "low_angle"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 26,
+      "shot_raw": "미들샷",
+      "description": "라이더, 엘리를 비웃듯이 쳐다본다. 라이더:",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "당신도 젊어지면 하고싶었던 게 있었나보지?"
+        }
+      ],
+      "sfx": [
+        "“훗-”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 27,
+      "shot_raw": "클로즈업 연속컷",
+      "description": "엘리, 혼잣말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“꼭 그렇다기보단…..”"
+        },
+        {
+          "speaker": "엘리",
+          "text": "“하루하루 늙어가던 인생이었으니…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 28,
+      "shot_raw": "풀샷",
+      "description": "그런 엘리를 바라보는 라이더.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“...”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 29,
+      "shot_raw": "미들샷",
+      "description": "손을 피고 엘리에게 말하는 라이더.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“100일, 어때?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 30,
+      "shot_raw": "미들샷",
+      "description": "라이더가 엘리에게 말한다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“딱 100일만 젊음을 누리고, 원래로 돌아오는거야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 31,
+      "shot_raw": "클로즈업 연속컷",
+      "description": "잠시 생각하는 엘리, 결심했다는 듯이 고개를 끄덕인다.",
+      "dialogue": [],
+      "sfx": [
+        "“끄덕-”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 32,
+      "shot_raw": "클로즈업",
+      "description": "루나, 말한다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“좋아.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 33,
+      "shot_raw": "미들샷",
+      "description": "루나, 폴짝 뛰더니 사라진다.",
+      "dialogue": [
+        {
+          "speaker": "루나",
+          "text": "“그럼 100일 후에 보자고.”"
+        }
+      ],
+      "sfx": [
+        "“폴짝-”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "루나"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "jump",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "루나",
+          null
+        ]
+      ],
+      "cast": [
+        "루나"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 34,
+      "shot_raw": "미들샷",
+      "description": "생각에 잠긴 엘리와 라이더.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "‘다시 찾아온 청춘..’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 35,
+      "shot_raw": "클로즈업샷 단독컷 2개, 크로스 연출",
+      "description": "라이더, 엘리 비장한 표정으로 함께 생각한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "‘-이대론 못보내!’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "cross",
+          "solo",
+          "two_shot"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 36,
+      "shot_raw": "롱샷",
+      "description": "다음날, 평화로운 풀하우스.",
+      "dialogue": [],
+      "sfx": [
+        "“짹쨱~” (평화로운 새 소리)"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "long",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "unknown",
+      "scene_resolved": "blank",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 37,
+      "shot_raw": "풀샷",
+      "description": "아침부터 풀하우스에는 행복한 노랫소리가 들린다. 풀하우스의 내부, 엘리 방 쪽 풍경.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“흐흠~♩ ♪”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 38,
+      "shot_raw": "풀샷",
+      "description": "엘리, 젊을적의 옷을 입어보며 행복해하고 있다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 39,
+      "shot_raw": "미들샷",
+      "description": "엘리, 행복한 얼굴로 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“젊어지니까 이런것도 잘어울리네!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 40,
+      "shot_raw": "풀샷",
+      "description": "한편, 라이더의 방 쪽 풍경.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "(소리만) “후후…”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 41,
+      "shot_raw": "클로즈업 - 미들샷 연속컷",
+      "description": "거울을 보며 자신의 모습에 취한 라이더, 웃으며 말한다. 라이더:",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "그래.. 이게 나지."
+        },
+        {
+          "speaker": "라이더",
+          "text": "“-빛이난다 아주!!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "sequence"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 42,
+      "shot_raw": "미들샷 단독컷 2개",
+      "description": "행복한 모습으로 계단을 내려오는 라이더와 행복한 모습으로 1층 복도를 걷고있는 엘리.",
+      "dialogue": [
+        {
+          "speaker": "둘 다",
+          "text": "“♩ ♪ ♫ ♬~”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "둘 다"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "solo",
+          "two_shot"
+        ],
+        "C_emotion": [
+          "happy"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 43,
+      "shot_raw": "풀샷",
+      "description": "둘이 딱! 마주친다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 44,
+      "shot_raw": "미들샷 단독컷 2개, 크로스 연출",
+      "description": "서로를 보며 생각하는 둘.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "‘깐깐한 할망구..’ 엘리: ‘나르시스트 영감..’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "cross",
+          "solo",
+          "two_shot"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 45,
+      "shot_raw": "풀샷",
+      "description": "그렇게 서로를 지나치려고 하는데, 어떤 소리가 들려온다.",
+      "dialogue": [],
+      "sfx": [
+        "“쾅쾅쾅!”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 46,
+      "shot_raw": "클로즈업샷",
+      "description": "엘리, 놀란다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“앗!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 47,
+      "shot_raw": "미들샷",
+      "description": "라이더를 바라보며 말하는 엘리.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“맞아! 오늘 중개인이 다시 온다고 했었는데!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 48,
+      "shot_raw": "풀샷, 둘의 투샷",
+      "description": "라이더, 같이 놀라며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“뭐? 그걸 지금 말하면 어떡해!!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "surprise"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 49,
+      "shot_raw": "미들샷",
+      "description": "",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“아무도 없어요??? 뭐야 이사람들?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 50,
+      "shot_raw": "클로즈업",
+      "description": "툴툴거리는 민준석. 그 때, 집 문이 열린다.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“분명 이 시간에 오랬으면서-”"
+        }
+      ],
+      "sfx": [
+        "‘끼익-’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "establishing",
+          "exterior",
+          "interior"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": true,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 51,
+      "shot_raw": "미들샷",
+      "description": "문이 열리고 등장하는 두명. 얼굴은 보이지 않고 목~가슴까지 등장하는 미들샷.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 52,
+      "shot_raw": "미들샷",
+      "description": "어색하게 인사하는 엘리.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“아하하, 안녕하세요?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "wave",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 53,
+      "shot_raw": "미들샷",
+      "description": "그 옆에 라이더, 어색하게 인사한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“좋은 아침입니다!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "wave",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 54,
+      "shot_raw": "미들샷",
+      "description": "어이없는 표정의 민준석.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“...여기 풀하우스 아닌가요?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "dumbfound"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 55,
+      "shot_raw": "미들샷",
+      "description": "당황하는 엘리와 라이더.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "“아.. 그, 그러니까-”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "flustered"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 56,
+      "shot_raw": "클로즈업",
+      "description": "눈빛을 교환하는 엘리와 라이더.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "눈",
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "symbolic"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 57,
+      "shot_raw": "미들샷, 투샷",
+      "description": "엘리와 라이더가 환하게 웃으며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리, 라이더",
+          "text": "“저희는 엘리, 라이더 부부의 조카입니다!”"
+        }
+      ],
+      "sfx": [
+        "‘짜잔~’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 58,
+      "shot_raw": "클로즈업샷",
+      "description": "황당한 표정의 민준석.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“...예?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "dumbfound"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 59,
+      "shot_raw": "풀샷",
+      "description": "코믹한 느낌의 세명,",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [],
+      "cast": [],
+      "n_people": 1
+    },
+    {
+      "num": 60,
+      "shot_raw": "엘리 클로즈업",
+      "description": "엘리가 천연덕스럽게 말한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“아니 그게~ 두분이 갑자기 사이가 너~~무 좋아지셨지 뭐에요?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 61,
+      "shot_raw": "라이더 클로즈업",
+      "description": "라이더도 시치미를 떼고 말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“그래서 지금 같이 한국으로 떠나셨답니다! 황혼여행이나 뭐라나. 하하!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 62,
+      "shot_raw": "미들샷",
+      "description": "둘이 징그럽게 애정표현을 하는 것을 상상하기 시작하는 민준석. 표정이 안좋다.",
+      "dialogue": [],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "silent"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 63,
+      "shot_raw": "엘리 클로즈업",
+      "description": "민준석의 상상, 늙은 엘리가 한국을 배경으로 라이더에게 김치를 먹여준다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“여보~ 김치 한 입 해~!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석",
+        "엘리",
+        "라이더"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 64,
+      "shot_raw": "라이더 클로즈업",
+      "description": "늙은 라이더, 감동받은 표정을 짓는다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“나의 엘리..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 65,
+      "shot_raw": "미들샷",
+      "description": "라이더와 엘리, 손을 잡고 강강술래를 돈다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“하하하~~”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "reach",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 66,
+      "shot_raw": "민준석 클로즈업",
+      "description": "민준석, 믿을 수 없다는 표정으로 혼잣말한다.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“그런 사이로는 안보였는데..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 67,
+      "shot_raw": "미들샷",
+      "description": "민준석이 엘리를 째려본다. 엘리, 뜨끔한다.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“흠…”"
+        }
+      ],
+      "sfx": [
+        "‘뜨끔!’"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "angry"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 68,
+      "shot_raw": "미들샷",
+      "description": "라이더, 엘리와 민준석 사이에 끼어들며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“아무튼!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "group"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ],
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리",
+        "민준석"
+      ],
+      "n_people": "group"
+    },
+    {
+      "num": 69,
+      "shot_raw": "미들샷",
+      "description": "라이더가 웃으며 말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“두 분이 돌아오시면 다시 연락드리겠습니다. 지금은 아무래도 어려울 것 같네요.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "smile"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 70,
+      "shot_raw": "미들샷",
+      "description": "여전히 둘을 수상하다는 듯이 쳐다보는 민준석.문이 닫힌다.",
+      "dialogue": [
+        {
+          "speaker": null,
+          "text": "“.. 알겠습니다.”"
+        }
+      ],
+      "sfx": [
+        "“쾅!”"
+      ],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue",
+          "sfx"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 71,
+      "shot_raw": "풀샷",
+      "description": "풀하우스 내부 문 앞, 부부가 함께 한숨을 쉰다.",
+      "dialogue": [
+        {
+          "speaker": "앨리, 라이더",
+          "text": "“휴…..”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더",
+        "앨리"
+      ],
+      "axes": {
+        "A_shot": "full",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "sad"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 72,
+      "shot_raw": "미들샷",
+      "description": "엘리, 라이더를 쳐다보며 생각한다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "‘이럴땐 은근 죽이 잘맞는단 말이지.’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ],
+        [
+          "라이더",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리",
+        "라이더"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 73,
+      "shot_raw": "클로즈업",
+      "description": "라이더, 엘리를 쳐다본다. 잘생긴 얼굴.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“뭘 봐?”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": "얼굴",
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 74,
+      "shot_raw": "미들샷",
+      "description": "엘리, 고개를 돌리며 간다. 얼굴이 살짝 빨개져 있다.",
+      "dialogue": [
+        {
+          "speaker": "엘리",
+          "text": "“아무것도 안봤거든!”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "엘리"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "flustered"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "엘리"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 75,
+      "shot_raw": "미들샷",
+      "description": "라이더, 엘리의 뒷모습을 보며 혼잣말한다.",
+      "dialogue": [
+        {
+          "speaker": "라이더",
+          "text": "“할망구, 싱겁긴.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "라이더"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "two_shot"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "라이더",
+          null
+        ],
+        [
+          "엘리",
+          null
+        ]
+      ],
+      "cast": [
+        "라이더",
+        "엘리"
+      ],
+      "n_people": 2
+    },
+    {
+      "num": 76,
+      "shot_raw": "클로즈업",
+      "description": "한편, 풀하우스를 돌아보며 민준석이 생각한다.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "‘두고봐. 꼭 다시 돌아온다.’"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "closeup",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "thinking"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "q3"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    },
+    {
+      "num": 77,
+      "shot_raw": "미들샷",
+      "description": "민준석 뒤로 자리잡은 아름다운 풀하우스.",
+      "dialogue": [
+        {
+          "speaker": "민준석",
+          "text": "“풀하우스는 내꺼야.”"
+        }
+      ],
+      "sfx": [],
+      "narration": [],
+      "inner": [],
+      "lyrics": [],
+      "speakers": [
+        "민준석"
+      ],
+      "axes": {
+        "A_shot": "medium",
+        "A_focus": null,
+        "B_compose": [
+          "single"
+        ],
+        "C_emotion": [
+          "neutral"
+        ],
+        "D_text": [
+          "dialogue"
+        ],
+        "E_scene": [
+          "unspecified"
+        ],
+        "F_pose": "stand",
+        "G_view": "front"
+      },
+      "flags": [],
+      "gender_hint": null,
+      "location": "home",
+      "scene_resolved": "interior",
+      "scene_explicit": false,
+      "actors": [
+        [
+          "민준석",
+          null
+        ]
+      ],
+      "cast": [
+        "민준석"
+      ],
+      "n_people": 1
+    }
+  ]
+}

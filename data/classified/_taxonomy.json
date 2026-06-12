@@ -1,0 +1,86 @@
+{
+  "A_shot": {
+    "closeup": 689,
+    "medium": 686,
+    "full": 270,
+    "long": 36,
+    "extreme_closeup": 21,
+    "insert": 18,
+    "sd": 2
+  },
+  "B_compose": {
+    "single": 1114,
+    "two_shot": 424,
+    "group": 85,
+    "sequence": 72,
+    "low_angle": 27,
+    "high_angle": 22,
+    "frontal": 15,
+    "cross": 8,
+    "solo": 6
+  },
+  "C_emotion": {
+    "neutral": 1241,
+    "thinking": 119,
+    "smile": 113,
+    "surprise": 49,
+    "flustered": 43,
+    "angry": 31,
+    "serious": 26,
+    "sad": 25,
+    "happy": 23,
+    "crying": 22,
+    "dumbfound": 22,
+    "smirk": 16,
+    "worried": 12,
+    "shock": 10,
+    "pain": 9,
+    "scared": 9,
+    "tired": 6,
+    "smug": 4,
+    "love": 4,
+    "curious": 2,
+    "laugh": 1
+  },
+  "D_text": {
+    "dialogue": 1083,
+    "silent": 465,
+    "sfx": 180,
+    "inner_thought": 43,
+    "narration": 13,
+    "lyrics": 4
+  },
+  "E_scene": {
+    "unspecified": 1442,
+    "interior": 150,
+    "establishing": 71,
+    "symbolic": 66,
+    "exterior": 58
+  },
+  "scene_resolved": {
+    "interior": 811,
+    "blank": 377,
+    "exterior": 330,
+    "establishing": 204
+  },
+  "location": {
+    "unknown": 377,
+    "street": 317,
+    "home": 295,
+    "stage": 253,
+    "house_ext": 204,
+    "basement": 163,
+    "studio": 39,
+    "cafe": 35,
+    "bedroom": 22,
+    "garden": 13,
+    "study": 2,
+    "attic": 2
+  },
+  "flags": {
+    "effect": 25,
+    "flashback": 24
+  },
+  "total_panels": 1722,
+  "episodes": 20
+}

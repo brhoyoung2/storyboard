@@ -1,0 +1,353 @@
+{
+  "distinct_types": 58,
+  "types": [
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 331
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 327
+    },
+    {
+      "shot": "medium",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 152
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "silent",
+      "count": 110
+    },
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "silent",
+      "count": 100
+    },
+    {
+      "shot": "full",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 88
+    },
+    {
+      "shot": "full",
+      "compose": "single",
+      "text": "silent",
+      "count": 84
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 77
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "sfx",
+      "count": 55
+    },
+    {
+      "shot": "medium",
+      "compose": "two_shot",
+      "text": "silent",
+      "count": 49
+    },
+    {
+      "shot": "full",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 45
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "silent",
+      "count": 33
+    },
+    {
+      "shot": "full",
+      "compose": "two_shot",
+      "text": "silent",
+      "count": 29
+    },
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "sfx",
+      "count": 27
+    },
+    {
+      "shot": "closeup",
+      "compose": "sequence",
+      "text": "dialogue",
+      "count": 26
+    },
+    {
+      "shot": "long",
+      "compose": "single",
+      "text": "silent",
+      "count": 21
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "inner_thought",
+      "count": 20
+    },
+    {
+      "shot": "closeup",
+      "compose": "sequence",
+      "text": "silent",
+      "count": 15
+    },
+    {
+      "shot": "full",
+      "compose": "single",
+      "text": "sfx",
+      "count": 12
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "sfx",
+      "count": 11
+    },
+    {
+      "shot": "extreme_closeup",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 11
+    },
+    {
+      "shot": "insert",
+      "compose": "single",
+      "text": "silent",
+      "count": 10
+    },
+    {
+      "shot": "medium",
+      "compose": "sequence",
+      "text": "dialogue",
+      "count": 9
+    },
+    {
+      "shot": "extreme_closeup",
+      "compose": "single",
+      "text": "silent",
+      "count": 9
+    },
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "inner_thought",
+      "count": 6
+    },
+    {
+      "shot": "long",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 5
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "inner_thought",
+      "count": 4
+    },
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "narration",
+      "count": 3
+    },
+    {
+      "shot": "closeup",
+      "compose": "sequence",
+      "text": "inner_thought",
+      "count": 3
+    },
+    {
+      "shot": "medium",
+      "compose": "two_shot",
+      "text": "inner_thought",
+      "count": 3
+    },
+    {
+      "shot": "full",
+      "compose": "single",
+      "text": "inner_thought",
+      "count": 3
+    },
+    {
+      "shot": "medium",
+      "compose": "two_shot",
+      "text": "narration",
+      "count": 3
+    },
+    {
+      "shot": "closeup",
+      "compose": "sequence",
+      "text": "sfx",
+      "count": 3
+    },
+    {
+      "shot": "insert",
+      "compose": "single",
+      "text": "dialogue",
+      "count": 3
+    },
+    {
+      "shot": "insert",
+      "compose": "single",
+      "text": "sfx",
+      "count": 3
+    },
+    {
+      "shot": "long",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 3
+    },
+    {
+      "shot": "long",
+      "compose": "two_shot",
+      "text": "silent",
+      "count": 3
+    },
+    {
+      "shot": "long",
+      "compose": "single",
+      "text": "sfx",
+      "count": 2
+    },
+    {
+      "shot": "sd",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 2
+    },
+    {
+      "shot": "full",
+      "compose": "two_shot",
+      "text": "inner_thought",
+      "count": 2
+    },
+    {
+      "shot": "full",
+      "compose": "two_shot",
+      "text": "sfx",
+      "count": 2
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "narration",
+      "count": 2
+    },
+    {
+      "shot": "full",
+      "compose": "single",
+      "text": "narration",
+      "count": 1
+    },
+    {
+      "shot": "medium",
+      "compose": "sequence",
+      "text": "silent",
+      "count": 1
+    },
+    {
+      "shot": "medium",
+      "compose": "single",
+      "text": "lyrics",
+      "count": 1
+    },
+    {
+      "shot": "insert",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 1
+    },
+    {
+      "shot": "insert",
+      "compose": "sequence",
+      "text": "sfx",
+      "count": 1
+    },
+    {
+      "shot": "closeup",
+      "compose": "single",
+      "text": "lyrics",
+      "count": 1
+    },
+    {
+      "shot": "full",
+      "compose": "two_shot",
+      "text": "narration",
+      "count": 1
+    },
+    {
+      "shot": "medium",
+      "compose": "two_shot",
+      "text": "sfx",
+      "count": 1
+    },
+    {
+      "shot": "long",
+      "compose": "single",
+      "text": "narration",
+      "count": 1
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "narration",
+      "count": 1
+    },
+    {
+      "shot": "full",
+      "compose": "sequence",
+      "text": "sfx",
+      "count": 1
+    },
+    {
+      "shot": "extreme_closeup",
+      "compose": "two_shot",
+      "text": "dialogue",
+      "count": 1
+    },
+    {
+      "shot": "closeup",
+      "compose": "two_shot",
+      "text": "lyrics",
+      "count": 1
+    },
+    {
+      "shot": "full",
+      "compose": "sequence",
+      "text": "silent",
+      "count": 1
+    },
+    {
+      "shot": "long",
+      "compose": "sequence",
+      "text": "dialogue",
+      "count": 1
+    },
+    {
+      "shot": "full",
+      "compose": "sequence",
+      "text": "dialogue",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "stem": "매리는_외박중_EP01",
+    "title": "매리는_외박중_EP01.txt",
+    "panels": 85,
+    "svg": "strips/매리는_외박중_EP01.svg",
+    "svg_h": 50160,
+    "ref": "refs/매리는_외박중_EP01.png",
+    "ref_pages": 23
+  },
+  {
+    "stem": "매리는_외박중_EP02",
+    "title": "매리는_외박중_EP02.txt",
+    "panels": 85,
+    "svg": "strips/매리는_외박중_EP02.svg",
+    "svg_h": 47020,
+    "ref": "refs/매리는_외박중_EP02.png",
+    "ref_pages": 21
+  },
+  {
+    "stem": "매리는_외박중_EP03",
+    "title": "매리는_외박중_EP03.txt",
+    "panels": 81,
+    "svg": "strips/매리는_외박중_EP03.svg",
+    "svg_h": 46320,
+    "ref": "refs/매리는_외박중_EP03.png",
+    "ref_pages": 21
+  },
+  {
+    "stem": "매리는_외박중_EP04",
+    "title": "매리는_외박중_EP04.txt",
+    "panels": 79,
+    "svg": "strips/매리는_외박중_EP04.svg",
+    "svg_h": 45340,
+    "ref": "refs/매리는_외박중_EP04.png",
+    "ref_pages": 22
+  },
+  {
+    "stem": "매리는_외박중_EP05",
+    "title": "매리는_외박중_EP05.txt",
+    "panels": 83,
+    "svg": "strips/매리는_외박중_EP05.svg",
+    "svg_h": 46780,
+    "ref": "refs/매리는_외박중_EP05.png",
+    "ref_pages": 15
+  },
+  {
+    "stem": "매리는_외박중_EP06",
+    "title": "매리는_외박중_EP06.txt",
+    "panels": 78,
+    "svg": "strips/매리는_외박중_EP06.svg",
+    "svg_h": 42920,
+    "ref": "refs/매리는_외박중_EP06.png",
+    "ref_pages": 14
+  },
+  {
+    "stem": "매리는_외박중_EP07",
+    "title": "매리는_외박중_EP07.txt",
+    "panels": 95,
+    "svg": "strips/매리는_외박중_EP07.svg",
+    "svg_h": 54160,
+    "ref": "refs/매리는_외박중_EP07.png",
+    "ref_pages": 16
+  },
+  {
+    "stem": "매리는_외박중_EP08",
+    "title": "매리는_외박중_EP08.txt",
+    "panels": 85,
+    "svg": "strips/매리는_외박중_EP08.svg",
+    "svg_h": 47660,
+    "ref": "refs/매리는_외박중_EP08.png",
+    "ref_pages": 15
+  },
+  {
+    "stem": "매리는_외박중_EP09",
+    "title": "매리는_외박중_EP09.txt",
+    "panels": 89,
+    "svg": "strips/매리는_외박중_EP09.svg",
+    "svg_h": 49880,
+    "ref": "refs/매리는_외박중_EP09.png",
+    "ref_pages": 14
+  },
+  {
+    "stem": "매리는_외박중_EP10",
+    "title": "매리는_외박중_EP10.txt",
+    "panels": 82,
+    "svg": "strips/매리는_외박중_EP10.svg",
+    "svg_h": 47660,
+    "ref": "refs/매리는_외박중_EP10.png",
+    "ref_pages": 13
+  },
+  {
+    "stem": "풀하우스_EP01",
+    "title": "풀하우스_EP01.txt",
+    "panels": 92,
+    "svg": "strips/풀하우스_EP01.svg",
+    "svg_h": 55500,
+    "ref": "refs/풀하우스_EP01.png",
+    "ref_pages": 16
+  },
+  {
+    "stem": "풀하우스_EP02",
+    "title": "풀하우스_EP02.txt",
+    "panels": 77,
+    "svg": "strips/풀하우스_EP02.svg",
+    "svg_h": 45060,
+    "ref": "refs/풀하우스_EP02.png",
+    "ref_pages": 11
+  },
+  {
+    "stem": "풀하우스_EP03",
+    "title": "풀하우스_EP03.txt",
+    "panels": 91,
+    "svg": "strips/풀하우스_EP03.svg",
+    "svg_h": 52240,
+    "ref": "refs/풀하우스_EP03.png",
+    "ref_pages": 15
+  },
+  {
+    "stem": "풀하우스_EP04",
+    "title": "풀하우스_EP04.txt",
+    "panels": 79,
+    "svg": "strips/풀하우스_EP04.svg",
+    "svg_h": 44880,
+    "ref": "refs/풀하우스_EP04.png",
+    "ref_pages": 11
+  },
+  {
+    "stem": "풀하우스_EP05",
+    "title": "풀하우스_EP05.txt",
+    "panels": 84,
+    "svg": "strips/풀하우스_EP05.svg",
+    "svg_h": 51460,
+    "ref": "refs/풀하우스_EP05.png",
+    "ref_pages": 16
+  },
+  {
+    "stem": "풀하우스_EP06",
+    "title": "풀하우스_EP06.txt",
+    "panels": 87,
+    "svg": "strips/풀하우스_EP06.svg",
+    "svg_h": 52260,
+    "ref": "refs/풀하우스_EP06.png",
+    "ref_pages": 16
+  },
+  {
+    "stem": "풀하우스_EP07",
+    "title": "풀하우스_EP07.txt",
+    "panels": 90,
+    "svg": "strips/풀하우스_EP07.svg",
+    "svg_h": 55640,
+    "ref": "refs/풀하우스_EP07.png",
+    "ref_pages": 15
+  },
+  {
+    "stem": "풀하우스_EP08",
+    "title": "풀하우스_EP08.txt",
+    "panels": 92,
+    "svg": "strips/풀하우스_EP08.svg",
+    "svg_h": 57840,
+    "ref": "refs/풀하우스_EP08.png",
+    "ref_pages": 15
+  },
+  {
+    "stem": "풀하우스_EP09",
+    "title": "풀하우스_EP09.txt",
+    "panels": 93,
+    "svg": "strips/풀하우스_EP09.svg",
+    "svg_h": 56160,
+    "ref": "refs/풀하우스_EP09.png",
+    "ref_pages": 13
+  },
+  {
+    "stem": "풀하우스_EP10",
+    "title": "풀하우스_EP10.txt",
+    "panels": 95,
+    "svg": "strips/풀하우스_EP10.svg",
+    "svg_h": 59140,
+    "ref": "refs/풀하우스_EP10.png",
+    "ref_pages": 17
+  }
+]
