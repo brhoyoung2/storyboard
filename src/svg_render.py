@@ -106,14 +106,14 @@ def head_shape(cx, cy, r, sw, view="front", facing=0.0, male=False):
     st = f'fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linejoin="round"'
     d = 1 if facing >= 0 else -1
     if view == "profile":
-        # 완측면 실루엣. d=+1 오른쪽을 봄. 남=코/턱 돌출·각짐, 여=작은 코(살짝 들림)·둥근 턱.
+        # 완측면 실루엣 — 성별 무관 단일 두상(중간 코·둥근 턱). d=+1 오른쪽을 봄.
         X = lambda v: cx + d*v*r
         Y = lambda v: cy + v*r
-        nose = 1.12 if male else 0.94           # 코 돌출(남 큼, 여 작음)
-        nose_y = 0.18 if male else 0.06         # 코끝 높이(여=살짝 들림)
-        chin_x = 0.10 if male else -0.08        # 턱 전후(남=앞, 여=들어감)
-        chin_y = 1.13 if male else 1.02
-        jaw_x = 0.74 if male else 0.52          # 턱선 강도(남=각짐)
+        nose = 1.0
+        nose_y = 0.12
+        chin_x = 0.0
+        chin_y = 1.07
+        jaw_x = 0.60
         lip_y = 0.58
         p = (f'M{X(-0.85):.1f},{Y(-0.5):.1f} '
              f'C{X(-0.95):.1f},{Y(-1.05):.1f} {X(0.45):.1f},{Y(-1.12):.1f} {X(0.72):.1f},{Y(-0.5):.1f} '       # 뒤통수~정수리~이마
@@ -124,30 +124,21 @@ def head_shape(cx, cy, r, sw, view="front", facing=0.0, male=False):
              f'C{X(-0.45):.1f},{Y(0.98):.1f} {X(-0.85):.1f},{Y(0.72):.1f} {X(-0.85):.1f},{Y(-0.5):.1f} Z')       # 턱뒤~목
         ear = f'<path d="M{X(-0.08):.1f},{Y(0.0):.1f} q{-d*r*0.14:.1f},{r*0.05:.1f} 0,{r*0.26:.1f}" fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>'
         return f'<path d="{p}" {st}/>' + ear
-    # 정면/3-4: 타원+턱. male=각진 턱(넓고 짧음), female=둥근 턱(좁고 김)
+    # 정면/3-4: 타원+턱 — 성별 무관 단일 두상(중간 길이·둥근 턱)
     sx = facing * r * 0.10 if view == "q3" else 0.0
-    rw, top = (r*1.0 if male else r*0.95), cy - r
-    chin = cy + (r*1.06 if male else r*1.18)
-    jw = 0.74 if male else 0.46          # 턱 넓이(클수록 각짐)
-    jdrop = 0.78 if male else 0.62       # 턱선 시작 높이
+    rw, top = r*0.97, cy - r
+    chin = cy + r*1.13
+    jw, jdrop = 0.52, 0.66
     rwL = rw*(1.12 if (view == "q3" and facing < 0) else 1.0)
     rwR = rw*(1.12 if (view == "q3" and facing > 0) else 1.0)
     ears = (f'<path d="M{cx-rwL:.1f},{cy-r*0.05:.1f} q{-r*0.16:.1f},{r*0.06:.1f} 0,{r*0.28:.1f}" '
             f'fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>'
             f'<path d="M{cx+rwR:.1f},{cy-r*0.05:.1f} q{r*0.16:.1f},{r*0.06:.1f} 0,{r*0.28:.1f}" '
             f'fill="{SKIN}" stroke="{INK}" stroke-width="{sw:.1f}"/>')
-    if male:
-        # 각진 턱: 옆선 수직으로 내려와 짧은 직선 턱
-        head = (f'<path d="M{cx-rwL:.1f},{cy:.1f} '
-                f'C{cx-rwL:.1f},{top:.1f} {cx+rwR:.1f},{top:.1f} {cx+rwR:.1f},{cy:.1f} '
-                f'C{cx+rwR:.1f},{cy+r*jdrop:.1f} {cx+rwR*jw:.1f},{chin-r*0.04:.1f} {cx+rwR*jw*0.55+sx:.1f},{chin:.1f} '
-                f'L{cx-rwL*jw*0.55+sx:.1f},{chin:.1f} '
-                f'C{cx-rwR*jw:.1f},{chin-r*0.04:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy-r*0.16:.1f}" {st}/>')  # 살짝 열림(좌측 틈)
-    else:
-        head = (f'<path d="M{cx-rwL:.1f},{cy:.1f} '
-                f'C{cx-rwL:.1f},{top:.1f} {cx+rwR:.1f},{top:.1f} {cx+rwR:.1f},{cy:.1f} '
-                f'C{cx+rwR:.1f},{cy+r*jdrop:.1f} {cx+rwR*jw:.1f},{chin-r*0.08:.1f} {cx+sx:.1f},{chin:.1f} '
-                f'C{cx-rwL*jw:.1f},{chin-r*0.08:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy-r*0.16:.1f}" {st}/>')  # 살짝 열림
+    head = (f'<path d="M{cx-rwL:.1f},{cy:.1f} '
+            f'C{cx-rwL:.1f},{top:.1f} {cx+rwR:.1f},{top:.1f} {cx+rwR:.1f},{cy:.1f} '
+            f'C{cx+rwR:.1f},{cy+r*jdrop:.1f} {cx+rwR*jw:.1f},{chin-r*0.08:.1f} {cx+sx:.1f},{chin:.1f} '
+            f'C{cx-rwL*jw:.1f},{chin-r*0.08:.1f} {cx-rwL:.1f},{cy+r*jdrop:.1f} {cx-rwL:.1f},{cy-r*0.16:.1f}" {st}/>')  # 살짝 열림
     return ears + head
 
 
@@ -166,25 +157,45 @@ def _open_eye(ex, ey, r, look, lid=0.0, lash=False, sw=1.5):
     return s
 
 
-def _brow(bx, by, r, kind, sw, male=False):
-    bw = sw*(1.9 if male else 1.05)          # 남성 눈썹 두껍게
+def _sharp_eye(ex, ey, r, side, look, sw):
+    """날카로운/차가운 눈매: 바깥(side) 눈꼬리가 올라간 좁은 눈 + 또렷한 동공."""
+    ew = r*0.23
+    up = r*0.13
+    if side < 0:                                   # 왼쪽 눈 → 바깥(왼쪽) 위로
+        Lx, Ly, Rx, Ry = ex-ew, ey-up, ex+ew, ey+r*0.01
+    else:                                          # 오른쪽 눈 → 바깥(오른쪽) 위로
+        Lx, Ly, Rx, Ry = ex-ew, ey+r*0.01, ex+ew, ey-up
+    px = ex + look*ew*0.3
+    st = f'stroke="{INK}" stroke-width="{sw:.1f}" fill="none" stroke-linecap="round"'
+    return (f'<path d="M{Lx:.1f},{Ly:.1f} L{Rx:.1f},{Ry:.1f}" stroke="{INK}" stroke-width="{sw*1.7:.1f}" fill="none" stroke-linecap="round"/>'  # 윗꺼풀(굵고 곧음)
+            f'<path d="M{Lx+ew*0.2:.1f},{ey+r*0.05:.1f} Q{ex:.1f},{ey+r*0.11:.1f} {Rx-ew*0.2:.1f},{ey+r*0.04:.1f}" {st}/>'   # 아랫라인(얕음)
+            f'<circle cx="{px:.1f}" cy="{ey+r*0.03:.1f}" r="{ew*0.46:.1f}" fill="{INK}"/>'
+            f'<circle cx="{px-ew*0.16:.1f}" cy="{ey-r*0.03:.1f}" r="{ew*0.14:.1f}" fill="white"/>')
+
+
+def _brow(bx, by, r, kind, sw, side=1):
+    """단일(성별 무관) 눈썹. kind에 따라 각도. side=-1/좌, +1/우 (sharp 눈매 방향용)."""
+    bw = sw*1.35
     st = f'stroke="{INK}" stroke-width="{bw:.1f}" fill="none" stroke-linecap="round"'
-    w = r*(0.20 if male else 0.18)
+    w = r*0.19
     if kind == "down_in":
-        return f'<path d="M{bx-w:.1f},{by-r*0.04:.1f} L{bx+w:.1f},{by+r*0.10:.1f}" {st}/>'
+        return f'<path d="M{bx-w:.1f},{by-r*0.04:.1f} L{bx+w:.1f},{by+r*0.11:.1f}" {st}/>'
     if kind == "up_in":
         return f'<path d="M{bx-w:.1f},{by+r*0.08:.1f} L{bx+w:.1f},{by-r*0.04:.1f}" {st}/>'
     if kind == "raise":
         return f'<path d="M{bx-w:.1f},{by-r*0.10:.1f} Q{bx:.1f},{by-r*0.20:.1f} {bx+w:.1f},{by-r*0.10:.1f}" {st}/>'
-    if male:                                  # 남성 기본: 곧은 일자 눈썹
-        return f'<path d="M{bx-w:.1f},{by:.1f} L{bx+w:.1f},{by+r*0.01:.1f}" {st}/>'
-    return f'<path d="M{bx-w:.1f},{by:.1f} Q{bx:.1f},{by-r*0.06:.1f} {bx+w:.1f},{by:.1f}" {st}/>'
+    if kind == "sharp":                            # 바깥꼬리 내려가고 안쪽 올라간 매서운 눈썹
+        if side < 0:
+            return f'<path d="M{bx-w:.1f},{by+r*0.10:.1f} L{bx+w:.1f},{by-r*0.05:.1f}" {st}/>'
+        return f'<path d="M{bx-w:.1f},{by-r*0.05:.1f} L{bx+w:.1f},{by+r*0.10:.1f}" {st}/>'
+    if kind == "low":                              # 차가운: 눈에 가까운 낮고 곧은 눈썹
+        return f'<path d="M{bx-w:.1f},{by+r*0.03:.1f} L{bx+w:.1f},{by+r*0.04:.1f}" {st}/>'
+    return f'<path d="M{bx-w:.1f},{by:.1f} Q{bx:.1f},{by-r*0.05:.1f} {bx+w:.1f},{by:.1f}" {st}/>'
 
 
-def _profile_face(cx, cy, r, expr, facing, gender, glasses):
-    """완측면 얼굴: 앞쪽(facing) 가장자리에 눈 하나 + 눈썹 + 입. 코는 머리 실루엣에."""
+def _profile_face(cx, cy, r, expr, facing, glasses):
+    """완측면 얼굴: 앞쪽(facing) 가장자리에 눈 하나 + 눈썹 + 입. 성별 무관 단일 세트."""
     d = 1 if facing >= 0 else -1
-    male = (gender != "F")
     sw = max(1.4, r * 0.028)
     st = f'stroke="{INK}" stroke-width="{sw:.1f}" fill="none" stroke-linecap="round"'
     ex = cx + d*r*0.46
@@ -193,15 +204,18 @@ def _profile_face(cx, cy, r, expr, facing, gender, glasses):
     my = cy + r*0.56
     mx = cx + d*r*0.58
     s = []
-    bk = {"angry": "down_in", "sad": "up_in", "crying": "up_in",
-          "surprise": "raise", "shock": "raise", "flustered": "raise",
-          "dumbfound": "raise", "smile": "up", "happy": "up"}.get(expr, "flat")
-    # 눈썹(앞쪽만, 짧게, 성별 반영)
-    s.append(_brow(ex, by, r*0.7, bk, sw, male))
+    bk = {"angry": "sharp", "sharp": "sharp", "cold": "low", "serious": "low",
+          "sad": "up_in", "crying": "up_in", "surprise": "raise", "shock": "raise",
+          "flustered": "raise", "dumbfound": "raise", "smile": "up", "happy": "up"}.get(expr, "flat")
+    # 눈썹(앞쪽만, 짧게)
+    s.append(_brow(ex, by, r*0.7, bk, sw, d))
     # 눈 (측면이라 좁은 아몬드형)
     if expr in ("smile", "happy"):
         s.append(f'<path d="M{ex-r*0.1:.1f},{ey:.1f} Q{ex:.1f},{ey-r*0.14:.1f} {ex+r*0.12:.1f},{ey:.1f}" {st}/>')
-    elif expr in ("thinking", "serious"):
+    elif expr in ("serious", "cold", "sharp", "angry"):   # 날카로운/차가운: 곧은 가는 눈 + 동공
+        s.append(f'<path d="M{ex-r*0.12:.1f},{ey-d*r*0.03:.1f} L{ex+d*r*0.14:.1f},{ey-d*r*0.06:.1f}" stroke="{INK}" stroke-width="{sw*1.5:.1f}" fill="none" stroke-linecap="round"/>'
+                 f'<circle cx="{ex+d*r*0.02:.1f}" cy="{ey:.1f}" r="{r*0.05:.1f}" fill="{INK}"/>')
+    elif expr == "thinking":
         s.append(f'<path d="M{ex-r*0.1:.1f},{ey:.1f} L{ex+r*0.12:.1f},{ey:.1f}" {st}/>')
     else:
         ew = r*(0.15 if expr in ("surprise", "shock") else 0.11)
@@ -210,8 +224,6 @@ def _profile_face(cx, cy, r, expr, facing, gender, glasses):
         s.append(f'<path d="M{ex-r*0.11:.1f},{ey:.1f} Q{ex:.1f},{ey-ew:.1f} {ex+d*r*0.13:.1f},{ey-r*0.01:.1f} '
                  f'Q{ex:.1f},{ey+ew:.1f} {ex-r*0.11:.1f},{ey:.1f} Z" fill="white" {nf}/>'
                  f'<circle cx="{ex+d*r*0.03:.1f}" cy="{ey:.1f}" r="{ew*0.55:.1f}" fill="{INK}"/>')
-        if not male:   # 여성 속눈썹/윗라인
-            s.append(f'<path d="M{ex+d*r*0.13:.1f},{ey-r*0.02:.1f} l{d*r*0.06:.1f},{-r*0.04:.1f}" {st}/>')
     # 입(앞 가장자리 짧게)
     if expr in ("smile", "happy"):
         s.append(f'<path d="M{mx-d*r*0.16:.1f},{my:.1f} Q{mx:.1f},{my+r*0.14:.1f} {mx+d*r*0.05:.1f},{my-r*0.02:.1f}" {st}/>')
@@ -248,18 +260,17 @@ def _sweat(x, y, r, sw):
 
 # ---- 표정 슬롯 (눈썹·웹툰눈·코·입) -----------------------------------------
 def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
+    # 표정 세트는 성별 무관 단일 세트(모두 공유). 성별 구분은 헤어로만 한다.
     if view == "profile":
-        return _profile_face(cx, cy, r, expr, facing, gender, glasses)
-    male = (gender != "F")
+        return _profile_face(cx, cy, r, expr, facing, glasses)
     ox = facing * r * (0.28 if view == "q3" else 0.12)
     look = facing
     ex = r * 0.36
     eye_y = cy + r * 0.02
-    brow_y = eye_y - r*(0.26 if male else 0.34)     # 남성 눈썹 눈에 가깝게(낮게)
+    brow_y = eye_y - r*0.32
     el, er_ = cx - ex + ox, cx + ex + ox
     bl, br_ = cx - ex + ox, cx + ex + ox
     sw = max(1.4, r * 0.028)
-    lash = (gender == "F")
     s = []
 
     def stroke():
@@ -277,13 +288,13 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
         mouth = f'<path d="M{cx-r*0.26+ox:.1f},{my-r*0.04:.1f} Q{cx+ox:.1f},{my+r*0.26:.1f} {cx+r*0.26+ox:.1f},{my-r*0.04:.1f}" {stroke()}/>'
     elif expr in ("surprise", "shock"):
         bk = "raise"
-        s.append(_open_eye(el, eye_y, r*1.12, look, lash=lash, sw=sw) + _open_eye(er_, eye_y, r*1.12, look, lash=lash, sw=sw))
+        s.append(_open_eye(el, eye_y, r*1.12, look, sw=sw) + _open_eye(er_, eye_y, r*1.12, look, sw=sw))
         mouth = f'<ellipse cx="{cx+ox:.1f}" cy="{my+r*0.04:.1f}" rx="{r*0.13:.1f}" ry="{r*0.18:.1f}" fill="{PAINT('#7a4a4a')}" stroke="{INK}" stroke-width="{sw:.1f}" stroke-linecap="round"/>'
         if expr == "shock":
             s.append(f'<path d="M{cx+r*0.62:.1f},{cy-r*0.55:.1f} l{r*0.14:.1f},{-r*0.2:.1f} M{cx+r*0.8:.1f},{cy-r*0.42:.1f} l{r*0.18:.1f},{-r*0.1:.1f}" {stroke()}/>')
     elif expr == "angry":
-        bk = "down_in"
-        s.append(_open_eye(el, eye_y, r, look, lid=0.2, sw=sw) + _open_eye(er_, eye_y, r, look, lid=0.2, sw=sw))
+        bk = "sharp"
+        s.append(_sharp_eye(el, eye_y, r, -1, look, sw) + _sharp_eye(er_, eye_y, r, +1, look, sw))
         mouth = f'<path d="M{cx-r*0.22+ox:.1f},{my+r*0.10:.1f} Q{cx+ox:.1f},{my-r*0.04:.1f} {cx+r*0.22+ox:.1f},{my+r*0.10:.1f}" {stroke()}/>'
         s.append(f'<path d="M{cx+r*0.58:.1f},{cy-r*0.55:.1f} l{r*0.2:.1f},{r*0.05:.1f} M{cx+r*0.62:.1f},{cy-r*0.4:.1f} l{r*0.2:.1f},0" {stroke()}/>')
     elif expr in ("sad", "crying"):
@@ -294,10 +305,17 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
         if expr == "crying":
             s.append(f'<path d="M{el:.1f},{eye_y+r*0.14:.1f} q{-r*0.04:.1f},{r*0.3:.1f} 0,{r*0.44:.1f}" {stroke()}/>'
                      f'<path d="M{er_:.1f},{eye_y+r*0.14:.1f} q{r*0.04:.1f},{r*0.3:.1f} 0,{r*0.44:.1f}" {stroke()}/>')
-    elif expr in ("thinking", "serious"):
+    elif expr == "thinking":
         bk = "flat"
         s.append(_open_eye(el, eye_y, r, look, lid=0.35, sw=sw) + _open_eye(er_, eye_y, r, look, lid=0.35, sw=sw))
         mouth = f'<path d="M{cx-r*0.16+ox:.1f},{my:.1f} L{cx+r*0.16+ox:.1f},{my:.1f}" {stroke()}/>'
+    elif expr in ("serious", "cold", "sharp"):     # 날카로운/차가운 눈매
+        bk = "low" if expr == "cold" else "sharp"
+        s.append(_sharp_eye(el, eye_y, r, -1, look, sw) + _sharp_eye(er_, eye_y, r, +1, look, sw))
+        if expr == "cold":
+            mouth = f'<path d="M{cx-r*0.15+ox:.1f},{my:.1f} L{cx+r*0.15+ox:.1f},{my-r*0.01:.1f}" {stroke()}/>'   # 일자 무표정
+        else:
+            mouth = f'<path d="M{cx-r*0.17+ox:.1f},{my+r*0.05:.1f} Q{cx+ox:.1f},{my-r*0.02:.1f} {cx+r*0.17+ox:.1f},{my+r*0.05:.1f}" {stroke()}/>'
     elif expr in ("flustered", "dumbfound"):
         bk = "raise"
         s.append(_open_eye(el, eye_y, r, look, lid=0.5, sw=sw) + _open_eye(er_, eye_y, r, look, sw=sw))
@@ -313,7 +331,7 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
         bk = "up"
         # 한쪽 감음(앞쪽 눈), 반대쪽 뜸
         s.append(f'<path d="M{er_-r*0.18:.1f},{eye_y:.1f} Q{er_:.1f},{eye_y-r*0.20:.1f} {er_+r*0.18:.1f},{eye_y:.1f}" {stroke()}/>')
-        s.append(_open_eye(el, eye_y, r, look, lash=lash, sw=sw))
+        s.append(_open_eye(el, eye_y, r, look, sw=sw))
         mouth = f'<path d="M{cx-r*0.2+ox:.1f},{my-r*0.02:.1f} Q{cx+r*0.06+ox:.1f},{my+r*0.2:.1f} {cx+r*0.22+ox:.1f},{my-r*0.04:.1f}" {stroke()}/>'
     elif expr == "laugh":
         bk = "up"
@@ -358,11 +376,11 @@ def face(cx, cy, r, expr, facing=0.0, gender="M", glasses=False, view="front"):
         mouth = f'<path d="M{cx-r*0.14+ox:.1f},{my+r*0.06:.1f} Q{cx+ox:.1f},{my-r*0.06:.1f} {cx+r*0.14+ox:.1f},{my+r*0.06:.1f}" {stroke()}/>'
     else:  # neutral / curious
         bk = "flat"
-        s.append(_open_eye(el, eye_y, r, look, lash=lash, sw=sw) + _open_eye(er_, eye_y, r, look, lash=lash, sw=sw))
+        s.append(_open_eye(el, eye_y, r, look, sw=sw) + _open_eye(er_, eye_y, r, look, sw=sw))
         mouth = f'<path d="M{cx-r*0.14+ox:.1f},{my:.1f} Q{cx+ox:.1f},{my+r*0.07:.1f} {cx+r*0.14+ox:.1f},{my:.1f}" {stroke()}/>'
 
-    s.append(_brow(bl, brow_y, r, bk, sw, male))
-    s.append(_brow(br_, brow_y, r, bk, sw, male))
+    s.append(_brow(bl, brow_y, r, bk, sw, -1))
+    s.append(_brow(br_, brow_y, r, bk, sw, +1))
     s.append(nose)
     s.append(mouth)
     if glasses:
