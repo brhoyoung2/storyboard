@@ -51,13 +51,13 @@ GOTHIC = "'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans
 SHOT_FRAME = {
     "extreme_closeup": dict(h=520, head_r=170, head_cy=0.50, body="none"),
     "closeup":         dict(h=520, head_r=120, head_cy=0.42, body="bust"),
-    "medium":          dict(h=480, head_r=82,  head_cy=0.24, body="waist"),
+    "medium":          dict(h=480, head_r=82,  head_cy=0.27, body="waist"),
     "full":            dict(h=820, head_r=58,  head_cy=0.12, body="full"),
     "long":            dict(h=680, head_r=34,  head_cy=0.10, body="full"),
     "insert":          dict(h=440, head_r=0,   head_cy=0.0,  body="none"),
     "sd":              dict(h=460, head_r=85,  head_cy=0.30, body="chibi"),
     "title":           dict(h=400, head_r=0,   head_cy=0.0,  body="none"),
-    "unspecified":     dict(h=480, head_r=80,  head_cy=0.25, body="waist"),
+    "unspecified":     dict(h=480, head_r=80,  head_cy=0.27, body="waist"),
 }
 
 # 캐릭터 레지스트리: hair 스타일·색, accent(의상색), gender, glasses, outfit
@@ -856,14 +856,15 @@ def caption_box(text, h, panel_w=W):
     text = (text or "").strip()
     if not text:
         return ""
-    fs = 52                                   # 식자(캡션) 글씨 — 크게(2배급)
-    maxw = int(panel_w * 0.9)
-    cps = max(8, int(maxw / (fs * 0.62)))
+    fs = 46                                   # 식자(캡션) 고딕 — 크게
+    maxw = int(panel_w * 0.88)
+    cwf = 0.96                                 # 고딕 한글은 거의 전각폭 → 넘침 방지로 넉넉히 추정
+    cps = max(5, int(maxw / (fs * cwf)))
     lines = wrap(text, cps)[:3]
-    lh = fs + 11
-    cw = int(fs * 0.62)
-    bw = min(maxw, max(180, max(len(l) for l in lines) * cw + 44))
-    bh = len(lines) * lh + 24
+    lh = fs + 12
+    cw = fs * cwf
+    bw = min(maxw, max(180, int(max(len(l) for l in lines) * cw) + 40))
+    bh = len(lines) * lh + 22
     bx = (panel_w - bw) / 2                    # 가운데 정렬
     by = h - bh - 30                           # 하단에서 살짝 띄움
     s = [f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bw:.1f}" height="{bh:.1f}" rx="9" '
@@ -1339,43 +1340,56 @@ def render_panel(panel, y0):
     def _spk_x(d):
         sp = d.get("speaker")
         if people == 2 and sp:
-            names = [n for n, _ in actors]
-            if sp in names:
-                return head_xs[0] if names.index(sp) == 0 else head_xs[1]
-            return head_xs[1]
+            drawn = actors[:len(head_xs)]        # 실제 그려진 두 인물만
+            names = [n for n, _ in drawn]
+            if sp in names:                      # 이름이 일치하면 그 인물 쪽
+                return head_xs[names.index(sp)]
+            # 성별어(남자/여자 등)로 지정된 화자 → 성별이 맞는 인물 쪽
+            gv = "F" if any(w in sp for w in ("여자", "여성", "그녀", "소녀", "누나", "언니")) else \
+                 ("M" if any(w in sp for w in ("남자", "남성", "소년", "오빠", "형")) else None)
+            if gv:
+                for i, (_n, gg) in enumerate(drawn):
+                    if gg == gv:
+                        return head_xs[i]
+            return head_xs[0]                    # 기본: 첫 화자(왼쪽)
         return head_xs[0] if head_xs else W*0.5
 
-    used = []   # 이미 놓인 말풍선 사각형(겹침 방지)
+    used = []          # 이미 놓인 말풍선 사각형(겹침 방지)
+    PNUM = (6, 6, 54, 54)   # 좌상단 패널 번호 회피 영역
+
+    def _hits(r):
+        return (any(_ovl(r, e) for e in exprs) or any(_ovl(r, u) for u in used)
+                or _ovl(r, PNUM))
+
     def _place(bw, bh, sx):
-        m = 14
-        right = (W-bw-m, m); left = (m, m)
-        order = [right, left] if sx >= W/2 else [left, right]
-        for bx, by0 in order:
-            r = (bx, by0, bx+bw, by0+bh)
-            if all(not _ovl(r, e) for e in exprs) and all(not _ovl(r, u) for u in used):
-                return bx, by0
-        # 회피 실패: 화자 위쪽, 기존 말풍선 아래로 쌓기
-        bx = min(max(sx-bw/2, m), W-bw-m)
-        by0 = m + sum(u[3]-u[1]+10 for u in used)
+        # 규칙: 말풍선은 화자 머리 '바로 위'에 띄워 꼬리가 자연스럽게 닿게. 표정·번호·기존 말풍선은 회피.
+        m = 16                                   # 컷 프레임 안전 여백
+        head_top = hy_h - hr_h
+        by0 = max(m, head_top - bh - 10)
+        bx = min(max(sx - bw/2, m), W - bw - m)
+        if _ovl((bx, by0, bx+bw, by0+bh), PNUM):    # 번호와 겹치면 오른쪽으로
+            bx = min(58, W - bw - m)
+        t = 0
+        while _hits((bx, by0, bx+bw, by0+bh)) and t < 18:
+            if by0 > m + 4:                          # 위로 올려 회피
+                by0 -= 16
+            else:                                    # 위가 막히면 화자 반대 코너로
+                bx = (W-bw-m) if sx < W/2 else m
+                by0 = m + sum(u[3]-u[1]+8 for u in used)
+                break
+            t += 1
         return bx, by0
 
-    def _emit(text, kind):
+    def _emit(text, kind, sx):
         bw, bh = bubble_size(text, kind)
-        sx = _spk_x({}) if kind == "inner" else None
-        sx = sx if sx is not None else W*0.5
         bx, by0 = _place(bw, bh, sx)
-        tail = (sx - bx) / bw
-        b, _sz = bubble(bx, by0, text, kind, tail=tail)
+        b, _sz = bubble(bx, by0, text, kind, tail=(sx-bx)/bw)
         s.append(b); used.append((bx, by0, bx+bw, by0+bh))
 
     for d in panel.get("dialogue", []):
-        bw, bh = bubble_size(d["text"], "dialogue")
-        sx = _spk_x(d)
-        bx, by0 = _place(bw, bh, sx)
-        b, _sz = bubble(bx, by0, d["text"], "dialogue", tail=(sx-bx)/bw)
-        s.append(b); used.append((bx, by0, bx+bw, by0+bh))
+        _emit(d["text"], "dialogue", _spk_x(d))
     for d in panel.get("inner", []):
-        _emit(d["text"], "inner")
+        _emit(d["text"], "inner", _spk_x({}))
     # 하단 캡션: 나레이션이 있으면 나레이션, 없으면 묘사 — 네모박스·가운데·큰 글씨
     cap = " ".join(panel.get("narration", [])).strip()
     if not cap:
