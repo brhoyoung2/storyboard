@@ -508,6 +508,10 @@ POSES = {
     "crossed_legs":  dict(aL=(-14,-17), aR=(14,17), lL=(-6,-2), lR=(12,30)),   # 짝다리
     "kick":          dict(aL=(-32,-44), aR=(32,44), lL=(-12,-6), lR=(72,16)),  # 발차기
     "lean":          dict(aL=(-12,-15), aR=(22,30), lean=0.16),       # 기대다
+    # 회전으로 표현(넘어짐·눕기·골아떨어짐) — 팔은 편안하게, 회전은 렌더에서
+    "lie":           dict(aL=(-40,-22), aR=(40,22)),
+    "sleep":         dict(aL=(-46,-26), aR=(46,26)),
+    "faint":         dict(aL=(-64,-34), aR=(64,34), droop=True),
 }
 
 # 비율(×r): 목/어깨/몸통/골반/허벅지/종아리/팔
@@ -634,7 +638,7 @@ def _leg(root, ta, ca, r, foot_dir, sw, dress=False):
 
 
 # ---- 인물 (관절 리그) ------------------------------------------------------
-def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender=None):
+def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender=None, held=None):
     r = frame["head_r"]
     if r == 0:
         return ""
@@ -756,6 +760,7 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
     # 3) 팔 + 손. t타깃(머리 근처)이면 IK + 머리에 가리지 않게 '머리 뒤'에 그릴지 판단.
     #    얼굴/머리 위쪽으로 가는 손은 머리 다음에 그려 앞으로 보이게 한다.
     front_arms = []   # 머리 위에 덧그릴 팔(손이 머리/얼굴에 닿는 포즈)
+    hand_pos = {}     # 손 위치(소품 파지용)
     if show_arms:
         prop = cfg.get("prop")
 
@@ -766,6 +771,7 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
                 tx, ty = hcx + tgt[0]*r, hcy + tgt[1]*r
                 esign = cfg.get("e" + side, 1 if side == "R" else -1)
                 svg = _arm_to(rootx, arm_root_y, tx, ty, r, accent, sw, esign, pr)
+                hand_pos[side] = (tx, ty)
                 # 손이 턱(1.0r)보다 위면 머리에 가리므로 앞에 그림
                 if tgt[1] < 1.05:
                     front_arms.append(svg)
@@ -773,8 +779,8 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
                     g.append(svg)
             else:
                 a = cfg.get("a" + side, (-14, -17) if side == "L" else (14, 17))
-                s, _ = _arm((rootx, arm_root_y), a[0], a[1], r, accent, sw, pr)
-                g.append(s)
+                s, hand = _arm((rootx, arm_root_y), a[0], a[1], r, accent, sw, pr)
+                g.append(s); hand_pos[side] = hand
 
         if prof:
             na_side = "R" if d > 0 else "L"
@@ -797,6 +803,11 @@ def person(cx, frame, expr, char, facing=0.0, pose="stand", view="front", gender
 
     # 4b) 머리/얼굴에 닿는 손 — 머리 위에 덧그려 보이게
     g.extend(front_arms)
+    # 손에 든 소품 — 오른손(없으면 왼손) 파지부에 맞춰 그림
+    if held:
+        hp = hand_pos.get("R") or hand_pos.get("L")
+        if hp:
+            g.append(held_at(held, hp[0], hp[1], r, sw))
     return "".join(g)
 
 
@@ -1166,11 +1177,40 @@ PROP_FN = {"bowl": prop_bowl, "spoon": prop_spoon, "cup": prop_cup, "plate": pro
            "coffee": prop_coffee, "cake": prop_cake, "phone2": prop_phone2,
            "camera": prop_camera, "bottle": prop_bottle, "glasses": prop_glasses}
 
-# 손에 들거나 인물 옆에 두는 소품(테이블 위가 아님) → 인물 옆 바닥/공중에 배치
+# 손에 들거나 인물 옆에 두는 소품(테이블 위가 아님)
 HELD_FN = {"umbrella": prop_umbrella, "bag": prop_bag, "backpack": prop_backpack,
            "plant": prop_plant, "guitar": prop_guitar, "mic": prop_mic,
            "balloon": prop_balloon, "gift": prop_gift, "flower": prop_flower,
            "ball": prop_ball, "suitcase": prop_suitcase, "hat": prop_hat}
+
+# 손에 쥐는 소품의 '파지부(grip)' — (소품 로컬좌표에서 손이 잡는 지점 gx,gy 비율, 소품 크기/머리반지름).
+# 손(hx,hy)에 grip을 맞추려면 prop_fn(hx-gx*s, hy-gy*s, s) 로 그린다.
+HELD_GRIP = {
+    "umbrella": (0.0,  0.18, 1.75),   # 손잡이 중간을 쥠, 캐노피는 위로
+    "bag":      (0.0, -0.42, 0.95),   # 손잡이 윗부분을 쥠, 가방은 아래로
+    "suitcase": (0.0, -0.50, 0.95),   # 캐리어 손잡이
+    "coffee":   (0.0,  0.06, 0.62),   # 컵 몸통
+    "bottle":   (0.0,  0.06, 0.66),
+    "phone2":   (0.0,  0.0,  0.5),
+    "flower":   (0.0,  0.30, 0.95),   # 줄기 아래쪽을 쥠, 꽃은 위로
+    "gift":     (0.0,  0.30, 0.82),
+    "balloon":  (0.0,  0.58, 0.9),    # 실 끝을 쥠, 풍선은 위로
+    "mic":      (0.0,  0.42, 0.82),
+    "guitar":   (0.0,  0.18, 1.35),
+    "ball":     (0.0,  0.0,  0.62),
+    "camera":   (0.0,  0.10, 0.7),
+}
+
+
+def held_at(kind, hx, hy, r, sw):
+    """소품의 파지부를 손(hx,hy)에 맞춰 그린다."""
+    fn = HELD_FN.get(kind) or PROP_FN.get(kind)
+    grip = HELD_GRIP.get(kind)
+    if not fn or not grip:
+        return ""
+    gx, gy, sf = grip
+    s = r * sf
+    return fn(hx - gx*s, hy - gy*s, s, sw)
 
 
 def scene_props(props, h, sw):
@@ -1193,13 +1233,25 @@ def scene_props(props, h, sw):
         for i, it in enumerate(tableware):
             ix = cx + (i-(len(tableware)-1)/2.0)*W*0.17
             front.append(PROP_FN[it](ix, ty, W*0.11, sw))
-    # 손에 들거나 인물 옆에 두는 소품 — 인물 좌우 지면 근처에 배치
-    held = [p for p in HELD_FN if p in props]
+    # 손에 쥐는 소품(HELD_GRIP)은 인물 손에 붙으므로 여기서 제외, 나머지(화분 등)만 옆 바닥에 배치
+    held = [p for p in HELD_FN if p in props and p not in HELD_GRIP]
     for i, it in enumerate(held):
         side = -1 if i % 2 == 0 else 1
         hx = cx + side*W*0.34 - (i//2)*W*0.04
         front.append(HELD_FN[it](hx, h*0.58, W*0.17, sw))
     return "".join(behind), "".join(front)
+
+
+def hand_prop(props):
+    """패널 소품 중 손에 쥘 첫 소품 반환(없으면 None)."""
+    for p in (props or []):
+        if p in HELD_GRIP:
+            return p
+    return None
+
+
+# 넘어짐·눕기·골아떨어짐 등 — 인물 전체를 회전시켜 표현 (각도°)
+ROTATE_POSE = {"fall": 60, "lie": 90, "sleep": 90, "faint": 78}
 
 
 # ---- 패널 렌더 ------------------------------------------------------------
@@ -1302,12 +1354,20 @@ def render_panel(panel, y0):
         close = pose in ("kiss", "hug")                 # 키스/포옹은 더 가까이
         xL, xR = (0.37, 0.63) if close else (0.30, 0.70)
         n0, g0 = actor(0); n1, g1 = actor(1)
-        s.append(person(W*xL, gframe, emo, n0, facing=+1, pose=pose, view=tv, gender=g0))
+        hk = hand_prop(panel.get("props"))
+        s.append(person(W*xL, gframe, emo, n0, facing=+1, pose=pose, view=tv, gender=g0, held=hk))
         s.append(person(W*xR, gframe, emo, n1, facing=-1, pose=pose, view=tv, gender=g1))
     else:
         fac = 0.85 if view in ("q3", "profile") else 0.0
         n0, g0 = actor(0)
-        s.append(person(W*0.5, gframe, emo, n0, facing=fac, pose=pose, view=view, gender=g0))
+        hk = hand_prop(panel.get("props"))
+        rot = ROTATE_POSE.get(pose)
+        if rot:     # 넘어짐·눕기·골아떨어짐 — 인물 전체를 회전(발 기준)
+            cxf = W*0.30 if rot >= 85 else W*0.46
+            ps = person(cxf, gframe, emo, n0, facing=fac, pose=pose, view=view, gender=g0, held=hk)
+            s.append(f'<g transform="rotate({rot} {cxf:.1f} {gy:.1f})">{ps}</g>')
+        else:
+            s.append(person(W*0.5, gframe, emo, n0, facing=fac, pose=pose, view=view, gender=g0, held=hk))
 
     if front_props:           # 책상+물건은 인물 앞(전경)
         s.append(front_props)
