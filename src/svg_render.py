@@ -809,20 +809,20 @@ def wrap(text, n):
     return out or [""]
 
 
-def bubble_size(text, kind="dialogue", maxw=330):
-    chars_per = max(6, int(maxw / 28))
+def bubble_size(text, kind="dialogue", maxw=250):
+    chars_per = max(5, int(maxw / 28))
     lines = wrap(text, chars_per)
     lh = 42
-    w = min(maxw, max(110, max(len(l) for l in lines) * 28 + 36))
+    w = min(maxw, max(108, max(len(l) for l in lines) * 28 + 34))
     return w, len(lines) * lh + 34
 
 
-def bubble(x, y, text, kind="dialogue", maxw=330):
-    chars_per = max(6, int(maxw / 28))
+def bubble(x, y, text, kind="dialogue", maxw=250, tail=0.3):
+    chars_per = max(5, int(maxw / 28))
     lines = wrap(text, chars_per)
     lh = 42
     h = len(lines) * lh + 34
-    w = min(maxw, max(110, max(len(l) for l in lines) * 28 + 36))
+    w = min(maxw, max(108, max(len(l) for l in lines) * 28 + 34))
     s = []
     if kind == "narration":
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" '
@@ -835,7 +835,10 @@ def bubble(x, y, text, kind="dialogue", maxw=330):
     else:
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="16" '
                  f'fill="white" stroke="{INK}" stroke-width="1.8"/>')
-        s.append(f'<path d="M{x+w*0.3},{y+h} l-6,18 l22,-16 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
+        # 꼬리: 화자 쪽(tail 비율)으로 향함
+        tx = x + w*min(0.82, max(0.18, tail))
+        d = -1 if tail < 0.5 else 1
+        s.append(f'<path d="M{tx:.1f},{y+h} l{-7*d:.1f},19 l{24*d:.1f},-17 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
     ty = y + 34
     for ln in lines:
         s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="33" '
@@ -1236,6 +1239,13 @@ def render_panel(panel, y0):
             return actors[i]                             # (name, gender)
         return (None, gh)
 
+    # 전신 샷: 발이 지면(배경 수평선 h*0.60)에 닿도록 head_cy 보정 (FOOT_K=발y≈cy+7r)
+    GROUND_Y = h * 0.60
+    gframe = frame
+    if frame["body"] == "full":
+        gframe = dict(frame)
+        gframe["head_cy"] = (GROUND_Y - 7.0 * frame["head_r"]) / h
+
     if frame["body"] == "none":
         # insert/title — 묘사 박스만
         s.append(f'<rect x="{W*0.25}" y="{h*0.3}" width="{W*0.5}" height="{h*0.4}" '
@@ -1272,12 +1282,12 @@ def render_panel(panel, y0):
         close = pose in ("kiss", "hug")                 # 키스/포옹은 더 가까이
         xL, xR = (0.37, 0.63) if close else (0.30, 0.70)
         n0, g0 = actor(0); n1, g1 = actor(1)
-        s.append(person(W*xL, frame, emo, n0, facing=+1, pose=pose, view=tv, gender=g0))
-        s.append(person(W*xR, frame, emo, n1, facing=-1, pose=pose, view=tv, gender=g1))
+        s.append(person(W*xL, gframe, emo, n0, facing=+1, pose=pose, view=tv, gender=g0))
+        s.append(person(W*xR, gframe, emo, n1, facing=-1, pose=pose, view=tv, gender=g1))
     else:
         fac = 0.85 if view in ("q3", "profile") else 0.0
         n0, g0 = actor(0)
-        s.append(person(W*0.5, frame, emo, n0, facing=fac, pose=pose, view=view, gender=g0))
+        s.append(person(W*0.5, gframe, emo, n0, facing=fac, pose=pose, view=view, gender=g0))
 
     if front_props:           # 책상+물건은 인물 앞(전경)
         s.append(front_props)
@@ -1288,16 +1298,66 @@ def render_panel(panel, y0):
     for i, fx in enumerate(panel.get("sfx", [])[:2]):
         s.append(sfx(W*0.07, h*0.17 + i*80, fx))
 
-    # 말풍선 — 우상단, 패널 안에 들어오도록 폭만큼 우측 정렬
-    by = 36
+    # 말풍선 — 규칙: 얼굴/표정(눈·입)을 가리지 않게 화자 머리의 '표정 박스'를 피해 상단 코너에 배치.
+    #          꼬리는 화자 쪽을 향함. 회피 불가 시 표정 위(이마/머리 위) 여백으로 올림.
+    if frame["body"] == "full":
+        hy_h = h * gframe["head_cy"]
+    else:
+        hy_h = h * frame["head_cy"]
+    hr_h = frame["head_r"]
+    if people == 2:
+        _close = pose in ("kiss", "hug")
+        head_xs = [W*0.37, W*0.63] if _close else [W*0.30, W*0.70]
+    elif people == 1 and frame["body"] != "none":
+        head_xs = [W*0.5]
+    else:
+        head_xs = []
+    # 표정(눈·입) 박스 — 이마/머리 위는 가려도 됨, 이 박스만 피하면 됨
+    exprs = [(hx-hr_h*0.85, hy_h-hr_h*0.10, hx+hr_h*0.85, hy_h+hr_h*0.65) for hx in head_xs]
+
+    def _ovl(a, b):
+        return not (a[2] <= b[0] or a[0] >= b[2] or a[3] <= b[1] or a[1] >= b[3])
+
+    def _spk_x(d):
+        sp = d.get("speaker")
+        if people == 2 and sp:
+            names = [n for n, _ in actors]
+            if sp in names:
+                return head_xs[0] if names.index(sp) == 0 else head_xs[1]
+            return head_xs[1]
+        return head_xs[0] if head_xs else W*0.5
+
+    used = []   # 이미 놓인 말풍선 사각형(겹침 방지)
+    def _place(bw, bh, sx):
+        m = 14
+        right = (W-bw-m, m); left = (m, m)
+        order = [right, left] if sx >= W/2 else [left, right]
+        for bx, by0 in order:
+            r = (bx, by0, bx+bw, by0+bh)
+            if all(not _ovl(r, e) for e in exprs) and all(not _ovl(r, u) for u in used):
+                return bx, by0
+        # 회피 실패: 화자 위쪽, 기존 말풍선 아래로 쌓기
+        bx = min(max(sx-bw/2, m), W-bw-m)
+        by0 = m + sum(u[3]-u[1]+10 for u in used)
+        return bx, by0
+
+    def _emit(text, kind):
+        bw, bh = bubble_size(text, kind)
+        sx = _spk_x({}) if kind == "inner" else None
+        sx = sx if sx is not None else W*0.5
+        bx, by0 = _place(bw, bh, sx)
+        tail = (sx - bx) / bw
+        b, _sz = bubble(bx, by0, text, kind, tail=tail)
+        s.append(b); used.append((bx, by0, bx+bw, by0+bh))
+
     for d in panel.get("dialogue", []):
-        bw0, _ = bubble_size(d["text"], "dialogue")
-        b, (bw, bh) = bubble(W - bw0 - 22, by, d["text"], "dialogue")
-        s.append(b); by += bh + 14
+        bw, bh = bubble_size(d["text"], "dialogue")
+        sx = _spk_x(d)
+        bx, by0 = _place(bw, bh, sx)
+        b, _sz = bubble(bx, by0, d["text"], "dialogue", tail=(sx-bx)/bw)
+        s.append(b); used.append((bx, by0, bx+bw, by0+bh))
     for d in panel.get("inner", []):
-        bw0, _ = bubble_size(d["text"], "inner")
-        b, (bw, bh) = bubble(W - bw0 - 22, by, d["text"], "inner")
-        s.append(b); by += bh + 14
+        _emit(d["text"], "inner")
     # 하단 캡션: 나레이션이 있으면 나레이션, 없으면 묘사 — 네모박스·가운데·큰 글씨
     cap = " ".join(panel.get("narration", [])).strip()
     if not cap:
