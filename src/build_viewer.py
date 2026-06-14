@@ -30,6 +30,59 @@ SAMPLE_TEXT = """1. [풀샷] 카페 앞 거리. 매리가 걸어간다.
 8. [롱샷] 거리에 사람들이 모여있다."""
 
 
+# 테스트용 샘플 10종 — 샷·포즈·소품·인원·대사/나레이션/효과음을 골고루 (제목, 본문)
+SAMPLES = [
+    ("카페 앞 거리 (일상)", SAMPLE_TEXT),
+    ("강변 고백 (로맨스)",
+     '1. [풀샷] 노을 지는 강변에 남자와 여자가 나란히 선다.\n'
+     '2. [클로즈업] 남자가 긴장한 표정으로 여자를 본다. / 남자: "할 말이 있어."\n'
+     '3. [미들샷] 남자가 꽃을 내밀며 고백한다. / 남자: "좋아해, 우리 사귀자."\n'
+     '4. [클로즈업] 여자가 환하게 웃는다. / 여자: "나도 좋아해!"\n'
+     '5. [풀샷] 둘이 마주보고 껴안는다.'),
+    ("집밥 식사 (소품)",
+     '1. [미들샷] 식탁 앞에 앉은 매리가 밥을 먹는다.\n'
+     '2. [클로즈업] 매리가 맛있게 먹으며 미소짓는다. / 매리: "역시 집밥이 최고야!"\n'
+     '3. [미들샷] 무결이 커피를 마신다. / 무결: "잘 먹었어?"\n'
+     '4. [미들샷] 매리가 엄지를 든다. / 매리: "완전!"'),
+    ("밤거리 추격 (액션)",
+     '1. [롱샷] 밤거리에서 라이더가 달린다. / 효과음: "타다닥"\n'
+     '2. [풀샷] 라이더가 뒤를 돌아본다. / 라이더: "이쪽이야, 빨리!"\n'
+     '3. [클로즈업] 라이더가 깜짝 놀란다. / 효과음: "두근"\n'
+     '4. [풀샷] 라이더가 넘어진다. / 효과음: "쿵"\n'
+     '5. [미들샷] 라이더가 머리를 부여잡는다. / 라이더: "아, 놓쳤다!"'),
+    ("비 오는 이별 (감정)",
+     '1. [미들샷] 비 오는 날, 여자가 우산을 들고 서있다.\n'
+     '2. [클로즈업] 여자가 눈물을 닦는다. / 여자: "잘 가..."\n'
+     '3. [클로즈업] 남자가 고개를 숙인다. / 나레이션: 둘은 그렇게 헤어졌다.\n'
+     '4. [롱샷] 거리에 홀로 남은 여자.'),
+    ("밴드 회의 (다인물)",
+     '1. [롱샷] 회의실에 사람들이 모여있다.\n'
+     '2. [미들샷] 정인이 손을 번쩍 든다. / 정인: "제안이 있습니다!"\n'
+     '3. [미들샷] 무결이 팔짱을 낀다. / 무결: "들어보죠."\n'
+     '4. [클로즈업] 정인이 진지하게 말한다. / 정인: "우리 밴드를 만들어요."'),
+    ("공원 데이트 (소품)",
+     '1. [풀샷] 공원에서 매리가 꽃을 든다.\n'
+     '2. [미들샷] 무결이 가방을 메고 걸어온다. / 무결: "오래 기다렸어?"\n'
+     '3. [미들샷] 매리가 손을 흔든다. / 매리: "방금 왔어!"\n'
+     '4. [풀샷] 둘이 나란히 걷는다.'),
+    ("심야 공포 (효과음)",
+     '1. [미들샷] 어두운 방에서 엘리가 핸드폰을 본다.\n'
+     '2. [클로즈업] 엘리가 깜짝 놀란다. / 효과음: "쿵" / 엘리: "뭐, 뭐야?!"\n'
+     '3. [클로즈업] 엘리가 입을 가린다. / 엘리: (속마음) "설마 누가 있어?"\n'
+     '4. [풀샷] 엘리가 뒤로 물러선다. / 효과음: "덜덜"'),
+    ("합격 발표 (기쁨)",
+     '1. [미들샷] 매리가 노트북으로 결과를 확인한다.\n'
+     '2. [클로즈업] 매리가 환호한다. / 매리: "합격이야!!"\n'
+     '3. [풀샷] 매리가 두 손을 들고 점프한다. / 효과음: "야호"\n'
+     '4. [미들샷] 무결이 박수친다. / 무결: "축하해!"'),
+    ("아침 루틴 (일상)",
+     '1. [미들샷] 매리가 기지개를 켠다. / 매리: "잘 잤다~"\n'
+     '2. [미들샷] 매리가 통화한다. / 매리: "응, 곧 나갈게."\n'
+     '3. [클로즈업] 매리가 거울을 보며 미소짓는다.\n'
+     '4. [풀샷] 매리가 가방을 메고 집을 나선다.'),
+]
+
+
 def _bake_sample():
     """SAMPLE_TEXT를 렌더해 첫 진입용 패널 카드 묶음(HTML)을 만든다. 실패해도 빈 문자열."""
     try:
@@ -190,7 +243,13 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border-top-color:#7c5cff;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* 입력 보조: 샷 칩 + 실시간 파싱 프리뷰 */
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 9px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 9px}
+.chip-sp{flex:1 1 auto;min-width:6px}
+.chips .gtool{font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:9px;
+  border:1px solid var(--line);background:var(--card2);color:#cdd;cursor:pointer;outline:none}
+.chips select.gtool{max-width:170px}
+.chips #gfmt{background:rgba(124,58,237,.18);border-color:rgba(124,58,237,.45);color:#e3d8ff;font-weight:700}
+.chips #gfmt:hover{background:rgba(124,58,237,.3);color:#fff}
 .chips .chip{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:9px;cursor:pointer;
   border:1px solid var(--line);background:var(--card2);color:#cdd;transition:.12s;user-select:none}
 .chips .chip:hover{border-color:#7c5cff;color:#fff;background:rgba(124,58,237,.18)}
@@ -399,6 +458,9 @@ def main():
         '<span class="chip alt" data-ins=" / 매리: &quot;&quot;">대사</span>'
         '<span class="chip alt" data-ins=" / 효과음: \'\'">효과음</span>'
         '<span class="chip alt" data-ins=" / 나레이션: ">나레이션</span>'
+        '<span class="chip-sp"></span>'
+        '<select class="gtool" id="gsamplesel" title="샘플 선택"><option value="">📑 샘플 선택…</option></select>'
+        '<button class="gtool" id="gfmt" title="자연글을 글콘티 형식으로 정리">✎ 글콘티 형식으로</button>'
         '</div>'
         '<div class="genwrap">'
         '<div class="genleft">'
@@ -424,7 +486,6 @@ def main():
     html.append(
         '<div class="genbottom" id="genbottom">'
         '<button class="primary" id="ggen">✎ 생성</button>'
-        '<button id="gsample">샘플 불러오기</button>'
         '<span class="gchk"><input type="checkbox" id="ggray" checked> 흑백</span>'
         '<span class="exp-sep"></span>'
         '<button id="gpng" disabled>⬇ PNG</button>'
@@ -436,7 +497,8 @@ def main():
 
     data_js = json.dumps({m["stem"]: m for m in compare}, ensure_ascii=False)
     sample_svg_js = '""'                       # 생성 탭은 빈 상태로 시작(샘플 미삽입)
-    sample_txt_js = json.dumps(SAMPLE_TEXT, ensure_ascii=False)   # '샘플 불러오기' 버튼용으로만 유지
+    sample_txt_js = json.dumps(SAMPLE_TEXT, ensure_ascii=False)
+    samples_js = json.dumps([{"t": t, "x": x} for t, x in SAMPLES], ensure_ascii=False)
     html.append(r"""<script>
 const CMP = __CMP__;
 function show(i){
@@ -463,6 +525,7 @@ function loadEp(){
 // ── 직접 생성 탭 ──
 const G_API = location.protocol==='file:' ? 'http://127.0.0.1:8000' : '';
 const G_SAMPLE = __SAMPLE_TXT__;
+const G_SAMPLES = __SAMPLES__;         // 테스트 샘플 10종 [{t:제목, x:본문}]
 const G_SAMPLE_SVG = __SAMPLE_SVG__;   // 첫 진입용 베이크된 예시 패널들
 const gq = id => document.getElementById(id);
 let gPanels = [];          // [{svg, shot,pose,emotion,view,panel}] — 현재 결과 상태
@@ -647,7 +710,45 @@ async function copyPNG(){
   }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 실패</span>'; }
 }
 
-gq('gsample').onclick = () => { gq('ginp').value = G_SAMPLE; parsePreview(); };
+// 샘플 10종 드롭다운 채우기 + 선택 시 로드
+(function(){ const sel=gq('gsamplesel'); if(!sel) return;
+  G_SAMPLES.forEach((s,i)=>{ const o=document.createElement('option'); o.value=String(i); o.textContent=(i+1)+'. '+s.t; sel.appendChild(o); });
+  sel.onchange=()=>{ const i=sel.value; if(i==='') return; gq('ginp').value=G_SAMPLES[+i].x; parsePreview(); sel.selectedIndex=0;
+    gq('ginp').scrollTop=0; gq('gstat').textContent='샘플 불러옴: '+G_SAMPLES[+i].t; };
+})();
+// 자연글 → 글콘티 형식 정리 (서버 우선, 실패 시 클라이언트 휴리스틱)
+function localFormat(text){
+  const sents = text.replace(/\r/g,'').split(/\n+|(?<=[.!?。])\s+/).map(s=>s.trim()).filter(Boolean);
+  let out=[];
+  sents.forEach((s,idx)=>{
+    if(/^\s*\d+[.)\]]/.test(s)){ out.push(s); return; }   // 이미 번호형식이면 유지
+    let dlg=''; const m=s.match(/["“]([^"”]+)["”]/); if(m) dlg=m[1];
+    let shot='미들샷';
+    if(/얼굴|표정|웃|놀란|눈물|울|찡그|분노|화난|클로즈/.test(s)) shot='클로즈업';
+    else if(/걷|달리|뛰|전신|서 ?있|쓰러|넘어|점프|일어/.test(s)) shot='풀샷';
+    else if(/거리|사람들|군중|풍경|멀리|전경|모여/.test(s)) shot='롱샷';
+    let body=s.replace(/["“][^"”]+["”]/,'').replace(/\s+/g,' ').trim();
+    let line='['+shot+'] '+body;
+    if(dlg){ const nm=(s.match(/([가-힣]{2,4})(가|는|이|은|와|과|아|야|이가)/)||[])[1]||'화자'; line+=' / '+nm+': "'+dlg+'"'; }
+    out.push((idx+1)+'. '+line);
+  });
+  return out.join('\n');
+}
+async function formatText(){
+  const text=gq('ginp').value.trim();
+  if(!text){ gq('gstat').innerHTML='<span style="color:#f99">먼저 글을 입력하세요.</span>'; return; }
+  gq('gfmt').disabled=true; gq('gstat').textContent='형식 정리 중...';
+  try{
+    const res=await fetch(G_API+'/api/format',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+    const d=await res.json();
+    if(d.error||!d.text) throw 0;
+    gq('ginp').value=d.text; gq('gstat').textContent=d.count+'컷 형식으로 정리됨';
+  }catch(e){
+    gq('ginp').value=localFormat(text); gq('gstat').textContent='형식으로 정리됨(간이 변환)';
+  }
+  parsePreview(); gq('gfmt').disabled=false;
+}
+gq('gfmt').onclick = formatText;
 gq('ggen').onclick = genConti;
 gq('gpng').onclick = ()=>exportPNG();
 gq('gpdf').onclick = exportPDF;
@@ -656,7 +757,7 @@ gq('gdl').onclick = () => { if(!gStrip) return; dlBlob(new Blob([gStrip],{type:'
 gq('ginp').addEventListener('keydown', e => { if((e.ctrlKey||e.metaKey)&&e.key==='Enter') genConti(); });
 
 window.addEventListener('load',()=>{ parsePreview(); if(location.hash==='#cmp') show(2); if(location.hash==='#char') show(3); if(location.hash==='#pose') show(4); if(location.hash==='#angle') show(5); if(location.hash==='#gen') show(6); if(location.hash==='#prop') show(7); });
-</script></body></html>""".replace("__CMP__", data_js).replace("__SAMPLE_SVG__", sample_svg_js).replace("__SAMPLE_TXT__", sample_txt_js))
+</script></body></html>""".replace("__CMP__", data_js).replace("__SAMPLE_SVG__", sample_svg_js).replace("__SAMPLE_TXT__", sample_txt_js).replace("__SAMPLES__", samples_js))
 
     out = OUT_DIR / "viewer.html"
     out.write_text("".join(html), encoding="utf-8")

@@ -206,6 +206,14 @@ def load_panels_from_text(raw: str):
     lines = [ln for ln in raw.splitlines() if not ln.lstrip().startswith("#")]
     body = "\n".join(lines)
     matches = list(PANEL_START.finditer(body))
+    if not matches:
+        # 번호가 없으면 자연글로 보고 줄/문장 단위로 분리(자연글 입력·형식변환 지원)
+        parts = [p for p in body.split("\n") if p.strip()]
+        if len(parts) <= 1:
+            # 문장 끝(다/요/죠/. 등) 뒤 공백에서 분리하되, 바로 뒤 따옴표(대사)는 앞 문장에 붙임
+            parts = re.split(r'(?<=[다요죠함됨음니까\.!?])\s+(?![\"“\'‘])', body)
+        return [(i + 1, re.sub(r"\s*\n\s*", " ", p).strip())
+                for i, p in enumerate(parts) if p.strip()]
     panels = []
     for i, m in enumerate(matches):
         num = int(m.group(1))

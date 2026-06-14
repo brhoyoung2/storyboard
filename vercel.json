@@ -9,6 +9,10 @@
     "api/panel.py": {
       "includeFiles": "src/**",
       "maxDuration": 30
+    },
+    "api/format.py": {
+      "includeFiles": "src/**",
+      "maxDuration": 30
     }
   }
 }
