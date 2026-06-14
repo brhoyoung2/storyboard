@@ -813,20 +813,20 @@ def wrap(text, n):
     return out or [""]
 
 
-def bubble_size(text, kind="dialogue", maxw=250):
-    chars_per = max(5, int(maxw / 28))
+def bubble_size(text, kind="dialogue", maxw=280):
+    chars_per = max(4, int(maxw / 30))
     lines = wrap(text, chars_per)
-    lh = 42
-    w = min(maxw, max(108, max(len(l) for l in lines) * 28 + 34))
-    return w, len(lines) * lh + 34
+    lh = 40
+    w = min(maxw, max(112, max(len(l) for l in lines) * 30 + 34))
+    return w, len(lines) * lh + 36
 
 
-def bubble(x, y, text, kind="dialogue", maxw=250, tail=0.3):
-    chars_per = max(5, int(maxw / 28))
+def bubble(x, y, text, kind="dialogue", maxw=280, tail=0.3):
+    chars_per = max(4, int(maxw / 30))
     lines = wrap(text, chars_per)
-    lh = 42
-    h = len(lines) * lh + 34
-    w = min(maxw, max(108, max(len(l) for l in lines) * 28 + 34))
+    lh = 40
+    h = len(lines) * lh + 36
+    w = min(maxw, max(112, max(len(l) for l in lines) * 30 + 34))
     s = []
     if kind == "narration":
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" '
@@ -843,9 +843,10 @@ def bubble(x, y, text, kind="dialogue", maxw=250, tail=0.3):
         tx = x + w*min(0.82, max(0.18, tail))
         d = -1 if tail < 0.5 else 1
         s.append(f'<path d="M{tx:.1f},{y+h} l{-7*d:.1f},19 l{24*d:.1f},-17 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
-    ty = y + 32
+    fs = 28
+    ty = y + (h - len(lines)*lh)/2 + fs*0.74   # 박스 안 세로 중앙 정렬(위에 붙지 않게)
     for ln in lines:
-        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{GOTHIC}" font-size="29" font-weight="500" '
+        s.append(f'<text x="{x+w/2:.1f}" y="{ty:.1f}" font-family="{GOTHIC}" font-size="{fs}" font-weight="500" '
                  f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
         ty += lh
     return "".join(s), (w, h)
