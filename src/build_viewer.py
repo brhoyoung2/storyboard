@@ -227,6 +227,9 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .genbottom button{font-family:inherit;font-size:15px;font-weight:700;padding:12px 20px;border-radius:12px;
   cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.15s}
 .genbottom button:hover{border-color:#c7cdda}
+.genbottom select{font-family:inherit;font-size:14px;font-weight:600;padding:11px 12px;border-radius:12px;
+  cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--tx);outline:none;max-width:180px}
+.genbottom select:hover{border-color:#c7cdda}
 .genbottom button.primary{background:var(--grad);border-color:transparent;color:#fff;padding:12px 34px;font-size:16px;
   box-shadow:0 8px 22px rgba(124,58,237,.4)}
 .genbottom button.primary:hover{transform:translateY(-1px)}
@@ -485,7 +488,6 @@ def main():
         '<span class="chip alt" data-ins=" / 효과음: \'\'">효과음</span>'
         '<span class="chip alt" data-ins=" / 나레이션: ">나레이션</span>'
         '<span class="chip-sp"></span>'
-        '<select class="gtool" id="gsamplesel" title="샘플 선택"><option value="">📑 샘플 선택…</option></select>'
         '<button class="gtool" id="gfmt" title="자연글을 글콘티 형식으로 정리">✎ 글콘티 형식으로</button>'
         '</div>'
         '<div class="genwrap">'
@@ -513,6 +515,7 @@ def main():
     html.append(
         '<div class="genbottom" id="genbottom">'
         '<button class="primary" id="ggen">✎ 생성</button>'
+        '<select id="gsamplesel" title="샘플 선택"><option value="">📑 샘플 선택…</option></select>'
         '<span class="gchk"><input type="checkbox" id="ggray" checked> 흑백</span>'
         '<span class="exp-sep"></span>'
         '<button id="gpng" disabled>⬇ PNG</button>'
