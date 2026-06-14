@@ -254,6 +254,13 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border:1px solid var(--line);background:var(--card2);color:#cdd;transition:.12s;user-select:none}
 .chips .chip:hover{border-color:#7c5cff;color:#fff;background:rgba(124,58,237,.18)}
 .chips .chip.alt{color:#9fb3c8}
+/* 입력 자동완성 팝업 */
+.gac{display:none;position:absolute;z-index:30;flex-wrap:wrap;gap:5px;max-width:520px;
+  background:#11151d;border:1px solid var(--line);border-radius:11px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.gac .acitem{font-family:inherit;font-size:13px;font-weight:600;padding:6px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card2);color:var(--tx);display:flex;align-items:center;gap:6px}
+.gac .acitem:hover{border-color:#7c5cff;background:rgba(124,58,237,.2)}
+.gac .acitem i{font-style:normal;font-size:11px;color:var(--dim)}
 .gpreview{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:11px 0 0;min-height:24px;font-size:12.5px}
 .gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
   border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
@@ -281,6 +288,23 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border:1px solid #dde1ec;background:#f5f6fa;color:#333;transition:.12s;width:100%}
 .gcard-bar .iconbtn:hover{border-color:#7c5cff;color:#7c5cff;background:#fff}
 .gcard-bar .sp{display:none}
+/* 컷 관리 버튼(편집·추가·복제·이동·삭제) */
+.gcard-ops{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;padding-top:8px;border-top:1px solid #eef0f5}
+.gcard-ops .opbtn{flex:1 1 auto;min-width:30px;font-family:inherit;font-size:12.5px;font-weight:700;
+  padding:6px 6px;border-radius:8px;border:1px solid #dde1ec;background:#f5f6fa;color:#444;cursor:pointer;transition:.12s}
+.gcard-ops .opbtn[data-edit]{flex:1 1 100%}
+.gcard-ops .opbtn:hover{border-color:#7c5cff;color:#7c5cff;background:#fff}
+.gcard-ops .opbtn.del:hover{border-color:#e3506a;color:#e3506a}
+/* 컷 인라인 편집 오버레이 */
+.gcard-edit{position:absolute;inset:0;z-index:9;background:rgba(255,255,255,.97);
+  display:flex;flex-direction:column;gap:9px;padding:16px}
+.gcard-edit textarea{flex:1;min-height:90px;width:100%;resize:none;border:1px solid #cdd3e0;border-radius:9px;
+  padding:11px 12px;font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.7;color:#222;outline:none}
+.gcard-edit textarea:focus{border-color:#7c5cff;box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+.gcard-edit .ged-btns{display:flex;gap:8px;justify-content:flex-end}
+.gcard-edit button{font-family:inherit;font-size:13.5px;font-weight:700;padding:9px 20px;border-radius:9px;
+  cursor:pointer;border:1px solid #dde1ec;background:#f5f6fa;color:#333}
+.gcard-edit .ged-apply{background:var(--grad);border-color:transparent;color:#fff}
 /* 컷 번호 배지(좌상단, 항상 표시) */
 .gcard-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.55)}
@@ -467,6 +491,7 @@ def main():
         '<div class="genwrap">'
         '<div class="genleft">'
         '<textarea id="ginp" placeholder="여기에 글콘티 입력 (줄글을 그대로 붙여넣어도 됩니다)...&#10;예) 1. [미들샷] 매리가 웃는다. / 매리: &quot;안녕!&quot;"></textarea>'
+        '<div class="gac" id="gac"></div>'
         '<div class="gpreview" id="gpreview"></div>'
         '<div class="genhint">형식: <code>번호. [샷] 상황묘사 / 화자: "대사"</code> · '
         '인물 이름(매리·무결·엘리·라이더·정인 등)으로 색/성별 반영 · "둘/서로"=2명, "사람들"=다인물 · Ctrl+Enter로 생성</div>'
@@ -582,7 +607,33 @@ function parsePreview(){
   if(sfx) chips.push(`<span class="pv muted">효과음 ${sfx}</span>`);
   pv.innerHTML = chips.join('');
 }
-let _pvT; gq('ginp').addEventListener('input', ()=>{ clearTimeout(_pvT); _pvT=setTimeout(parsePreview,120); });
+let _pvT; gq('ginp').addEventListener('input', ()=>{ clearTimeout(_pvT); _pvT=setTimeout(parsePreview,120); showAC(); });
+
+// ── 입력 자동완성 (인물·샷·소품·동작) ──
+const AC_LIST = [].concat(
+  ['매리','무결','엘리','라이더','정인','신성우','하은','주태경','루나','이한'].map(v=>({v,t:'인물',ins:v})),
+  [['풀샷','[풀샷] '],['미들샷','[미들샷] '],['클로즈업','[클로즈업] '],['롱샷','[롱샷] ']].map(([v,ins])=>({v,t:'샷',ins})),
+  ['우산','가방','커피','꽃','노트북','핸드폰','책','케이크','풍선','선물','기타','마이크','카메라','물병','캐리어','공'].map(v=>({v,t:'소품',ins:v})),
+  ['걷는다','달린다','웃는다','운다','놀란다','앉는다','손을 흔든다','팔짱을 낀다','점프한다','넘어진다','기지개를 켠다','통화한다'].map(v=>({v,t:'동작',ins:v}))
+);
+function acWord(ta){ const s=ta.value.slice(0,ta.selectionStart); const m=s.match(/([가-힣A-Za-z]{1,12})$/); return m?m[1]:''; }
+function showAC(){
+  const ta=gq('ginp'), pop=gq('gac'), w=acWord(ta);
+  if(w.length<1){ pop.style.display='none'; return; }
+  const ms=AC_LIST.filter(o=>o.v.indexOf(w)===0 && o.v!==w).slice(0,8);
+  if(!ms.length){ pop.style.display='none'; return; }
+  pop.innerHTML=ms.map(o=>`<button class="acitem" data-ins="${o.ins.replace(/"/g,'&quot;')}" data-w="${w}">${o.v}<i>${o.t}</i></button>`).join('');
+  pop.style.left='0px'; pop.style.top=(ta.offsetTop+ta.offsetHeight+4)+'px'; pop.style.display='flex';
+}
+gq('gac').addEventListener('mousedown', e=>{
+  const b=e.target.closest('.acitem'); if(!b) return; e.preventDefault();
+  const ta=gq('ginp'), w=b.dataset.w, ins=b.dataset.ins, cur=ta.selectionStart;
+  ta.value=ta.value.slice(0,cur-w.length)+ins+ta.value.slice(cur);
+  const np=cur-w.length+ins.length; ta.focus(); ta.setSelectionRange(np,np);
+  gq('gac').style.display='none'; parsePreview();
+});
+gq('ginp').addEventListener('blur', ()=>setTimeout(()=>{ gq('gac').style.display='none'; },160));
+gq('ginp').addEventListener('keydown', e=>{ if(e.key==='Escape') gq('gac').style.display='none'; });
 
 // ── 카드 렌더 ──
 function optSel(field, cur, idx){
@@ -591,15 +642,56 @@ function optSel(field, cur, idx){
 }
 function cardHTML(p, i){
   return `<div class="gcard" data-idx="${i}" id="gcard${i}">`
-    + p.svg
+    + (p.svg||'')
     + '<div class="gcard-bar">'
     + `<span class="pn">#${i+1}</span>`
     + optSel('shot',p.shot,i)+optSel('pose',p.pose,i)+optSel('emotion',p.emotion,i)+optSel('view',p.view,i)
     + `<button class="iconbtn" data-reroll="${i}">🎲 리롤</button>`
-    + '<span class="sp"></span>'
     + `<button class="iconbtn" data-png="${i}">⬇ PNG</button>`
+    + '<div class="gcard-ops">'
+    +   `<button class="opbtn" data-edit="${i}" title="대사·묘사 편집">✎ 편집</button>`
+    +   `<button class="opbtn" data-add="${i}" title="아래에 컷 추가">➕</button>`
+    +   `<button class="opbtn" data-dup="${i}" title="복제">⧉</button>`
+    +   `<button class="opbtn" data-up="${i}" title="위로">↑</button>`
+    +   `<button class="opbtn" data-down="${i}" title="아래로">↓</button>`
+    +   `<button class="opbtn del" data-del="${i}" title="삭제">🗑</button>`
+    + '</div>'
     + '</div></div>';
 }
+// ── 컷 인라인 편집 ──
+function openEditor(i){
+  const card=gq('gcard'+i); if(!card||card.querySelector('.gcard-edit')) return;
+  const ed=document.createElement('div'); ed.className='gcard-edit';
+  const ta=document.createElement('textarea'); ta.value=gPanels[i].src||'';
+  ta.placeholder='[샷] 묘사 / 화자: "대사"';
+  const btns=document.createElement('div'); btns.className='ged-btns';
+  const ap=document.createElement('button'); ap.className='ged-apply'; ap.textContent='적용';
+  const cc=document.createElement('button'); cc.textContent='취소';
+  btns.append(cc,ap); ed.append(ta,btns); card.appendChild(ed); ta.focus();
+  const close=()=>ed.remove();
+  const apply=()=>{ const t=ta.value.trim(); close(); if(t) cutReq(i,t); };
+  cc.onclick=close; ap.onclick=apply;
+  ta.addEventListener('keydown',e=>{ if((e.ctrlKey||e.metaKey)&&e.key==='Enter') apply(); else if(e.key==='Escape') close(); });
+}
+async function cutReq(i, text){
+  const card=gq('gcard'+i); card.classList.add('busy');
+  card.insertAdjacentHTML('beforeend','<div class="gcard-mini"><div class="spin"></div></div>');
+  try{
+    const res=await fetch(G_API+'/api/cut',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text, gray:gq('ggray').checked, seed:gPanels[i].seed||5})});
+    const d=await res.json();
+    if(d.error){ gq('gstat').innerHTML='<span style="color:#f99">⚠ '+d.error+'</span>';
+      card.classList.remove('busy'); const m=card.querySelector('.gcard-mini'); if(m) m.remove(); return; }
+    gPanels[i]={svg:d.svg,shot:d.shot,pose:d.pose,emotion:d.emotion,view:d.view,panel:d.panel,seed:d.seed,src:d.src};
+    renderCards(); gq('gstat').textContent='#'+(i+1)+' 컷 수정됨';
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>'; }
+}
+function dupCut(i){ gPanels.splice(i+1,0,Object.assign({},gPanels[i])); renderCards(); gq('gstat').textContent='컷 복제됨'; }
+function delCut(i){ if(gPanels.length<=1){ gq('gstat').textContent='마지막 컷은 삭제할 수 없습니다'; return; }
+  gPanels.splice(i,1); renderCards(); gq('gstat').textContent='컷 삭제됨'; }
+function moveCut(i,dir){ const j=i+dir; if(j<0||j>=gPanels.length) return;
+  [gPanels[i],gPanels[j]]=[gPanels[j],gPanels[i]]; renderCards(); }
+function addCut(i){ gPanels.splice(i+1,0,Object.assign({},gPanels[i])); renderCards(); openEditor(i+1); }
 function renderCards(){
   gq('gout').innerHTML = '<div class="pstack" id="pstack">'+gPanels.map(cardHTML).join('')+'</div>';
 }
@@ -615,7 +707,7 @@ async function panelReq(i, extra){
     const d = await res.json();
     if(d.error){ gq('gstat').innerHTML='<span style="color:#f99">⚠ '+d.error+'</span>'; }
     else{
-      gPanels[i] = {svg:d.svg, shot:d.shot, pose:d.pose, emotion:d.emotion, view:d.view, panel:d.panel, seed:d.seed};
+      gPanels[i] = {svg:d.svg, shot:d.shot, pose:d.pose, emotion:d.emotion, view:d.view, panel:d.panel, seed:d.seed, src:d.src!==undefined?d.src:p.src};
       const nc = document.createElement('div'); nc.innerHTML = cardHTML(gPanels[i], i);
       card.replaceWith(nc.firstChild);
     }
@@ -629,7 +721,13 @@ gq('gout').addEventListener('change', e=>{
 gq('gout').addEventListener('click', e=>{
   const rr=e.target.closest('[data-reroll]'); if(rr){ const i=+rr.dataset.reroll;
     panelReq(i, {seed: ((gPanels[i].seed||5)%97)+7}); return; }   // 시드 회전 → 선 흔들림 다르게
-  const pg=e.target.closest('[data-png]'); if(pg){ exportPNG(+pg.dataset.png); }
+  const pg=e.target.closest('[data-png]'); if(pg){ exportPNG(+pg.dataset.png); return; }
+  const ed=e.target.closest('[data-edit]'); if(ed){ openEditor(+ed.dataset.edit); return; }
+  const ad=e.target.closest('[data-add]'); if(ad){ addCut(+ad.dataset.add); return; }
+  const dp=e.target.closest('[data-dup]'); if(dp){ dupCut(+dp.dataset.dup); return; }
+  const up=e.target.closest('[data-up]'); if(up){ moveCut(+up.dataset.up,-1); return; }
+  const dn=e.target.closest('[data-down]'); if(dn){ moveCut(+dn.dataset.down,1); return; }
+  const dl=e.target.closest('[data-del]'); if(dl){ delCut(+dl.dataset.del); return; }
 });
 
 // ── 생성 ──
@@ -646,7 +744,7 @@ async function genConti(){
       gq('gstat').innerHTML='<span style="color:#f99">오류</span>';
       gq('gout').innerHTML='<div class="gph">⚠ '+d.error+'</div>';
     } else {
-      gPanels = d.panels.map(p=>({svg:p.svg,shot:p.shot,pose:p.pose,emotion:p.emotion,view:p.view,panel:p.panel,seed:5}));
+      gPanels = d.panels.map(p=>({svg:p.svg,shot:p.shot,pose:p.pose,emotion:p.emotion,view:p.view,panel:p.panel,seed:5,src:p.src}));
       gStrip = d.strip || '';
       renderCards();
       ['gpng','gpdf','gcopy','gdl'].forEach(id=>gq(id).disabled=false);

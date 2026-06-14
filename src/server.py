@@ -77,6 +77,8 @@ class Handler(BaseHTTPRequestHandler):
                 out = G.panel(req)
             elif path in ("/format", "/api/format"):
                 out = G.fmt(req.get("text", ""))
+            elif path in ("/cut", "/api/cut"):
+                out = G.cut(req)
             else:
                 self._send(404, "not found"); return
             self._send(200, json.dumps(out, ensure_ascii=False), "application/json; charset=utf-8")

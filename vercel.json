@@ -13,6 +13,10 @@
     "api/format.py": {
       "includeFiles": "src/**",
       "maxDuration": 30
+    },
+    "api/cut.py": {
+      "includeFiles": "src/**",
+      "maxDuration": 30
     }
   }
 }
