@@ -49,15 +49,15 @@ GOTHIC = "'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans
 
 # 샷 프레이밍: 패널 높이 + 인물 head 반지름 + head 중심 y비율
 SHOT_FRAME = {
-    "extreme_closeup": dict(h=520, head_r=170, head_cy=0.50, body="none"),
-    "closeup":         dict(h=520, head_r=120, head_cy=0.42, body="bust"),
-    "medium":          dict(h=480, head_r=82,  head_cy=0.27, body="waist"),
-    "full":            dict(h=820, head_r=58,  head_cy=0.12, body="full"),
-    "long":            dict(h=680, head_r=34,  head_cy=0.10, body="full"),
-    "insert":          dict(h=440, head_r=0,   head_cy=0.0,  body="none"),
-    "sd":              dict(h=460, head_r=85,  head_cy=0.30, body="chibi"),
-    "title":           dict(h=400, head_r=0,   head_cy=0.0,  body="none"),
-    "unspecified":     dict(h=480, head_r=80,  head_cy=0.27, body="waist"),
+    "extreme_closeup": dict(h=600, head_r=170, head_cy=0.46, body="none"),
+    "closeup":         dict(h=620, head_r=120, head_cy=0.40, body="bust"),
+    "medium":          dict(h=600, head_r=82,  head_cy=0.27, body="waist"),
+    "full":            dict(h=960, head_r=58,  head_cy=0.12, body="full"),
+    "long":            dict(h=820, head_r=34,  head_cy=0.10, body="full"),
+    "insert":          dict(h=520, head_r=0,   head_cy=0.0,  body="none"),
+    "sd":              dict(h=560, head_r=85,  head_cy=0.30, body="chibi"),
+    "title":           dict(h=460, head_r=0,   head_cy=0.0,  body="none"),
+    "unspecified":     dict(h=600, head_r=80,  head_cy=0.27, body="waist"),
 }
 
 # 캐릭터 레지스트리: hair 스타일·색, accent(의상색), gender, glasses, outfit
