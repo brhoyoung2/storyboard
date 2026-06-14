@@ -266,10 +266,12 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .gcard.busy{opacity:.5}
 .gcard svg{display:block;width:100%;height:auto}
 /* 컨트롤: 평소 숨김 → 컷에 마우스 올리면 컷 '바깥 오른쪽'에 화이트 UI 패널로 떠오름(그림 안 가림) */
-.gcard-bar{position:absolute;top:50%;left:100%;margin-left:16px;transform:translate(8px,-50%);
+.gcard-bar{position:absolute;top:50%;left:100%;margin-left:14px;transform:translate(8px,-50%);
   display:flex;flex-direction:column;gap:8px;align-items:stretch;width:178px;
   padding:13px;background:#fff;border:1px solid #e4e7ef;border-radius:13px;
   box-shadow:0 12px 30px rgba(0,0,0,.22);opacity:0;transition:.16s;pointer-events:none;z-index:5}
+/* 컷↔패널 사이 빈 틈을 메우는 투명 브릿지 — 마우스가 옮겨갈 때 hover가 끊기지 않게 */
+.gcard-bar::before{content:"";position:absolute;top:-10px;bottom:-10px;left:-30px;width:40px}
 .gcard:hover .gcard-bar{opacity:1;transform:translate(0,-50%);pointer-events:auto}
 .gcard-bar .pn{font-size:12px;font-weight:800;color:#9aa0b2;letter-spacing:.04em}
 .gcard-bar select{font-family:inherit;font-size:13px;padding:8px 9px;border-radius:9px;
