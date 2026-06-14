@@ -44,6 +44,8 @@ def PAINT(c):
     """채움색 — 스케치 모드면 흰색으로."""
     return "#ffffff" if SKETCH else c
 FONT = "'Nanum Pen Script','Gulim','Malgun Gothic',sans-serif"
+# 식자(말풍선·나레이션·캡션·효과음)용 고딕 — 손글씨 대신 깔끔한 고딕체
+GOTHIC = "'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif"
 
 # 샷 프레이밍: 패널 높이 + 인물 head 반지름 + head 중심 y비율
 SHOT_FRAME = {
@@ -839,9 +841,9 @@ def bubble(x, y, text, kind="dialogue", maxw=250, tail=0.3):
         tx = x + w*min(0.82, max(0.18, tail))
         d = -1 if tail < 0.5 else 1
         s.append(f'<path d="M{tx:.1f},{y+h} l{-7*d:.1f},19 l{24*d:.1f},-17 z" fill="white" stroke="{INK}" stroke-width="1.8"/>')
-    ty = y + 34
+    ty = y + 32
     for ln in lines:
-        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{FONT}" font-size="33" '
+        s.append(f'<text x="{x+w/2}" y="{ty}" font-family="{GOTHIC}" font-size="29" font-weight="500" '
                  f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
         ty += lh
     return "".join(s), (w, h)
@@ -864,9 +866,9 @@ def caption_box(text, h, panel_w=W):
     by = h - bh - 30                           # 하단에서 살짝 띄움
     s = [f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bw:.1f}" height="{bh:.1f}" rx="9" '
          f'fill="#fffef2" stroke="{INK}" stroke-width="2"/>']
-    ty = by + fs + 9
+    ty = by + fs + 7
     for ln in lines:
-        s.append(f'<text x="{panel_w/2:.1f}" y="{ty:.1f}" font-family="{FONT}" font-size="{fs}" '
+        s.append(f'<text x="{panel_w/2:.1f}" y="{ty:.1f}" font-family="{GOTHIC}" font-size="{fs}" font-weight="500" '
                  f'fill="#222" text-anchor="middle">{esc(ln)}</text>')
         ty += lh
     return "".join(s)
@@ -874,7 +876,7 @@ def caption_box(text, h, panel_w=W):
 
 def sfx(x, y, text):
     t = esc(text.strip().strip("‘’'“”\""))
-    return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="64" '
+    return (f'<text x="{x}" y="{y}" font-family="{GOTHIC}" font-size="58" font-weight="700" '
             f'fill="{SFX_FILL}" stroke="{INK}" stroke-width="1.2" '
             f'transform="rotate(-8 {x} {y})" opacity="0.9">{t}</text>')
 
@@ -895,14 +897,24 @@ def panel_number(n, y):
             f'text-anchor="middle">{n}</text>')
 
 
-# ---- 배경 -----------------------------------------------------------------
+# ---- 배경 + 접지면 --------------------------------------------------------
 BG = f'fill="none" stroke="{INK2}" stroke-width="1.6" stroke-linejoin="round" opacity="0.7"'
 BG_FILL = f'fill="{PAINT("#eef4fa")}" stroke="{INK2}" stroke-width="1.4" opacity="0.7"'
 
+# 접지면(ground plane) 비율 — 샷별 단일 기준. 인물의 발·배경 지면선·소품이 모두 이 y에 정렬된다.
+GROUND_RATIO = {"full": 0.80, "long": 0.72, "medium": 0.64,
+                "unspecified": 0.64, "insert": 0.78}
+FOOT_K = 7.0   # 발 y ≈ 머리중심 + FOOT_K*head_r (서있는 자세 기준)
 
-def background(scene_type, location, h):
-    """장소 유형별 단순 배경선. 인물 뒤(연하게). 클로즈업류는 호출부에서 생략."""
-    horizon = h * 0.60
+
+def ground_y(h, shot):
+    """샷의 접지면 y. 전신 샷은 인물이 이 선에 발을 딛는다."""
+    return h * GROUND_RATIO.get(shot, 0.80)
+
+
+def background(scene_type, location, h, gy=None):
+    """장소 유형별 단순 배경선. 인물 뒤(연하게). gy(접지면)에 지면·건물 베이스를 맞춘다."""
+    horizon = gy if gy is not None else h * 0.60
     s = []
     if scene_type == "establishing" or location == "house_ext":
         # 집 외관 실루엣 (장소를 '보여주는' 설정샷)
@@ -934,8 +946,8 @@ def background(scene_type, location, h):
             for rx in (0.1, 0.4, 0.7):
                 s.append(f'<rect x="{W*rx}" y="{h*ry}" width="{W*0.18}" height="{h*0.12}" {BG}/>')
     elif scene_type == "interior":
-        # 실내: 뒷벽 모서리 + 바닥선 + 창문
-        s.append(f'<line x1="0" y1="{h*0.64}" x2="{W}" y2="{h*0.64}" {BG}/>')      # 바닥
+        # 실내: 뒷벽 모서리 + 바닥선(접지면) + 창문
+        s.append(f'<line x1="0" y1="{horizon}" x2="{W}" y2="{horizon}" {BG}/>')      # 바닥=접지면
         s.append(f'<path d="M0,{h*0.18} L{W*0.16},{h*0.30} M{W},{h*0.18} L{W*0.84},{h*0.30}" {BG}/>')  # 천장 모서리
         s.append(f'<rect x="{W*0.10}" y="{h*0.20}" width="{W*0.18}" height="{h*0.22}" {BG}/>')  # 창
         s.append(f'<line x1="{W*0.19}" y1="{h*0.20}" x2="{W*0.19}" y2="{h*0.42}" {BG}/>')
@@ -1213,11 +1225,16 @@ def render_panel(panel, y0):
              f'stroke="{INK}" stroke-width="2.2"/>')
     s.append(f'<g filter="url(#rough)">')
 
+    # 접지면(ground plane) — 샷별 단일 기준 y. 배경 지면선·인물 발이 모두 여기에 정렬.
+    gy = ground_y(h, shot)
     # 배경 (장소 있음 + 환경이 보이는 샷에서만; 클로즈업류는 얼굴이 화면을 채움)
     scene_type = panel.get("scene_resolved", "blank")
     location = panel.get("location", "unknown")
     if scene_type != "blank" and shot in ("medium", "full", "long", "unspecified", "insert"):
-        s.append(background(scene_type, location, h))
+        s.append(background(scene_type, location, h, gy))
+    # 전신 샷은 장소가 없어도 접지면(지면선)을 항상 그린다
+    elif shot in ("full", "long"):
+        s.append(f'<line x1="{W*0.04:.1f}" y1="{gy:.1f}" x2="{W*0.96:.1f}" y2="{gy:.1f}" {BG}/>')
 
     # 소품 — 인물 뒤(의자·침대·소파) / 인물 앞(책상+위 물건). 몸이 보이는 샷만.
     behind_props, front_props = "", ""
@@ -1239,20 +1256,19 @@ def render_panel(panel, y0):
             return actors[i]                             # (name, gender)
         return (None, gh)
 
-    # 전신 샷: 발이 지면(배경 수평선 h*0.60)에 닿도록 head_cy 보정 (FOOT_K=발y≈cy+7r)
-    GROUND_Y = h * 0.60
+    # 전신 샷: 발이 접지면(gy)에 닿도록 head_cy 보정 (발y ≈ 머리중심 + FOOT_K*head_r)
     gframe = frame
     if frame["body"] == "full":
         gframe = dict(frame)
-        gframe["head_cy"] = (GROUND_Y - 7.0 * frame["head_r"]) / h
+        gframe["head_cy"] = (gy - FOOT_K * frame["head_r"]) / h
 
     if frame["body"] == "none":
         # insert/title — 묘사 박스만
         s.append(f'<rect x="{W*0.25}" y="{h*0.3}" width="{W*0.5}" height="{h*0.4}" '
                  f'fill="none" stroke="{INK2}" stroke-width="1.5" stroke-dasharray="6 6"/>')
     elif people == "group":
-        # 다인물: 지면(수평선)에 발을 딛고 선 군중. 비균등 간격·원근(깊이)·다양한 포즈/방향으로 자연스럽게.
-        horizon = h * 0.60
+        # 다인물: 접지면(gy)에 발을 딛고 선 군중. 비균등 간격·원근(깊이)·다양한 포즈/방향으로 자연스럽게.
+        horizon = gy
         na = len(actors)
         n = min(max(na if na >= 2 else 3, 2), 5)
         XS = {2: [0.33, 0.67], 3: [0.20, 0.50, 0.80],
@@ -1264,10 +1280,10 @@ def render_panel(panel, y0):
         for i in range(n):
             sc = SCL_G[i % len(SCL_G)]
             gr = h * 0.060 * sc                         # 패널 높이에 비례(샷 무관하게 전신이 들어감)
-            foot_y = horizon + (sc - 0.95) * h * 0.30   # 가까울수록 지면 아래, 멀수록 수평선 근처
+            foot_y = horizon + (sc - 0.95) * h * 0.16   # 접지면 근처에서 원근만큼 살짝 앞뒤
             gf = dict(frame)
             gf["head_r"] = gr
-            gf["head_cy"] = (foot_y - 7.0 * gr) / h     # 발이 foot_y에 닿도록 머리 위치 역산
+            gf["head_cy"] = (foot_y - FOOT_K * gr) / h  # 발이 foot_y에 닿도록 머리 위치 역산
             nm, ggd = actor(i)
             if nm is None and ggd is None:
                 ggd = "F" if i % 2 == 0 else "M"        # 익명 군중은 성별 교차로 다양하게
@@ -1381,7 +1397,7 @@ def svg_header(total_h, width=W, seed=5):
     # seed: rough 필터 난수 시드 — 패널 '리롤(다시 뽑기)'마다 바꿔 선 흔들림을 다르게.
     h = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{total_h}" '
          f'viewBox="0 0 {width} {total_h}">'
-         f'<defs><style>@import url(https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap);</style>'
+         f'<defs><style>@import url(https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap);</style>'
          f'<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.019 0.022" '
          f'numOctaves="2" seed="{seed}" result="n"/>'
          f'<feDisplacementMap in="SourceGraphic" in2="n" scale="4.6"/></filter>'
