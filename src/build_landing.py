@@ -70,7 +70,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn.ghost:hover{border-color:#c7cdda;background:#e7ebf3}
 .btn.lg{padding:15px 30px;font-size:17px;border-radius:14px}
 /* hero */
-.hero{padding:72px 0 40px}
+.hero{padding:92px 0 120px}
 .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:820px}
 .badge{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#6d4bd8;
   background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.28);padding:6px 14px;border-radius:999px;margin-bottom:22px}
@@ -160,49 +160,6 @@ footer a{color:var(--mut)}
     </div>
   </div>
 </div></div></header>
-
-<section><div class="wrap">
-  <div class="eyebrow">FEATURES</div>
-  <h2>콘티에 필요한 걸, 전부 자동으로</h2>
-  <p class="sub">글로 적은 연출을 그대로 그림으로. 손으로 그릴 필요 없이 배치·표정·동작이 채워집니다.</p>
-  <div class="feat">
-    <div class="fcard"><div class="ic">✏️</div><h3>손그림 콘티 스타일</h3><p>연필 떨림 필터와 손글씨 폰트로 진짜 러프 콘티 느낌.</p></div>
-    <div class="fcard"><div class="ic">🧍</div><h3>캐릭터 자동</h3><p>이름·성별 인식, 관절 바디로 30종 포즈와 22종 표정.</p></div>
-    <div class="fcard"><div class="ic">💬</div><h3>연출 요소</h3><p>대사 말풍선·속마음·나레이션·효과음·배경까지.</p></div>
-    <div class="fcard"><div class="ic">⬇️</div><h3>SVG로 저장</h3><p>벡터라 깨지지 않음. 흑백/컬러 전환, 바로 다운로드.</p></div>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="eyebrow">HOW IT WORKS</div>
-  <h2>3단계면 끝</h2>
-  <p class="sub">평소 쓰던 글콘티 형식 그대로 붙여넣기만 하면 됩니다.</p>
-  <div class="steps" style="margin-top:40px">
-    <div class="step"><h3>글콘티 입력</h3><p><code>번호. [샷] 묘사 / 화자: "대사"</code> 형식으로 쓰거나 붙여넣기.</p></div>
-    <div class="step"><h3>생성 클릭</h3><p>[✎ 생성]을 누르면 컷마다 인물·포즈·말풍선이 배치됩니다.</p></div>
-    <div class="step"><h3>SVG 완성</h3><p>오른쪽에 세로 웹툰 스트립으로. <code>SVG 저장</code>으로 다운로드.</p></div>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="eyebrow">FORMAT</div>
-  <h2>입력 형식</h2>
-  <p class="sub">규칙은 한 줄이면 충분합니다.</p>
-  <div class="fmt">
-    <div class="row"><div class="k">기본</div><div><code>번호. [샷] 상황묘사 / 화자: "대사"</code></div></div>
-    <div class="row"><div class="k">샷</div><div><code>풀샷</code> · <code>미들샷</code> · <code>클로즈업</code> · <code>롱샷</code></div></div>
-    <div class="row"><div class="k">인물</div><div>이름(매리·라이더·엘리·무결…) → 색·성별 자동 · 일반어 <code>여자</code>/<code>남자</code>도 인식</div></div>
-    <div class="row"><div class="k">인원</div><div><code>둘</code>/<code>서로</code> → 2명 · <code>사람들</code> → 다인물</div></div>
-    <div class="row"><div class="k">말풍선</div><div><code>"대사"</code> → 말풍선 · <code>(속마음)</code> → 생각풍선 · <code>나레이션:</code> → 하단 박스 · <code>효과음:</code> → 손글씨</div></div>
-  </div>
-</div></section>
-
-<section><div class="wrap"><div class="band">
-  <div class="eyebrow">START NOW</div>
-  <h2>지금 바로, 콘티를 그려보세요</h2>
-  <p class="sub" style="margin-left:auto;margin-right:auto">로그인도 설치도 필요 없습니다. 글만 쓰면 됩니다.</p>
-  <a class="btn primary lg" href="viewer.html#gen">✎ 무료로 생성하기</a>
-</div></div></section>
 
 <footer><div class="wrap">
   <div>© AI Storyboard · 텍스트 콘티를 그림 콘티로</div>
