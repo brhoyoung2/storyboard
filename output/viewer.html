@@ -7,21 +7,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-:root{--bg:#0b0d13;--card:#151823;--card2:#1c2030;--line:#262b3b;--tx:#eaecf3;
-  --mut:#9aa3b6;--dim:#6b7488;--grad:linear-gradient(135deg,#6366f1,#a855f7 55%,#ec4899)}
+:root{--bg:#f4f6fb;--card:#ffffff;--card2:#eef1f7;--line:#e3e7ef;--tx:#1c2230;
+  --mut:#5a6478;--dim:#8b94a6;--grad:linear-gradient(135deg,#6366f1,#a855f7 55%,#ec4899)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:'Pretendard',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(700px 360px at 85% -8%,rgba(99,102,241,.16),transparent 60%),
-    radial-gradient(600px 340px at 5% 4%,rgba(168,85,247,.12),transparent 60%)}
+  background:radial-gradient(700px 360px at 85% -8%,rgba(99,102,241,.09),transparent 60%),
+    radial-gradient(600px 340px at 5% 4%,rgba(168,85,247,.07),transparent 60%)}
 a{color:inherit;text-decoration:none}
 /* nav header */
 header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
-  background:rgba(11,13,19,.78);border-bottom:1px solid var(--line);padding:0 26px}
+  background:rgba(255,255,255,.85);border-bottom:1px solid var(--line);padding:0 26px}
 .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-size:19px;font-weight:800;display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
 .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--grad)}
-.logo b{background:linear-gradient(90deg,#fff,#cbc4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-r{display:flex;align-items:center;gap:18px;font-size:14px;color:var(--mut)}
 .nav-r a:hover{color:var(--tx)}
 .navbtn{background:var(--grad);color:#fff!important;font-weight:700;padding:9px 18px;border-radius:11px;
@@ -30,15 +30,15 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .tabs{display:flex;gap:8px;padding:11px 0 13px;flex-wrap:wrap}
 .tab{padding:8px 16px;background:var(--card2);border-radius:11px;cursor:pointer;font-size:14.5px;
   font-weight:600;border:1px solid var(--line);color:var(--mut);transition:.15s}
-.tab:hover{color:var(--tx);border-color:#3a415a}
+.tab:hover{color:var(--tx);border-color:#c7cdda}
 .tab.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(124,58,237,.4)}
-.tab.gen{color:#d9caff;border-color:rgba(124,58,237,.4)}
+.tab.gen{color:#6d4bd8;border-color:rgba(124,58,237,.4)}
 .tab.gen.on{color:#fff}
 .view{display:none;padding:30px 26px}
 .view.on{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .gallery{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}
-.paper{background:#fff;border-radius:12px;box-shadow:0 14px 44px rgba(0,0,0,.5);overflow:hidden}
+.paper{background:#fff;border-radius:12px;box-shadow:0 8px 26px rgba(20,30,60,.13);border:1px solid var(--line);overflow:hidden}
 .paper svg{display:block;width:360px;height:auto}
 .cap{text-align:center;color:var(--mut);font-size:14px;margin-top:10px;font-weight:600}
 .split{display:flex;gap:24px;align-items:flex-start;justify-content:center}
@@ -47,11 +47,11 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   margin-bottom:9px;border:1px solid var(--line)}
 .pnum{flex:0 0 28px;height:28px;border-radius:9px;background:var(--grad);
   color:#fff;text-align:center;line-height:28px;font-size:14px;font-weight:700}
-.ptags{color:#b39dff;font-size:12.5px;letter-spacing:.3px;font-weight:600}
+.ptags{color:#7c4dd8;font-size:12.5px;letter-spacing:.3px;font-weight:700}
 .pdesc{font-size:15px;margin-top:3px}
-.pdlg{color:#fff;background:#33384a;display:inline-block;padding:2px 9px;border-radius:9px;margin-top:5px;font-size:14px}
+.pdlg{color:#fff;background:var(--grad);display:inline-block;padding:2px 9px;border-radius:9px;margin-top:5px;font-size:14px}
 .pinner{color:var(--mut);font-style:italic;font-size:13.5px;margin-top:3px}
-.psfx{color:#86c5e6;font-size:13.5px;margin-top:3px}
+.psfx{color:#2f8fc4;font-size:13.5px;margin-top:3px;font-weight:600}
 .note{max-width:820px;margin:0 auto 24px;background:var(--card);padding:15px 20px;
   border-radius:14px;border:1px solid var(--line);border-left:4px solid #a855f7;font-size:15px;line-height:1.6;color:var(--mut)}
 .note b{color:var(--tx)}
@@ -76,19 +76,19 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .genwrap{display:flex;gap:22px;align-items:flex-start;max-width:1180px;margin:0 auto}
 .genleft{flex:1 1 0;min-width:0;position:sticky;top:118px;align-self:flex-start;display:flex;flex-direction:column}
 .genright{flex:1 1 0;min-width:0}
-.genleft textarea{width:100%;height:calc(100vh - 320px);min-height:300px;resize:none;background:#0e1118;color:var(--tx);
+.genleft textarea{width:100%;height:calc(100vh - 320px);min-height:300px;resize:none;background:#fff;color:var(--tx);
   border:1px solid var(--line);border-radius:14px;padding:16px 18px;
-  font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.8;outline:none;transition:.15s}
-.genleft textarea:focus{border-color:#7c5cff;box-shadow:0 0 0 4px rgba(124,58,237,.18)}
+  font-family:ui-monospace,'Pretendard',monospace;font-size:14.5px;line-height:1.8;outline:none;transition:.15s;box-shadow:0 2px 10px rgba(20,30,60,.05)}
+.genleft textarea:focus{border-color:#7c5cff;box-shadow:0 0 0 4px rgba(124,58,237,.15)}
 .genhint{font-size:13px;color:var(--dim);margin:10px 0 0;line-height:1.6}
-.genhint code{background:var(--card2);padding:2px 7px;border-radius:6px;color:#bcd}
+.genhint code{background:var(--card2);padding:2px 7px;border-radius:6px;color:#6d4bd8}
 /* 하단 생성 바 (탭 진입 시에만 표시) */
 .genbottom{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
   padding:13px 26px;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
-  background:rgba(13,16,24,.82);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(20,30,60,.07)}
 .genbottom button{font-family:inherit;font-size:15px;font-weight:700;padding:12px 20px;border-radius:12px;
   cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.15s}
-.genbottom button:hover{border-color:#3a415a}
+.genbottom button:hover{border-color:#c7cdda}
 .genbottom button.primary{background:var(--grad);border-color:transparent;color:#fff;padding:12px 34px;font-size:16px;
   box-shadow:0 8px 22px rgba(124,58,237,.4)}
 .genbottom button.primary:hover{transform:translateY(-1px)}
@@ -108,28 +108,28 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
 .chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 9px}
 .chip-sp{flex:1 1 auto;min-width:6px}
 .chips .gtool{font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:9px;
-  border:1px solid var(--line);background:var(--card2);color:#cdd;cursor:pointer;outline:none}
+  border:1px solid var(--line);background:var(--card2);color:var(--tx);cursor:pointer;outline:none}
 .chips select.gtool{max-width:170px}
-.chips #gfmt{background:rgba(124,58,237,.18);border-color:rgba(124,58,237,.45);color:#e3d8ff;font-weight:700}
-.chips #gfmt:hover{background:rgba(124,58,237,.3);color:#fff}
+.chips #gfmt{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.4);color:#6d4bd8;font-weight:700}
+.chips #gfmt:hover{background:rgba(124,58,237,.18);color:#5a2ec0}
 .chips .chip{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:9px;cursor:pointer;
-  border:1px solid var(--line);background:var(--card2);color:#cdd;transition:.12s;user-select:none}
-.chips .chip:hover{border-color:#7c5cff;color:#fff;background:rgba(124,58,237,.18)}
-.chips .chip.alt{color:#9fb3c8}
+  border:1px solid var(--line);background:var(--card2);color:var(--tx);transition:.12s;user-select:none}
+.chips .chip:hover{border-color:#7c5cff;color:#6d4bd8;background:rgba(124,58,237,.1)}
+.chips .chip.alt{color:var(--mut)}
 /* 입력 자동완성 팝업 */
 .gac{display:none;position:absolute;z-index:30;flex-wrap:wrap;gap:5px;max-width:520px;
-  background:#11151d;border:1px solid var(--line);border-radius:11px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+  background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px;box-shadow:0 12px 30px rgba(20,30,60,.18)}
 .gac .acitem{font-family:inherit;font-size:13px;font-weight:600;padding:6px 11px;border-radius:8px;cursor:pointer;
   border:1px solid var(--line);background:var(--card2);color:var(--tx);display:flex;align-items:center;gap:6px}
-.gac .acitem:hover{border-color:#7c5cff;background:rgba(124,58,237,.2)}
+.gac .acitem:hover{border-color:#7c5cff;background:rgba(124,58,237,.1)}
 .gac .acitem i{font-style:normal;font-size:11px;color:var(--dim)}
 .gpreview{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:11px 0 0;min-height:24px;font-size:12.5px}
-.gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.14);
-  border:1px solid rgba(124,58,237,.32);color:#d9caff;font-weight:600}
+.gpreview .pv{padding:4px 10px;border-radius:999px;background:rgba(124,58,237,.1);
+  border:1px solid rgba(124,58,237,.28);color:#6d4bd8;font-weight:600}
 .gpreview .pv.muted{background:var(--card2);border-color:var(--line);color:var(--mut);font-weight:500}
 /* 웹툰형 단일 캔버스 — 흰 바탕 위에 컷이 이어서 올라감. 첫 컷 위·아래 여백을 컷 간격과 동일하게 */
 .pstack{display:flex;flex-direction:column;gap:160px;background:#fff;border-radius:14px;
-  padding:160px 16px;box-shadow:0 10px 36px rgba(0,0,0,.4)}
+  padding:160px 16px;border:1px solid var(--line);box-shadow:0 8px 30px rgba(20,30,60,.12)}
 .gcard{display:flex;flex-direction:column;background:#fff;position:relative;z-index:0}
 .gcard:hover{z-index:6}                       /* hover 시 옵션 패널이 옆 컷 위로 */
 .gcard.busy{opacity:.5}
@@ -172,11 +172,11 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   background:rgba(255,255,255,.55)}
 /* 첫 진입 예시 배너 */
 .gsample-banner{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:12px 16px;border-radius:12px;
-  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#d9caff;
+  background:rgba(124,58,237,.09);border:1px solid rgba(124,58,237,.28);color:#6d4bd8;
   font-size:13.5px;line-height:1.55;word-break:keep-all}
 .gsample-banner .ic{flex:0 0 auto;font-size:17px}
 .gsample-banner span{flex:1 1 auto}
-.gsample-banner b{color:#fff}
+.gsample-banner b{color:#4a2bb0}
 .exp-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
 /* ── 모바일/태블릿 대응 ───────────────────────────── */
 @media(max-width:860px){
@@ -384,11 +384,11 @@ async function cutReq(i, text){
     const res=await fetch(G_API+'/api/cut',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({text, gray:gq('ggray').checked, seed:gPanels[i].seed||5})});
     const d=await res.json();
-    if(d.error){ gq('gstat').innerHTML='<span style="color:#f99">⚠ '+d.error+'</span>';
+    if(d.error){ gq('gstat').innerHTML='<span style="color:#dc3055">⚠ '+d.error+'</span>';
       card.classList.remove('busy'); const m=card.querySelector('.gcard-mini'); if(m) m.remove(); return; }
     gPanels[i]={svg:d.svg,shot:d.shot,pose:d.pose,emotion:d.emotion,view:d.view,panel:d.panel,seed:d.seed,src:d.src};
     renderCards(); gq('gstat').textContent='#'+(i+1)+' 컷 수정됨';
-  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>'; }
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#dc3055">서버 연결 실패</span>'; }
 }
 function dupCut(i){ gPanels.splice(i+1,0,Object.assign({},gPanels[i])); renderCards(); gq('gstat').textContent='컷 복제됨'; }
 function delCut(i){ if(gPanels.length<=1){ gq('gstat').textContent='마지막 컷은 삭제할 수 없습니다'; return; }
@@ -409,13 +409,13 @@ async function panelReq(i, extra){
     const res = await fetch(G_API+'/api/panel', {method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify(Object.assign({panel:p.panel, gray:gq('ggray').checked, seed:p.seed||5}, extra))});
     const d = await res.json();
-    if(d.error){ gq('gstat').innerHTML='<span style="color:#f99">⚠ '+d.error+'</span>'; }
+    if(d.error){ gq('gstat').innerHTML='<span style="color:#dc3055">⚠ '+d.error+'</span>'; }
     else{
       gPanels[i] = {svg:d.svg, shot:d.shot, pose:d.pose, emotion:d.emotion, view:d.view, panel:d.panel, seed:d.seed, src:d.src!==undefined?d.src:p.src};
       const nc = document.createElement('div'); nc.innerHTML = cardHTML(gPanels[i], i);
       card.replaceWith(nc.firstChild);
     }
-  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>'; }
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#dc3055">서버 연결 실패</span>'; }
 }
 // 이벤트 위임: 드롭다운 편집 / 리롤 / 패널 PNG
 gq('gout').addEventListener('change', e=>{
@@ -437,7 +437,7 @@ gq('gout').addEventListener('click', e=>{
 // ── 생성 ──
 async function genConti(){
   const text = gq('ginp').value.trim();
-  if(!text){ gq('gstat').innerHTML='<span style="color:#f99">글콘티를 입력하세요.</span>'; return; }
+  if(!text){ gq('gstat').innerHTML='<span style="color:#dc3055">글콘티를 입력하세요.</span>'; return; }
   gq('ggen').disabled=true; gq('gstat').textContent='생성 중...';
   gq('gout').innerHTML='<div class="gph"><div class="spin"></div>생성 중...</div>';
   try{
@@ -445,7 +445,7 @@ async function genConti(){
       body: JSON.stringify({text, gray: gq('ggray').checked})});
     const d = await res.json();
     if(d.error){
-      gq('gstat').innerHTML='<span style="color:#f99">오류</span>';
+      gq('gstat').innerHTML='<span style="color:#dc3055">오류</span>';
       gq('gout').innerHTML='<div class="gph">⚠ '+d.error+'</div>';
     } else {
       gPanels = d.panels.map(p=>({svg:p.svg,shot:p.shot,pose:p.pose,emotion:p.emotion,view:p.view,panel:p.panel,seed:5,src:p.src}));
@@ -455,7 +455,7 @@ async function genConti(){
       gq('gstat').textContent = d.count+'컷 · 샷 '+Object.entries(d.shots).map(([k,v])=>k+'×'+v).join(' ');
     }
   }catch(e){
-    gq('gstat').innerHTML='<span style="color:#f99">서버 연결 실패</span>';
+    gq('gstat').innerHTML='<span style="color:#dc3055">서버 연결 실패</span>';
     gq('gout').innerHTML='<div class="gph">⚠ 생성 서버에 연결할 수 없습니다.<br><br>'
       +'터미널에서 <code>python src/server.py</code> 를 실행한 뒤,<br>'
       +'자동으로 열리는 <code>http://127.0.0.1:8000</code> 에서 다시 시도하세요.</div>';
@@ -510,8 +510,8 @@ async function copyPNG(){
   const svgs=[...gq('gout').querySelectorAll('.gcard svg')]; if(!svgs.length) return;
   try{ const {canvas}=await svgToCanvas(svgs[0],2);
     canvas.toBlob(async b=>{ try{ await navigator.clipboard.write([new ClipboardItem({'image/png':b})]);
-      gq('gstat').textContent='첫 컷 클립보드 복사됨'; }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 미지원 브라우저</span>'; } });
-  }catch(e){ gq('gstat').innerHTML='<span style="color:#f99">복사 실패</span>'; }
+      gq('gstat').textContent='첫 컷 클립보드 복사됨'; }catch(e){ gq('gstat').innerHTML='<span style="color:#dc3055">복사 미지원 브라우저</span>'; } });
+  }catch(e){ gq('gstat').innerHTML='<span style="color:#dc3055">복사 실패</span>'; }
 }
 
 // 샘플 10종 드롭다운 채우기 + 선택 시 로드
@@ -540,7 +540,7 @@ function localFormat(text){
 }
 async function formatText(){
   const text=gq('ginp').value.trim();
-  if(!text){ gq('gstat').innerHTML='<span style="color:#f99">먼저 글을 입력하세요.</span>'; return; }
+  if(!text){ gq('gstat').innerHTML='<span style="color:#dc3055">먼저 글을 입력하세요.</span>'; return; }
   gq('gfmt').disabled=true; gq('gstat').textContent='형식 정리 중...';
   try{
     const res=await fetch(G_API+'/api/format',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
