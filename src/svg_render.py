@@ -623,8 +623,10 @@ def _leg(root, ta, ca, r, foot_dir, sw, dress=False):
     pants = PAINT(PANTS) if not dress else SKIN
     e = r*0.06
     s = ""
-    if not dress:   # 허벅지: 골반(두껍게)→무릎(가늘게). 관절쪽 외곽선 열기
+    if not dress:   # 바지 허벅지: 골반(두껍게)→무릎(가늘게). 관절쪽 외곽선 열기
         s += _taper(root[0], root[1], r*0.48, kx, ky, r*0.32, pants, sw, ext=e, open_root=True)
+    else:           # 치마: 허벅지를 맨다리(가늘게)로 그려 종아리와 연결 — 윗부분은 치마가 덮음
+        s += _taper(root[0], root[1], r*0.40, kx, ky, r*0.33, SKIN, sw, ext=e, open_root=True)
     # 종아리: 무릎→발목(더 가늘게)
     s += _taper(kx, ky, r*0.34, ax, ay, r*0.20, pants, sw, ext=e, open_root=True)
     s += f'<path d="M{ax:.1f},{ay:.1f} Q{fx:.1f},{ay+r*0.2:.1f} {fx:.1f},{ay+r*0.04:.1f}" stroke="{INK}" stroke-width="{r*0.32:.1f}" stroke-linecap="round" fill="none"/>'  # 신발
